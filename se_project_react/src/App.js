@@ -7,11 +7,11 @@ function App() {
     <div>
       <Header />
       <main>
-        <section id='weather'>
-          <div>75F</div>
-          <div>
-            <img src='/images/day/day-sunny.svg' />
+        <section className='weather' id='weather'>
+          <div className='weather_info'>
+            75F
           </div>
+          <img className='weather_image' src='/images/day/day-sunny.svg' />
         </section>
         <section id='card-section'>
           Card Section
