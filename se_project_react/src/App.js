@@ -5,11 +5,11 @@ function App() {
   return (
     <div>
       <header className='header'>
-        <div>
+        <div className='header__logo'>
           <div>Logo</div>
           <div>Date</div>
         </div>
-        <div>
+        <div className='header__avatar-logo'>
           <div>
             <button type='text'>Add clothes</button>
           </div>
