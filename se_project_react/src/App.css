@@ -1,1 +1,13 @@
+.weather {
+  position: relative;
 
+}
+
+.weather_info {
+  position: absolute;
+}
+
+.weather_image {
+  width: 100%;
+  
+}
