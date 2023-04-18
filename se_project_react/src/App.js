@@ -17,7 +17,7 @@ function App() {
           </div>
           <div>Name</div>
           <div>
-            <img src='/images/header-avatar' alt='avatar'></img>
+            <img src='/images/header-avatar.svg' alt='avatar'></img>
           </div>
         </div>
       </header>
