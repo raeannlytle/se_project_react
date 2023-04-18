@@ -12,7 +12,7 @@ function App() {
           Date
         </div>
         <div>
-          <button type='text'></button>
+          <button type='text'>Add clothes</button>
         </div>
         <div>
           Name
