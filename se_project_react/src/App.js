@@ -15,7 +15,7 @@ function App() {
           <div>
             <button type='text'>Add clothes</button>
           </div>
-          <div>Name</div>
+          <div>Terrence Tegegne</div>
           <div>
             <img src='/images/header-avatar.svg' alt='avatar'></img>
           </div>
