@@ -7,7 +7,12 @@ function App() {
     <div>
      <Header/>
       <main>
-
+        <section id='weather'>
+          Weather
+        </section>
+        <section id='card-section'>
+          Card Section
+        </section>
       </main>
     </div>
   );
