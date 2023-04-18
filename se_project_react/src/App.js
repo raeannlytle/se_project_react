@@ -6,7 +6,9 @@ function App() {
     <div>
       <header className='header'>
         <div className='header__logo'>
-          <div>Logo</div>
+          <div>
+            <img src='/images/header-logo.svg' alt='logo'></img>
+          </div>
           <div>Date</div>
         </div>
         <div className='header__avatar-logo'>
