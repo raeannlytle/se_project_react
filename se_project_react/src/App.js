@@ -6,19 +6,15 @@ function App() {
     <div>
       <header className='header'>
         <div>
-          Logo
+          <div>Logo</div>
+          <div>Date</div>
         </div>
         <div>
-          Date
-        </div>
-        <div>
-          <button type='text'>Add clothes</button>
-        </div>
-        <div>
-          Name
-        </div>
-        <div>
-          Avatar
+          <div>
+            <button type='text'>Add clothes</button>
+          </div>
+          <div>Name</div>
+          <div>Avatar</div>
         </div>
       </header>
     </div>
