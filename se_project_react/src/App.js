@@ -1,14 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
-import './Header/Header.js';
+import Header from './Header/Header';
 
 function App() {
   return (
     <div>
-     <Header/>
+      <Header />
       <main>
         <section id='weather'>
-          Weather
+          <div>75F</div>
+          <div>
+            <img src='/images/day/day-sunny.svg' />
+          </div>
         </section>
         <section id='card-section'>
           Card Section
