@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './Header/Header';
 import WeatherCard from './WeatherCard/WeatherCard';
-
+import ItemCard from './ItemCard/ItemCard';
 
 const defaultClothingItems = [
   {
@@ -50,10 +50,10 @@ function App() {
       <Header />
       <main className='main'>
         <WeatherCard day={true} type='cloudy'/>
-        <section id='card-section'>
-          {defaultClothingItems.map(x => {
-            return(<div>{x.name}</div>)
-          })}
+        <section className='card_section' id='card-section'>
+          {defaultClothingItems.map((item) => (
+          <ItemCard item={item}/>
+          ))};
         </section>
       </main>
     </div>

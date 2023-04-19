@@ -20,3 +20,21 @@
 .main {
   padding: 0 20px;
 }
+
+.card_section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card_image {
+  width: 328px;
+  height: 328px;
+  border-radius: 19px;
+}
+
+.card_name {
+  text-align: center;
+  font-size: 16px;
+  line-height: 20px;
+}
