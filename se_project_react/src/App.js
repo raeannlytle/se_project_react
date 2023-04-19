@@ -9,7 +9,7 @@ function App() {
     <div>
       <Header />
       <Main weatherTemp={weatherTemp} />
-      <footer>
+      <footer className='footer'>
         <div>
           Developed by Raeann Lytle
         </div>
