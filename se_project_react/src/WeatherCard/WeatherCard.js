@@ -13,7 +13,7 @@ const weatherOptions = [
   {url: require('../images/night/night-fog.svg').default, day: false, type: 'fog'}
 ];
 
-const WeatherCard = ({ day, type }) => {
+const WeatherCard = ({ day, type, weatherTemp = '' }) => {
   const imageSource = weatherOptions.filter((i) => {
     return i.day === day && i.type === type
   });
@@ -23,7 +23,7 @@ const WeatherCard = ({ day, type }) => {
   return (
     <section className='weather' id='weather'>
       <div className='weather_info'>
-        75F
+        {weatherTemp}
       </div>
       <img className='weather_image' src={imageSourceUrl} />
     </section>
