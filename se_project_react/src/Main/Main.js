@@ -1,6 +1,8 @@
 import { defaultClothingItems } from "../utils/constants";
+import WeatherCard from '../WeatherCard/WeatherCard';
+import ItemCard from '../ItemCard/ItemCard';
 
-function Main() {
+function Main({ weatherTemp }) {
     return <main className='main'>
       <WeatherCard day={false} type='rain' weatherTemp={weatherTemp} />
       <section className='card_section' id='card-section'>

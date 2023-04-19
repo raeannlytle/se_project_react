@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Main />
+      <Main weatherTemp={weatherTemp} />
     </div>
   );
 }
