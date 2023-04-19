@@ -9,6 +9,14 @@ function App() {
     <div>
       <Header />
       <Main weatherTemp={weatherTemp} />
+      <footer>
+        <div>
+          Developed by Raeann Lytle
+        </div>
+        <div>
+          2023
+        </div>
+      </footer>
     </div>
   );
 }
