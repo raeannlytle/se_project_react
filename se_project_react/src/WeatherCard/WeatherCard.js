@@ -14,12 +14,11 @@ const weatherOptions = [
 ];
 
 const WeatherCard = ({ day, type }) => {
-  console.log('weather card');
-    const imageSource = weatherOptions.filter((i) => {
-      return i.day === day && i.type === type
-    });
+  const imageSource = weatherOptions.filter((i) => {
+    return i.day === day && i.type === type
+  });
 
-    const imageSourceUrl = imageSource[0].url || ' '
+  const imageSourceUrl = imageSource[0].url || ' '
 
   return (
     <section className='weather' id='weather'>
