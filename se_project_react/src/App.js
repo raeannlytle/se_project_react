@@ -51,9 +51,12 @@ function App() {
       <main className='main'>
         <WeatherCard day={true} type='cloudy'/>
         <section className='card_section' id='card-section'>
+        Today is 75F / You may want to wear:
+        <div className='card_items'>
           {defaultClothingItems.map((item) => (
           <ItemCard item={item}/>
-          ))};
+          ))}
+        </div>
         </section>
       </main>
     </div>

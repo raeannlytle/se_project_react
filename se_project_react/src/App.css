@@ -22,9 +22,15 @@
 }
 
 .card_section {
+  margin-top: 40px;
+}
+
+.card_items {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
+  margin-top: 34px;
 }
 
 .card_image {
