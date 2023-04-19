@@ -1,3 +1,5 @@
+import { defaultClothingItems } from "../utils/constants";
+
 function Main() {
     return <main className='main'>
       <WeatherCard day={false} type='rain' weatherTemp={weatherTemp} />
