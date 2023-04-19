@@ -1,0 +1,23 @@
+.card_section {
+    margin-top: 40px;
+  }
+  
+  .card_items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+    justify-content: center;
+    margin-top: 34px;
+  }
+  
+  .card_image {
+    width: 328px;
+    height: 328px;
+    border-radius: 19px;
+  }
+  
+  .card_name {
+    text-align: center;
+    font-size: 16px;
+    line-height: 20px;
+  }
