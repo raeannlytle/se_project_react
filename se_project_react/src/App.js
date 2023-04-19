@@ -1,6 +1,7 @@
 import './App.css';
 import Header from './Header/Header';
 import Main from './Main/Main';
+import Footer from './Footer/Footer';
 
 
 function App() {
@@ -9,14 +10,7 @@ function App() {
     <div>
       <Header />
       <Main weatherTemp={weatherTemp} />
-      <footer className='footer'>
-        <div>
-          Developed by Raeann Lytle
-        </div>
-        <div>
-          2023
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
