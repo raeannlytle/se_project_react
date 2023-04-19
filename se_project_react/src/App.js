@@ -44,22 +44,27 @@ const defaultClothingItems = [
 
 
 function App() {
+  const weatherTemp = '102°F'
   return (
     <div>
       <Header />
-      <main className='main'>
-        <WeatherCard day={true} type='cloudy'/>
-        <section className='card_section' id='card-section'>
-        Today is 75F / You may want to wear:
-        <div className='card_items'>
-          {defaultClothingItems.map((item) => (
-          <ItemCard item={item}/>
-          ))}
-        </div>
-        </section>
-      </main>
+      <Main />
     </div>
   );
+
+  function Main() {
+    return <main className='main'>
+      <WeatherCard day={false} type='rain' weatherTemp={weatherTemp} />
+      <section className='card_section' id='card-section'>
+        Today is {weatherTemp} / You may want to wear:
+        <div className='card_items'>
+          {defaultClothingItems.map((item) => (
+            <ItemCard item={item} />
+          ))}
+        </div>
+      </section>
+    </main>;
+  }
 }
 
 export default App;
