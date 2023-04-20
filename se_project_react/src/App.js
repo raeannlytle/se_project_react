@@ -12,7 +12,31 @@ function App() {
       <Header />
       <Main weatherTemp={weatherTemp} />
       <Footer />
-      <ModalWithForm title='New garment'>These are the children</ModalWithForm>
+      <ModalWithForm title='New garment'>
+        <label>
+          Name
+          <input type='text' name='name' minLength='1' maxLength='30'></input>
+        </label>
+        <label>
+          Image
+          <input type='url' name='link' minLength='1' maxLength='30'></input>
+        </label>
+        <p>Select the weather type:</p>
+        <div>
+          <div>
+            <input type='radio' id='hot' value='hot'></input>
+            <label>Hot</label>
+          </div>
+          <div>
+            <input type='radio' id='warm' value='warm'></input>
+            <label>Warm</label>
+          </div>
+          <div>
+            <input type='radio' id='cold' value='cold'></input>
+            <label>Cold</label>
+          </div>
+        </div>
+      </ModalWithForm>
     </div>
   );
 }
