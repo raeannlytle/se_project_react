@@ -3,18 +3,27 @@ import Header from './Header/Header';
 import Main from './Main/Main';
 import Footer from './Footer/Footer';
 import ModalWithForm from './ModalWithForm/ModalWithForm';
+import { useState } from "react";
 
 
 function App() {
   const weatherTemp = '102°F'
-  const { activeModal, setActiveModal } = useState('');
+  const [activeModal, setActiveModal] = useState('');
+
+  const handleCreateModal = () => {
+    setActiveModal('create')
+  }
+
+  const handleCloseModal = () => {
+    setActiveModal('')
+  }
   return (
     <div>
-      <Header />
+      <Header onCreateModal={handleCreateModal} />
       <Main weatherTemp={weatherTemp} />
       <Footer />
       {activeModal === 'create' && (
-        <ModalWithForm title='New garment'>
+        <ModalWithForm title='New garment' onClose={handleCloseModal}>
           <label>
             Name
             <input type='text' name='name' minLength='1' maxLength='30'></input>
