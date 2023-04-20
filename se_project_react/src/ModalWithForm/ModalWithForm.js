@@ -1,7 +1,7 @@
-const ModalWithForm = () => {
+const ModalWithForm = ({ children }) => {
   return (
   <div>
-    ModalWithForm
+    {children}
   </div>
   )
 }
