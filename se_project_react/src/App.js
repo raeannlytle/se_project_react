@@ -12,7 +12,7 @@ function App() {
       <Header />
       <Main weatherTemp={weatherTemp} />
       <Footer />
-      <ModalWithForm />
+      <ModalWithForm title='New garment'>These are the children</ModalWithForm>
     </div>
   );
 }
