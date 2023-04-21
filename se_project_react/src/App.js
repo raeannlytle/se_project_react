@@ -9,6 +9,7 @@ import { useState } from "react";
 function App() {
   const weatherTemp = '102°F'
   const [activeModal, setActiveModal] = useState('');
+  const [selectedCard, setSelectedCard] = useState({});
 
   const handleCreateModal = () => {
     setActiveModal('create')
@@ -49,6 +50,17 @@ function App() {
           </div>
         </ModalWithForm>
       )}
+      <div className='modal'>
+        <div className='modal__content'>
+          <img/>
+          <div>
+            Text for the item name 
+          </div>
+          <div>
+            Weather type
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
