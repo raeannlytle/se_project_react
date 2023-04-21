@@ -4,8 +4,17 @@ import ItemCard from '../ItemCard/ItemCard';
 import './Main.css';
 
 function Main({ weatherTemp, onSelectCard }) {
-    return <main className='main'>
-      <WeatherCard day={false} type='rain' weatherTemp={weatherTemp} />
+  if (weatherTemp >= 86) {
+    return 'hot';
+  } else if (weatherTemp >= 66 && weatherTemp <= 85) {
+    return 'warm';
+  } else if (weatherTemp <= 65) {
+    return 'cold';
+  }
+
+  return (
+  <main className='main'>
+    <WeatherCard day={false} type='rain' weatherTemp={weatherTemp} />
       <section className='card_section' id='card-section'>
         Today is {weatherTemp} / You may want to wear:
         <div className='card_items'>
@@ -14,7 +23,8 @@ function Main({ weatherTemp, onSelectCard }) {
           ))}
         </div>
       </section>
-    </main>;
-  }
+    </main>
+  );
+}
 
 export default Main;
