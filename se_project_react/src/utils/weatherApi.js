@@ -12,4 +12,5 @@ export const getForecastWeather = () => {
         return Promise.reject(`Error: ${res.status}`);
     }
   });
+  return weatherApi;
 }
