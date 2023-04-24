@@ -7,8 +7,9 @@ import { useState } from "react";
 import ItemModal from './ItemModal/ItemModal';
 
 
+
 function App() {
-  const weatherTemp = '102°F'
+  const weatherTemp = '30°F'
   const [activeModal, setActiveModal] = useState('');
   const [selectedCard, setSelectedCard] = useState({});
 
@@ -24,6 +25,7 @@ function App() {
     setActiveModal('preview');
     setSelectedCard(card);
   }
+
   return (
     <div>
       <Header onCreateModal={handleCreateModal} />
