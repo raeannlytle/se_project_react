@@ -21,7 +21,7 @@ function Main({ weatherTemp, onSelectCard }) {
 
   return (
   <main className='main'>
-    <WeatherCard day={true} type='cloudy' weatherTemp={weatherTemp} />
+    <WeatherCard day={true} type='sunny' weatherTemp={weatherTemp} />
       <section className='card_section' id='card-section'>
         Today is {weatherTemp} / You may want to wear:
         <div className='card_items'>
