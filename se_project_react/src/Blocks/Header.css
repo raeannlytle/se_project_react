@@ -8,12 +8,40 @@
   
   .header__logo {
     display: flex;
-    gap: 24px;
     align-items: center;
   }
-  
-  .header__avatar-logo {
+
+  .header__date {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 700;
+    margin-left: 24px;
+  }
+
+  .header__name {
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: 700;
+    margin-right: 12px;
+  }
+
+  .header__avatar {
     display: flex;
-    gap: 20px;
     align-items: center;
+    justify-content: center;
+  }
+
+  
+  .header__button {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 700;
+    margin-right: 20px;
+  }
+  
+  .header__avatar-image {
+    height: 40px;
+    width: 40px;
   }
