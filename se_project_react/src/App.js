@@ -44,11 +44,22 @@ function App() {
           <div className='modal__labels'>
             <label className='modal__label'>
               Name
-              <input className='modal__input' type='text' name='name' minLength='1' maxLength='30'></input>
+              <input
+               className='modal__input'
+               placeholder='Name' 
+               type='text' name='name' 
+               minLength='1' 
+               maxLength='30'></input>
             </label>
             <label className='modal__label'>
               Image
-              <input className='modal__input' type='url' name='link' minLength='1' maxLength='30'></input>
+              <input 
+              className='modal__input' 
+              placeholder='Image URL'
+              type='url' 
+              name='link' 
+              minLength='1' 
+              maxLength='30'></input>
             </label>
           </div>
           <p className='modal__paragraph'>Select the weather type:</p>
