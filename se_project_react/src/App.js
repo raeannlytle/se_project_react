@@ -41,26 +41,28 @@ function App() {
       <Footer />
       {activeModal === 'create' && (
         <ModalWithForm title='New garment' onClose={handleCloseModal}>
-          <label>
-            Name
-            <input type='text' name='name' minLength='1' maxLength='30'></input>
-          </label>
-          <label>
-            Image
-            <input type='url' name='link' minLength='1' maxLength='30'></input>
-          </label>
-          <p>Select the weather type:</p>
-          <div>
-            <div>
-              <input type='radio' id='hot' value='hot'></input>
+          <div className='modal__labels'>
+            <label className='modal__label'>
+              Name
+              <input className='modal__input' type='text' name='name' minLength='1' maxLength='30'></input>
+            </label>
+            <label className='modal__label'>
+              Image
+              <input className='modal__input' type='url' name='link' minLength='1' maxLength='30'></input>
+            </label>
+          </div>
+          <p className='modal__paragraph'>Select the weather type:</p>
+          <div className='modal__buttons'>
+            <div className='modal__button'>
+              <input className='modal__button-input' type='radio' id='hot' value='hot'></input>
               <label>Hot</label>
             </div>
-            <div>
-              <input type='radio' id='warm' value='warm'></input>
+            <div className='modal__button'>
+              <input className='modal__button-input' type='radio' id='warm' value='warm'></input>
               <label>Warm</label>
             </div>
-            <div>
-              <input type='radio' id='cold' value='cold'></input>
+            <div className='modal__button'>
+              <input className='modal__button-input' type='radio' id='cold' value='cold'></input>
               <label>Cold</label>
             </div>
           </div>
