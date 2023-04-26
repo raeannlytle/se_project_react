@@ -121,17 +121,6 @@
    position: absolute;
 }
 
-.modal__button-close-item {
-    background-image: url(../images/close-button.svg);
-    height: 16px;
-    width: 16px;
-    border: none;
-    top: 23px;
-    right: 31px;
-    background-color: transparent;
-    position: relative;
-}
-
 .modal__image-preview {
     border-radius: 20px 20px 0 0;
     max-width: 498px;
