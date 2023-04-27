@@ -1,4 +1,4 @@
-import '../Blocks/Header.css';
+import '../blocks/Header.css';
 
 const Header = ({onCreateModal}) => {
   return(
