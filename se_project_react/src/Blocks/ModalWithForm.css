@@ -28,6 +28,7 @@
 }
 
 .modal__title {
+    font-family: 'Familjen Grotesk', sans-serif;
     font-size: 16px;
     margin: 0 0 24px 0;
 }
@@ -41,6 +42,7 @@
 .modal__label {
     display: flex; 
     flex-direction: column;
+    font-family: 'Familjen Grotesk', sans-serif;
     font-weight: 700;
     font-size: 16px;
     line-height: 20px;
@@ -50,6 +52,7 @@
     color: rgba(0, 0, 0, 0.5);
     margin-top: 8px;
     margin-bottom: 4px;
+    font-family: 'Familjen Grotesk', sans-serif;
     font-size: 16px;
     line-height: 20px;
     font-weight: 700;
@@ -66,6 +69,7 @@
 
 .modal__paragraph {
     margin: 24px 0 12px 0;
+    font-family: 'Familjen Grotesk', sans-serif;
     font-weight: 700;
     font-size: 16px;
     line-height: 20px;
@@ -100,6 +104,7 @@
     border-radius: 4px;
     color: #fff;
     border: none;
+    font-family: 'Familjen Grotesk', sans-serif;
     font-weight: 700;
     font-size: 16px;
     line-height: 20px;
