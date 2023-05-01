@@ -7,7 +7,7 @@ const Header = ({onCreateModal}) => {
       <div>
         <img src={require('../images/header-logo.svg').default} alt='logo'></img>
       </div>
-      <div className='header__date'>April 28, Charlotte</div>
+      <div className='header__date'>May 1, Charlotte</div>
     </div>
     <div className='header__avatar'>
       <div>
