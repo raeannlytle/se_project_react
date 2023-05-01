@@ -1,20 +1,20 @@
 .weather {
-    position: relative;
-    margin-bottom: 40px;
-    margin-top: 33px;
-  }
-  
-  .weather_info {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    color: #fff;
-    font-family: 'Familjen Grotesk', sans-serif;
-    font-size: 36px;
-    line-height: 40px;
-  }
-  
-  .weather_image {
-    width: 100%;
-    margin-bottom: 0;
-  }
+  position: relative;
+  margin-bottom: 40px;
+  margin-top: 33px;
+}
+
+.weather_info {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color: #fff;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-size: 36px;
+  line-height: 40px;
+}
+
+.weather_image {
+  width: 100%;
+  margin-bottom: 0;
+}
