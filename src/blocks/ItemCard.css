@@ -7,6 +7,11 @@
     position: relative;
   }
   
+  .card__container {
+    display: flex;
+    justify-content: center;
+  }
+  
   .card_image {
     width: 328px;
     height: 328px;
