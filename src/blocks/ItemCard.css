@@ -1,35 +1,35 @@
-  .card_items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 17px;
-    justify-content: center;
-    margin-top: 34px;
-    position: relative;
-  }
-  
-  .card__container {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .card_image {
-    width: 328px;
-    height: 328px;
-    border-radius: 19px;
-  }
-  
-  .card_name {
-    text-align: center;
-    font-family: 'Familjen Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
-    position: absolute;
-    top: 30px;
-    background-color: #fff;
-    border-radius: 4px;
-    padding: 2px 12px;
-    color: rgba(0, 0, 0, 0.6);
-    width: 100%;
-    max-width: 90px;      
-  }
+.card_items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 17px;
+  justify-content: center;
+  margin-top: 34px;
+  position: relative;
+}
+
+.card__container {
+  display: flex;
+  justify-content: center;
+}
+
+.card_image {
+  width: 328px;
+  height: 328px;
+  border-radius: 19px;
+}
+
+.card_name {
+  text-align: center;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  position: absolute;
+  top: 30px;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 2px 12px;
+  color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 90px;
+}
