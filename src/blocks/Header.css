@@ -48,3 +48,8 @@
   height: 40px;
   width: 40px;
 }
+
+.header__link {
+  color: #000;
+  text-decoration: none;
+}

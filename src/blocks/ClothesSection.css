@@ -1,0 +1,11 @@
+.clothes {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+  padding: 68px 0 0 0;
+}
+
+.clothes__button {
+  border: none;
+  background: none;
+}
