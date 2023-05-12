@@ -9,8 +9,8 @@
   appearance: none;
   cursor: pointer;
   border: 2px solid #7e7e7e;
-  width: 40px;
-  height: 20px;
+  width: 56px;
+  height: 28px;
   outline: none;
 }
 
@@ -19,7 +19,7 @@
   width: 20px;
   height: 20px;
   background-color: #000;
-  color: pink;
+  color: #fff;
   text-align: center;
   cursor: pointer;
   position: absolute;
@@ -32,7 +32,7 @@
   width: 20px;
   height: 20px;
   background-color: #000;
-  color: pink;
+  color: #fff;
   text-align: center;
   cursor: pointer;
   position: absolute;
@@ -59,10 +59,10 @@
 }
 
 .switch_active {
-    z-index: 100;
-    color: pink;
-    top: -14px;
-    right: 2px;
-    font-size: 15px;
-    position: absolute;
+  z-index: 100;
+  color: #fff;
+  top: -14px;
+  right: 2px;
+  font-size: 15px;
+  position: absolute;
 }
