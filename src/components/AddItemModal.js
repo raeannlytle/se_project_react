@@ -2,7 +2,6 @@ import "../blocks/AddItemModal.css";
 import ModalWithForm from "./ModalWithForm";
 import "../blocks/ModalWithForm.css";
 import React, { useEffect, useState } from "react";
-import { clear } from "@testing-library/user-event/dist/clear";
 
 function AddItemModal({ onClose, isModalOpen, handleOverlayClick, onAddItem }) {
   const [nameInputValue, setNameInputValue] = useState("");
@@ -36,11 +35,11 @@ function AddItemModal({ onClose, isModalOpen, handleOverlayClick, onAddItem }) {
       handleOverlayClick={handleOverlayClick}
       onAddItem={onAddItem}
     >
-      <fieldset className="form__fieldset" id="input-fieldset">
-        <p className="form__caption">Name</p>
+      <fieldset className="modal__fieldset" id="input-fieldset">
+        <p className="modal__caption">Name</p>
         <input
           type="text"
-          className="form__input"
+          className="modal__input"
           placeholder="name"
           minLenth="1"
           maxLength="50"
@@ -51,10 +50,10 @@ function AddItemModal({ onClose, isModalOpen, handleOverlayClick, onAddItem }) {
             setNameInputValue(e.target.value);
           }}
         ></input>
-        <p className="form__caption">Image</p>
+        <p className="modal__caption">Image</p>
         <input
           type="url"
-          className="form__input"
+          className="modal__input"
           placeholder="Image URL"
           minLength="1"
           maxLength="100"
@@ -62,18 +61,18 @@ function AddItemModal({ onClose, isModalOpen, handleOverlayClick, onAddItem }) {
           id="link-input"
           value={linkInputValue}
           onChange={(e) => {
-            setLinkINputValue(e.target.value);
+            setLinkInputValue(e.target.value);
           }}
         ></input>
       </fieldset>
-      <h3 className="form__title" id="weather-type-title">
+      <h3 className="modal__title" id="weather-type-title">
         Select the weather type:
       </h3>
-      <fieldset className="form__fieldset" id="radio-button-fieldset">
-        <label className="form__label">
+      <fieldset className="modal__fieldset" id="radio-button-fieldset">
+        <label className="modal__label">
           <input
             type="radio"
-            className="form__input"
+            className="modal__input"
             name="temperature"
             value="Hot"
             onChange={(e) => setWeatherType(e.target.value)}
@@ -81,10 +80,10 @@ function AddItemModal({ onClose, isModalOpen, handleOverlayClick, onAddItem }) {
             Hot
           </input>
         </label>
-        <label className="form__label">
+        <label className="modal__label">
           <input
             type="radio"
-            className="form__input"
+            className="modal__input"
             name="temperature"
             value="Cold"
             onChange={(e) => setWeatherType(e.target.value)}

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import CurrentTempUnitContext from "../utils/CurrenTempUnitContext";
+import { CurrentTempUnitContext } from "../utils/CurrentTempUnitContext";
 import "../blocks/ToggleSwitch.css";
 
 function ToggleSwitch({ name }) {

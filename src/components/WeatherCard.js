@@ -32,21 +32,18 @@ const weatherOptions = [
   { url: foggyNight, day: false, type: "fog" },
 ];
 
-const WeatherCard = ({ day, type, weatherTemp = "" }) => {
+const WeatherCard = ({ day, type, weatherTemp }) => {
   const { currentTempUnit } = useContext(CurrentTempUnitContext);
   const imageSource = weatherOptions.filter((i) => {
     return i.day === day && i.type === type;
   });
-
-  const currentTemp = temperature(weatherTemp);
-  const currentTempString = currentTemp[currentTempUnit];
 
   const imageSourceUrl = imageSource[0].url || " ";
 
   return (
     <>
       <section className="weather" id="weather">
-        <div className="weather_info">{currentTempString}</div>
+        <div className="weather_info">{weatherTemp[currentTempUnit]}</div>
         <img
           className="weather_image"
           src={imageSourceUrl}

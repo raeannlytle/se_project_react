@@ -1,16 +1,14 @@
 import "../blocks/ItemCard.css";
 
-const ItemCard = ({ name, weather, _id, id, item, link, onSelectCard }) => {
+const ItemCard = ({ handleCardClick, name, url, weather, id }) => {
   return (
-    <div className="card__container">
-      <img
-        src={item.link}
-        className="card_image"
-        onClick={() => onSelectCard(item, name, weather, _id, id, link)}
-        alt={item.name}
-      />
-      <div className="card_name">{item.name}</div>
-    </div>
+    <li
+      className="cards"
+      onClick={() => handleCardClick(name, url, weather, id)}
+    >
+      <p className="cards__caption">{name}</p>
+      <img className="cards__image" src={url} alt={name}></img>
+    </li>
   );
 };
 
