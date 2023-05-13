@@ -1,43 +1,38 @@
 .switch {
   display: flex;
-  position: relative;
-}
-
-.switch__box {
-  display: flex;
   border-radius: 20px;
   appearance: none;
   cursor: pointer;
   border: 2px solid #7e7e7e;
-  width: 56px;
-  height: 28px;
+  width: 40px;
+  height: 20px;
   outline: none;
 }
 
 .switch__slider-F {
+  position: absolute;
   border-radius: 20px;
   width: 20px;
   height: 20px;
+  top: 20px;
+  right: 385px;
   background-color: #000;
   color: #fff;
   text-align: center;
   cursor: pointer;
-  position: absolute;
-  left: 3px;
-  top: 2px;
 }
 
 .switch__slider-C {
+  position: absolute;
   border-radius: 20px;
   width: 20px;
   height: 20px;
+  top: 20px;
+  right: 366px;
   background-color: #000;
   color: #fff;
   text-align: center;
   cursor: pointer;
-  position: absolute;
-  left: 23px;
-  top: 2px;
 }
 
 .switch__slider::after {
@@ -45,24 +40,26 @@
 }
 
 .switch__temp-F {
+  position: absolute;
+  top: 10px;
+  right: 391px;
   z-index: 100;
   font-size: 13px;
   color: rgba(0, 0, 0, 0.5);
-  position: absolute;
 }
 
 .switch__temp-C {
+  position: absolute;
+  top: 10px;
+  right: 371px;
   z-index: 100;
   font-size: 13px;
   color: rgba(0, 0, 0, 0.5);
-  position: absolute;
 }
 
 .switch_active {
   z-index: 100;
   color: #fff;
-  top: -14px;
-  right: 2px;
+  top: 7px;
   font-size: 15px;
-  position: absolute;
 }

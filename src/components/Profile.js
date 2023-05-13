@@ -1,26 +1,26 @@
 import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
 import "../blocks/Profile.css";
+import ItemCard from "./ItemCard";
 
-function Profile({ item, ItemCard, onSelectCard }) {
+function Profile({ handleCardClick, clothingItems, openForm, isModalOpen }) {
   return (
     <div className="profile">
-      <div className="profile__sidebar">
+      <div className="profile__section">
         <SideBar />
       </div>
-      <div className="profile__clothes-section">
-        <ClothesSection />
+      <div className="profile__clothes">
+        <ClothesSection openForm={openForm} />
         <section className="cards">
           <ul className="cards__list">
-            {item.map((card) => (
+            {clothingItems.map((card) => (
               <ItemCard
-                key={card._id}
-                item={card}
-                onSelectCard={onSelectCard}
+                key={card.id}
                 name={card.name}
-                weather={card.weather}
+                url={card.imageUrl}
                 id={card.id}
-                link={card.link}
+                weather={card.weather}
+                handleCardClick={handleCardClick}
               />
             ))}
           </ul>

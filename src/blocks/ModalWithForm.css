@@ -1,141 +1,144 @@
 .modal {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal__content {
-    background-color: #fff;
-    max-width: 496px;
-    width: 100%;
-    height: 436px;
-    border-radius: 20px;
-    padding: 28px;
-    position: relative;
+  background-color: #fff;
+  max-width: 496px;
+  width: 100%;
+  height: 436px;
+  border-radius: 20px;
+  padding: 28px;
+  position: relative;
 }
 
 .modal__content_preview {
-    height: 610px;
-    max-width: 498px;
-    width: 100%;
-    padding: 0;
+  height: 610px;
+  max-width: 498px;
+  width: 100%;
+  padding: 0;
 }
 
 .modal__title {
-    font-family: 'Familjen Grotesk', sans-serif;
-    font-size: 16px;
-    margin: 0 0 24px 0;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-size: 16px;
+  margin: 0 0 24px 0;
+}
+
+.modal__fieldset {
+  border: none;
+  margin: 0;
+  padding: 0px;
 }
 
 .modal__labels {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .modal__label {
-    display: flex; 
-    flex-direction: column;
-    font-family: 'Familjen Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .modal__label::placeholder {
-    color: rgba(0, 0, 0, 0.5);
-    margin-top: 8px;
-    margin-bottom: 4px;
-    font-family: 'Familjen Grotesk', sans-serif;
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: 700;
+  color: rgba(0, 0, 0, 0.5);
+  margin-top: 8px;
+  margin-bottom: 4px;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
 }
 
 .modal__input {
-    border: none;
-    border-bottom: 1px solid black;
-    max-width: 440px;
-    width: 100%;
-    padding: 8px 0 4px 0;
-    margin-bottom: 24px;
+  border: none;
+  border-bottom: 1px solid black;
+  max-width: 440px;
+  width: 100%;
+  padding: 8px 0 4px 0;
+  margin-bottom: 24px;
 }
 
 .modal__paragraph {
-    margin: 24px 0 12px 0;
-    font-family: 'Familjen Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
+  margin: 24px 0 12px 0;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .modal__buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 34px;
-
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 34px;
 }
 
 .modal__button {
-    display: flex;
-    gap: 12px;
+  display: flex;
+  gap: 12px;
 }
 
 .modal__button-input {
-    width: 16px;
-    height: 16px;
-    margin: 2px 0 0;
-    gap: 8px;
-    
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+  gap: 8px;
 }
 
 .modal__button-submit {
-    margin-bottom: 36px;
-    height: 36px;
-    width: 124px;
-    background-color: #000;
-    border-radius: 4px;
-    color: #fff;
-    border: none;
-    font-family: 'Familjen Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
+  margin-bottom: 36px;
+  height: 36px;
+  width: 124px;
+  background-color: #000;
+  border-radius: 4px;
+  color: #fff;
+  border: none;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .modal__button-submit:hover {
-    background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-
 .modal__button-close {
-   background-image: url(../images/close-button.svg);
-   height: 16px;
-   width: 16px;
-   border: none;
-   top: 23px;
-   right: 31px;
-   background-color: transparent;
-   position: absolute;
+  background-image: url(../images/close-button.svg);
+  height: 16px;
+  width: 16px;
+  border: none;
+  top: 23px;
+  right: 31px;
+  background-color: transparent;
+  position: absolute;
 }
 
 .modal__image-preview {
-    border-radius: 20px 20px 0 0;
-    max-width: 498px;
-    width: 100%;
-    height: 498px;
+  border-radius: 20px 20px 0 0;
+  max-width: 498px;
+  width: 100%;
+  height: 498px;
 }
 
 .modal__preview-text {
-    padding: 20px 0 0 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  padding: 20px 0 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
