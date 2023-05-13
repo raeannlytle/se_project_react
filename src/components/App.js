@@ -1,20 +1,58 @@
 import "../blocks/App.css";
 import Header from "./Header";
+import Profile from "./Profile";
 import Main from "./Main";
 import Footer from "./Footer";
-import ModalWithForm from "./ModalWithForm";
-import { useEffect, useState } from "react";
 import ItemModal from "./ItemModal";
-import { getForecastWeather, parseWeatherData } from "../utils/weatherApi";
-import CurrentTempUnitContext from "../utils/CurrenTempUnitContext";
+import AddItemModal from "./AddItemModal";
+import React, { useEffect, useState } from "react";
+import getWeather, { parseWeatherData, tempUnits } from "../utils/weatherApi";
+import itemsApi from "../utils/api";
+import "../blocks/Modal.css";
+import "../blocks/ModalWithForm.css";
+import { CurrentTemperatureUnitContext } from "../utils/CurrenTempUnitContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Profile from "./Profile";
+
+const itemsApiObject = itemsApi();
 
 function App() {
-  const [activeModal, setActiveModal] = useState("");
-  const [selectedCard, setSelectedCard] = useState({});
-  const [temp, setTemp] = useState(0);
+  const [isItemModalOpen, setIsItemModalOpen] = useState(false);
+  const [isFormModalOpen, setIsFormModalOPen] = useState(false);
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [modalData, setModalData] = useState(null);
+  const [weatherData, setWeatherData] = useState("");
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
+  const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleAddItem = (name, url, weatherType) => {
+    setIsLoading(true);
+    itemsApiObject
+      .add(name, url, weatherType)
+      .then((res) => {
+        setItems([res, ...items]);
+        setIsFormModalOpen(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  const handleDeleteItem = (item) => {
+    itemsApiObject
+      .remove(item)
+      .then(() => {
+        const filteredItems = items.filter((card) => card.id !== item);
+        setItems(filteredItems);
+        closeAllModals();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleCreateModal = () => {
     setActiveModal("create");
