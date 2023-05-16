@@ -1,68 +1,29 @@
 import "../blocks/ItemModal.css";
+import closeButton from "../images/close-button.svg";
 
-const ItemModal = ({
-  itemData,
-  handleOverlayClick,
-  isItemModalOpen,
-  isConfirmModalOpen,
-  onClose,
-  handleDeleteItem,
-  openConfirmModal,
-  handleConfirmModalClose,
-}) => {
+const ItemModal = ({ selectedCard, onClose }) => {
   return (
-    <div
-      className={`modal ${isItemModalOpen ? "modal_opened" : ""}`}
-      id="item-modal"
-      onClick={handleOverlayClick}
-    >
-      <div className="modal__container">
+    <div className={`modal`}>
+      <div className="modal__content modal__content_preview">
         <button
           type="button"
           id="modal-close-button"
           onClick={onClose}
-          className="modal__button-close"
-        ></button>
+          className="modal__close-"
+        >
+          <img src={closeButton} alt="close-button" />
+        </button>
         <img
-          src={itemData?.url}
-          className="modal__image"
+          src={selectedCard.link}
+          className="modal__image-preview"
           alt="item-image"
         />
-        <p className="modal__caption">{itemData?.name}</p>
-        <p className="modal__caption">Weather: {itemData?.weather}</p>
-        <button className="modal__button-delete" onClick={openConfirmModal}>
-          Delete Item
-        </button>
-      </div>
-      <div
-        className={`modal__confirm ${isConfirmModalOpen ? "modal_opened" : ""}`}
-        onClick={handleOverlayClick}
-      >
-        <div className="modal__confirm-container">
-          <button
-            className="modal__button-close"
-            id="modal-confirm-close"
-            type="button"
-            onClick={handleConfirmModalClose}
-          ></button>
-          <p className="modal__caption-confirm">
-            Are you sure you want to delete this item? This action is
-            irreversible.
-          </p>
-          <button
-            className="modal__button-confirm"
-            onClick={() => {
-              handleDeleteItem(itemData.id);
-            }}
-          >
-            Delete Item
-          </button>
-          <button
-            className="modal__button-cancel"
-            onClick={handleConfirmModalClose}
-          >
-            Cancel
-          </button>
+        <div className="modal__text-container">
+          <div className="modal__preview-text">
+            <div>{selectedCard.name}</div>
+            <div>Weather type: {selectedCard.weather}</div>
+          </div>
+          <div className="modal__delete">Delete item</div>
         </div>
       </div>
     </div>
