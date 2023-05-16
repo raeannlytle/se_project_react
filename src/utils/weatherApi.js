@@ -1,22 +1,22 @@
-function getWeather(latitude, longitude, apiKey, temperature) {
-  if (temperature >= 86) {
-    return "hot";
-  } else if (temperature >= 66 && temperature <= 85) {
-    return "warm";
-  } else if (temperature <= 65) {
-    return "cold";
-  }
-
-  return fetch(
+export const getForecastWeather = () => {
+  const latitude = 35.2271;
+  const longitude = -80.8431;
+  const apiKey = "7f2ccea786bcf422af97ac05555347aa";
+  const weatherApi = fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
-  ).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      return Promise.reject(`Error: ${res.status}`);
-    }
-  });
-}
+  )
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        return Promise.reject(`Error: ${res.status}`);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  return weatherApi;
+};
 
 export const parseWeatherData = (data) => {
   const main = data.main;
@@ -24,9 +24,7 @@ export const parseWeatherData = (data) => {
   return Math.ceil(temperature);
 };
 
-export const tempUnits = (temp) => ({
+export const temperature = (temp) => ({
   F: `${Math.round(temp)}°F`,
   C: `${Math.round(((temp - 32) * 5) / 9)}°C`,
 });
-
-export default getWeather;

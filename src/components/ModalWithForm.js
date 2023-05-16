@@ -1,34 +1,28 @@
 import "../blocks/ModalWithForm.css";
+import closeButton from "../images/close-button.svg";
 
 const ModalWithForm = ({
-  name,
+  children,
+  buttonText = "Add garment",
   title,
-  buttonText,
-  isModalOpen,
-  handleSubmit,
-  handleOverlayClick,
-  onClose,
+  onClick,
+  name,
+  onSubmit,
 }) => {
   return (
-    <div
-      className={`modal modal_type_${name} ${
-        isModalOpen ? "modal_opened" : ""
-      }`}
-      onClick={handleOverlayClick}
-    >
-      <form className="modal__form" onSubmit={handleSubmit}>
-        <button
-          className="modal__button-close"
-          id="modal-close-button"
-          type="button"
-          onClick={onClose}
-        >
+    <div className={`modal modal_type_${name}`}>
+      <div className="modal__content">
+        <button type="button" onClick={onClick} className="modal__close-button">
+          <img src={closeButton} alt="close-button" />
         </button>
-        <h2 className="modal__title">{title}</h2>
-        <button type="submit" className="modal__button">
-          {buttonText}
-        </button>
-      </form>
+        <h3 className="modal__title">{title}</h3>
+        <form onSubmit={onSubmit}>
+          {children}
+          <button className="modal__button-submit" type="submit">
+            {buttonText}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -1,40 +1,41 @@
-function itemsApi() {
-  function _checkResponse(res) {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error${res.status}`);
+function _checkResponse(res) {
+  if (res.ok) {
+    return res.json();
   }
-
-  const baseUrl =
-    "https://my-json-server.typicode.com/raeannlytle/se_project_react";
-
-  return {
-    get: () => {
-      return fetch(`${baseUrl}/items`).then(_checkResponse);
-    },
-    add: (name, imageUrl, weather) => {
-      return fetch(`${baseUrl}/items`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          imageUrl,
-          weather,
-        }),
-      }).then(_checkResponse);
-    },
-    remove: (id) => {
-      return fetch(`${baseUrl}/items/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then(_checkResponse);
-    },
-  };
+  return Promise.reject(`Error${res.status}`);
 }
 
-export default itemsApi;
+export const baseUrl =
+  "https://my-json-server.typicode.com/raeannlytle/se_project_react";
+
+export const getItems = () => {
+  return fetch(`${baseUrl}/items`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then(_checkResponse);
+};
+
+export const addItems = ({ name, weather, link }) => {
+  return fetch(`${baseUrl}/items`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      weather,
+      link,
+    }),
+  }).then(_checkResponse);
+};
+
+export const deleteItems = (id) => {
+  return fetch(`${baseUrl}/items/i${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then(_checkResponse);
+};

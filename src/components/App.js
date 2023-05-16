@@ -1,102 +1,88 @@
 import "../blocks/App.css";
 import Header from "./Header";
-import Profile from "./Profile";
 import Main from "./Main";
+import Profile from "./Profile";
 import Footer from "./Footer";
+import ModalWithForm from "./ModalWithForm";
 import ItemModal from "./ItemModal";
-import AddItemModal from "./AddItemModal";
-import React, { useEffect, useState } from "react";
-import getWeather, { parseWeatherData, tempUnits } from "../utils/weatherApi";
-import { constants } from "../utils/constants";
-import itemsApi from "../utils/api";
-import "../blocks/ItemModal.css";
-import "../blocks/ModalWithForm.css";
+import { defaultClothingItems } from "../utils/utils";
+import { useEffect, useState } from "react";
+import {
+  getForecastWeather,
+  parseWeatherData,
+  temperature,
+} from "../utils/weatherApi";
 import { CurrentTempUnitContext } from "../utils/CurrentTempUnitContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ModalWithForm from "./ModalWithForm";
-
-const itemsApiObject = itemsApi();
+import AddItemModal from "./AddItemModal";
+import * as api from "../utils/api";
 
 function App() {
-  const [isItemModalOpen, setIsItemModalOpen] = useState(false);
-  const [isFormModalOpen, setIsFormModalOPen] = useState(false);
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-  const [modalData, setModalData] = useState(null);
-  const [weatherData, setWeatherData] = useState("");
+  const [activeModal, setActiveModal] = useState("");
+  const [selectedCard, setSelectedCard] = useState({});
+  const [temp, setTemp] = useState(0);
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
-  const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
 
-  const handleAddItem = (name, url, weatherType) => {
-    setIsLoading(true);
-    itemsApiObject
-      .add(name, url, weatherType)
-      .then((res) => {
-        setItems([res, ...items]);
+  const handleCreateModal = () => {
+    setActiveModal("create");
+  };
+
+  const handleCloseModal = () => {
+    setActiveModal("");
+  };
+
+  const handleSelectedCard = (card) => {
+    setActiveModal("preview");
+    setSelectedCard(card);
+  };
+
+  useEffect(() => {
+    getForecastWeather()
+      .then((data) => {
+        const temperature = parseWeatherData(data);
+        setTemp(temperature);
       })
       .catch((error) => {
         console.log(error);
+      });
+  }, []);
+
+  const handleToggleSwitchChange = () => {
+    setCurrentTempUnit((currentTempState) => {
+      return currentTempState === "C" ? "F" : "C";
+    });
+  };
+
+  const handleAddItem = ({ name, link, weatherType }) => {
+    api
+      .addItems({ name, link, weather: weatherType })
+      .then((res) => {
+        setClothingItems([res, ...clothingItems]);
+        handleCloseModal();
       })
-      .finally(() => {
-        setIsLoading(false);
+      .catch((error) => {
+        console.log(error);
       });
   };
 
   const handleDeleteItem = (item) => {
-    itemsApiObject
-      .remove(item)
-      .then(() => {
-        const filteredItems = items.filter((card) => card.id !== item);
-        setItems(filteredItems);
-        closeAllModals();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const handleCardClick = (name, url, weather, id) => {
-    setIsItemModalOpen(true);
-    setModalData({
-      name,
-      url,
-      weather,
-      id,
+    api.deleteItems(item).then(() => {
+      setClothingItems();
+      const deleteClothesItems = (cards) => {
+        cards.filter((card) => {
+          return card.id !== item.id;
+        });
+      };
+      setClothingItems(deleteClothesItems);
+      handleCloseModal();
     });
-  };
-
-  const handleOverlayClick = (e) => {
-    if (e.target === e.currentTarget) {
-      closeAllModals();
-    }
-  };
-
-  const openConfirmModal = () => {
-    setIsConfirmModalOpen(true);
-  };
-
-  const openForm = () => {
-    setIsFormModalOPen(true);
-  };
-
-  const closeAllModals = () => {
-    setIsFormModalOPen(false);
-    setIsItemModalOpen(false);
-    setIsConfirmModalOpen(false);
-  };
-
-  const handleConfirmModalClose = () => {
-    setIsConfirmModalOpen(false);
-  };
-
-  const handleToggleSwitchChange = () => {
-    currentTempUnit === "F" ? setCurrentTempUnit("C") : setCurrentTempUnit("F");
   };
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
-        closeAllModals();
+        handleCloseModal();
       }
     };
 
@@ -107,43 +93,22 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    getWeather(constants.latitude, constants.longitude, constants.apiKey)
-      .then((res) => {
-        setWeatherData(tempUnits(parseWeatherData(res)));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  useEffect(() => {
-    itemsApiObject
-      .get()
-      .then((res) => {
-        setItems(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   return (
     <div>
       <BrowserRouter>
         <CurrentTempUnitContext.Provider
           value={{ currentTempUnit, handleToggleSwitchChange }}
         >
-          <Header openForm={openForm} />
+          <Header onCreateModal={handleCreateModal} />
           <Routes>
             <Route
               exact
               path="/"
               element={
                 <Main
-                  weatherData={weatherData}
-                  clothingItems={items}
-                  handleCardClick={handleCardClick}
+                  weatherTemp={temp}
+                  clothingItems={clothingItems}
+                  onSelectedCard={handleSelectedCard}
                 />
               }
             />
@@ -151,32 +116,27 @@ function App() {
               path="/profile"
               element={
                 <Profile
-                  openForm={openForm}
-                  handleCardClick={handleCardClick}
-                  clothingItems={items}
+                  items={clothingItems}
+                  onSelectedCard={handleSelectedCard}
                 />
               }
             />
           </Routes>
           <Footer />
-          <ModalWithForm />
-          <ItemModal
-            onClose={closeAllModals}
-            itemData={modalData}
-            isItemModalOpen={isItemModalOpen}
-            isConfirmModalOpen={isConfirmModalOpen}
-            handleOverlayClick={handleOverlayClick}
-            handleDeleteItem={handleDeleteItem}
-            openConfirmModal={openConfirmModal}
-            handleConfirmModalClose={handleConfirmModalClose}
-          />
-          <AddItemModal
-            onClose={closeAllModals}
-            isModalOpen={isFormModalOpen}
-            handleOverlayClick={handleOverlayClick}
-            onAddItem={handleAddItem}
-          />
-          ;
+          {activeModal === "preview" && (
+            <ItemModal
+              selectedCard={selectedCard}
+              onClose={handleCloseModal}
+              delete={handleDeleteItem}
+            />
+          )}
+          {activeModal === "create" && (
+            <AddItemModal
+              onClose={handleCloseModal}
+              isOpen={handleCreateModal}
+              onAddItem={handleAddItem}
+            />
+          )}
         </CurrentTempUnitContext.Provider>
       </BrowserRouter>
     </div>

@@ -1,26 +1,48 @@
 import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
 import "../blocks/Main.css";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useMemo } from "react";
+import { defaultClothingItems } from "../utils/utils";
+import { CurrentTempUnitContext } from "../utils/CurrentTempUnitContext";
+import { temperature } from "../utils/weatherApi";
 
+function Main({ weatherTemp, onSelectCard, clothingItems }) {
+  const { currentTempUnit } = useContext(CurrentTempUnitContext);
+  const weatherType = useMemo(() => {
+    if (weatherTemp >= 86) {
+      return "hot";
+    } else if (weatherTemp >= 66 && weatherTemp <= 85) {
+      return "warm";
+    } else if (weatherTemp <= 65) {
+      return "cold";
+    }
+  }, [weatherTemp]);
 
-function Main({ handleCardClick, weatherData, clothingItems }) {
+  const currentTemp = temperature(weatherTemp);
+  const currentTempString = currentTemp[currentTempUnit];
+
+  const filteredCards = clothingItems.filter((card) => {
+    return card.weather.toLowerCase() === weatherType;
+  });
+
   return (
     <main className="main">
-      <WeatherCard day={true} type="sunny" weatherTemp={weatherData} />
-      <section className="card_section" id="card-section">
-        <ul className="cards__list" id="cards-list">
-          {clothingItems?.map((card) => (
+      <WeatherCard day={true} type="sunny" weatherTemp={weatherTemp} />
+      <section className="card__section" id="card-section">
+        Today is {currentTempString} / You may want to wear:
+        <div className="card__items">
+          {filteredCards.map((card) => (
             <ItemCard
-              key={card.id}
-              url={card.url}
+              key={card._id}
+              item={card}
+              onSelectedCard={onSelectCard}
               name={card.name}
               weather={card.weather}
               id={card.id}
-              handleCardClick={handleCardClick}
+              link={card.link}
             />
           ))}
-        </ul>
+        </div>
       </section>
     </main>
   );

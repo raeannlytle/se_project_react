@@ -1,12 +1,10 @@
 import "../blocks/ClothesSection.css";
 
-function ClothesSection({ openForm }) {
+function ClothesSection() {
   return (
     <div className="clothes">
       <div className="clothes__title">Your items</div>
-      <button className="clothes__button" onClick={openForm}>
-        +Add new
-      </button>
+      <button className="clothes__button">+Add new</button>
     </div>
   );
 }
