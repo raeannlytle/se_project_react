@@ -1,40 +1,99 @@
-.item__modal {
+.modal {
+  display: flex;
   position: fixed;
   top: 0;
-  right: 0;
   left: 0;
+  right: 0;
   bottom: 0;
-  display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  visibility: hidden;
+  transition: 0.3s ease-in;
 }
 
-.item__modal-container {
+.modal__container {
   position: relative;
   background-color: #fff;
   border-radius: 16px;
 }
 
-.item__modal-image {
+.modal__image {
   width: 328px;
   height: 328px;
   border-radius: 16px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   border-bottom: none;
   border: solid 1px rgba(0, 0, 0, 0.3);
 }
 
-.item__modal-caption {
+.modal__caption {
   display: flex;
-  padding: 0 32px 32px;
+  margin-left: 32px;
   color: #000;
   font-family: "Familjen Grotesk", sans-serif;
-  font-size: 20px;
-  line-height: 20px;
-  font-weight: 700;
+  font-size: 15px;
+}
+
+.modal__caption-confirm {
+  width: 300px;
+  text-align: center;
+}
+
+.modal__button-delete {
+  position: absolute;
+  bottom: 54px;
+  right: 32px;
+  margin: 0;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-size: 15px;
+  border: none;
+  background: transparent;
+  color: #ff4d00;
+  cursor: pointer;
+}
+
+.modal__confirm {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  visibility: hidden;
+  transition: 0.3s ease-in;
+}
+
+.modal__confirm-container {
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 400px;
+  height: 200px;
   gap: 12px;
-  margin-top: 12px;
+  background-color: #fff;
+  border-radius: 16px;
+}
+
+.modal__button-confirm {
+  margin: 0;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-size: 15px;
+  border: none;
+  background: transparent;
+  color: #ff4d00;
+  cursor: pointer;
+}
+
+.modal__button-cancel {
+  border: none;
+  background: transparent;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-size: 13px;
 }

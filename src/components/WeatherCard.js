@@ -1,8 +1,7 @@
 import "../blocks/WeatherCard.css";
 import "../blocks/ItemCard.css";
-import CurrentTempUnitContext from "../utils/CurrenTempUnitContext";
+import { CurrentTempUnitContext } from "../utils/CurrentTempUnitContext";
 import React, { useContext } from "react";
-import { temperature } from "../utils/weatherApi";
 
 import sunnyDay from "../images/day/day-sunny.svg";
 import cloudyDay from "../images/day/day-cloudy.svg";
@@ -43,14 +42,18 @@ const WeatherCard = ({ day, type, weatherTemp }) => {
   return (
     <>
       <section className="weather" id="weather">
-        <div className="weather_info">{weatherTemp[currentTempUnit]}</div>
+        <div className="weather__info">{weatherTemp[currentTempUnit]}</div>
         <img
-          className="weather_image"
+          className="weather__image"
           src={imageSourceUrl}
           alt="Weather Type Image"
         />
+        <div>
+          <h1 className="weather__message">
+            Today is {weatherTemp[currentTempUnit]} / You may want to wear:
+          </h1>
+        </div>
       </section>
-      <section id="weather__cards"></section>
     </>
   );
 };

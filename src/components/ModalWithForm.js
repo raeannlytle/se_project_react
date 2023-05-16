@@ -8,7 +8,6 @@ const ModalWithForm = ({
   handleSubmit,
   handleOverlayClick,
   onClose,
-  children,
 }) => {
   return (
     <div
@@ -24,10 +23,8 @@ const ModalWithForm = ({
           type="button"
           onClick={onClose}
         >
-          <img src={closeButton} alt="close button"></img>
         </button>
         <h2 className="modal__title">{title}</h2>
-        {children}
         <button type="submit" className="modal__button">
           {buttonText}
         </button>

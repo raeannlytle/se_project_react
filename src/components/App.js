@@ -13,6 +13,7 @@ import "../blocks/ItemModal.css";
 import "../blocks/ModalWithForm.css";
 import { CurrentTempUnitContext } from "../utils/CurrentTempUnitContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ModalWithForm from "./ModalWithForm";
 
 const itemsApiObject = itemsApi();
 
@@ -32,7 +33,6 @@ function App() {
       .add(name, url, weatherType)
       .then((res) => {
         setItems([res, ...items]);
-        setIsFormModalOpen(false);
       })
       .catch((error) => {
         console.log(error);
@@ -159,64 +159,7 @@ function App() {
             />
           </Routes>
           <Footer />
-          {activeModal === "create" && (
-            <ModalWithForm title="New garment" onClose={handleCloseModal}>
-              <div className="modal__labels">
-                <label className="modal__label">
-                  Name
-                  <input
-                    className="modal__input"
-                    placeholder="Name"
-                    type="text"
-                    name="name"
-                    minLength="1"
-                    maxLength="30"
-                  ></input>
-                </label>
-                <label className="modal__label">
-                  Image
-                  <input
-                    className="modal__input"
-                    placeholder="Image URL"
-                    type="url"
-                    name="link"
-                    minLength="1"
-                    maxLength="30"
-                  ></input>
-                </label>
-              </div>
-              <p className="modal__paragraph">Select the weather type:</p>
-              <div className="modal__buttons">
-                <div className="modal__button">
-                  <input
-                    className="modal__button-input"
-                    type="radio"
-                    id="hot"
-                    value="hot"
-                  ></input>
-                  <label>Hot</label>
-                </div>
-                <div className="modal__button">
-                  <input
-                    className="modal__button-input"
-                    type="radio"
-                    id="warm"
-                    value="warm"
-                  ></input>
-                  <label>Warm</label>
-                </div>
-                <div className="modal__button">
-                  <input
-                    className="modal__button-input"
-                    type="radio"
-                    id="cold"
-                    value="cold"
-                  ></input>
-                  <label>Cold</label>
-                </div>
-              </div>
-            </ModalWithForm>
-          )}
+          <ModalWithForm />
           <ItemModal
             onClose={closeAllModals}
             itemData={modalData}

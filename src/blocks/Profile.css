@@ -1,9 +1,4 @@
 .profile {
   display: flex;
-  padding: 68px 20px 0 20px;
-}
-
-.profile__section {
-  display: flex;
-  margin-right: 116px;
+  gap: 116px;
 }
