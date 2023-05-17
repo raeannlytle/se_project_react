@@ -14,14 +14,14 @@ const ItemModal = ({ selectedCard, onClose }) => {
           <img src={closeButton} alt="close-button" />
         </button>
         <img
-          src={selectedCard.link}
+          src={selectedCard?.link || selectedCard?.imageUrl || ""}
           className="modal__image-preview"
           alt="item-image"
         />
         <div className="modal__text-container">
           <div className="modal__preview-text">
-            <div>{selectedCard.name}</div>
-            <div>Weather type: {selectedCard.weather}</div>
+            <div>{selectedCard?.name}</div>
+            <div>Weather type: {selectedCard?.weather}</div>
           </div>
           <div className="modal__delete">Delete item</div>
         </div>

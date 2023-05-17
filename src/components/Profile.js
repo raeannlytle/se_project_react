@@ -4,7 +4,7 @@ import "../blocks/Profile.css";
 import ItemCard from "./ItemCard";
 import '../blocks/ItemCard.css';
 
-function Profile({ items, onSelectCard }) {
+function Profile({ items, onSelectedCard }) {
   return (
     <div className="profile">
       <div className="profile__section">
@@ -19,7 +19,7 @@ function Profile({ items, onSelectCard }) {
                 key={card.id}
                 item={card}
                 name={card.name}
-                onSelectCard={onSelectCard}
+                onSelectedCard={onSelectedCard}
                 id={card.id}
                 weather={card.weather}
                 link={card.link}
