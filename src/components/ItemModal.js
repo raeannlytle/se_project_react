@@ -1,4 +1,4 @@
-import "../blocks/ItemModal.css";
+import "../blocks/ModalWithForm.css";
 import closeButton from "../images/close-button.svg";
 
 const ItemModal = ({ selectedCard, onClose }) => {

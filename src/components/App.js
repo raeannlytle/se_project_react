@@ -125,7 +125,7 @@ function App() {
           <Footer />
           {activeModal === "preview" && (
             <ItemModal
-              selectedCard={selectedCard}
+              itemData={selectedCard}
               onClose={handleCloseModal}
               delete={handleDeleteItem}
             />

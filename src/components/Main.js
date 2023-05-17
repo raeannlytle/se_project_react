@@ -6,7 +6,7 @@ import { defaultClothingItems } from "../utils/utils";
 import { CurrentTempUnitContext } from "../utils/CurrentTempUnitContext";
 import { temperature } from "../utils/weatherApi";
 
-function Main({ weatherTemp, onSelectCard, clothingItems }) {
+function Main({ weatherTemp, onSelectedCard, clothingItems }) {
   const { currentTempUnit } = useContext(CurrentTempUnitContext);
   const weatherType = useMemo(() => {
     if (weatherTemp >= 86) {
@@ -35,7 +35,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
             <ItemCard
               key={card._id}
               item={card}
-              onSelectedCard={onSelectCard}
+              onSelectedCard={onSelectedCard}
               name={card.name}
               weather={card.weather}
               id={card.id}

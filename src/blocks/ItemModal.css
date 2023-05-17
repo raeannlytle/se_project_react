@@ -36,6 +36,10 @@
   font-size: 15px;
 }
 
+.modal_opened {
+  visibility: visible;
+}
+
 .modal__caption-confirm {
   width: 300px;
   text-align: center;
