@@ -4,7 +4,7 @@ import headerAvatar from "../images/header-avatar.svg";
 import ToggleSwitch from "./ToggleSwitch";
 import { NavLink } from "react-router-dom";
 
-const Header = ({ openForm }) => {
+const Header = ({ onCreateModal }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -24,7 +24,7 @@ const Header = ({ openForm }) => {
         <div className="header__slider"></div>
         <ToggleSwitch />
         <div>
-          <button className="header__button" type="text" onClick={openForm}>
+          <button className="header__button" type="text" onClick={onCreateModal}>
             + Add clothes
           </button>
         </div>

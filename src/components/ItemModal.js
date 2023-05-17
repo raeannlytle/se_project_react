@@ -1,29 +1,29 @@
 import "../blocks/ModalWithForm.css";
 import closeButton from "../images/close-button.svg";
 
-const ItemModal = ({ selectedCard, onClose }) => {
+const ItemModal = ({ itemData, onClose }) => {
   return (
-    <div className={`modal`}>
+    <div className='modal'>
       <div className="modal__content modal__content_preview">
         <button
           type="button"
           id="modal-close-button"
           onClick={onClose}
-          className="modal__close-"
+          className="modal__button-close"
         >
           <img src={closeButton} alt="close-button" />
         </button>
         <img
-          src={selectedCard?.link || selectedCard?.imageUrl || ""}
+          src={itemData?.link || itemData?.imageUrl || ""}
           className="modal__image-preview"
           alt="item-image"
         />
         <div className="modal__text-container">
-          <div className="modal__preview-text">
-            <div>{selectedCard?.name}</div>
-            <div>Weather type: {selectedCard?.weather}</div>
+          <div className="modal__text-preview">
+            <div>{itemData?.name}</div>
+            <div>Weather type: {itemData?.weather}</div>
           </div>
-          <div className="modal__delete">Delete item</div>
+          <div className="modal__button-delete">Delete item</div>
         </div>
       </div>
     </div>

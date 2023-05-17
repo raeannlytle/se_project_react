@@ -83,6 +83,7 @@ export default function AddItemModal({ onClose, isOpen, onAddItem }) {
             value="cold"
             onChange={handleWeatherType}
           />
+          <label>Cold</label>
         </div>
       </div>
     </ModalWithForm>

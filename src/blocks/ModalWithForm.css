@@ -72,11 +72,18 @@
 .modal__button-submit {
   margin: 32px 0 0 0;
   padding: 0;
-  background: o;
+  background: #000;
   border: none;
+  font-size: 16px;
+  font-family: 'Familjen Grotesk', sans-serif;
+  color: #fff;
+  width: 124px;
+  height: 36px;
+  text-align: center;
+  line-height: 20px;
 }
 
-.modal__close-button {
+.modal__button-close {
   border: none;
   background: none;
   position: absolute;
@@ -92,7 +99,7 @@
   height: 498px;
 }
 
-.modal__preview-text {
+.modal__text-preview {
   padding: 20px 0 0 32px;
   display: flex;
   flex-direction: column;
@@ -105,13 +112,19 @@
 
 .modal__text-container {
   display: flex;
+  flex-wrap: nowrap;
   gap: 218px;
 }
 
-.modal__delete {
+.modal__button-delete {
   padding: 20px 0 0 0;
   cursor: pointer;
   color: red;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  margin-right: 32px;
+
 }
 
 .modal__input {

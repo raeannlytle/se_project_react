@@ -45,7 +45,7 @@
 }
 
 .switch__temp-F {
-  z-index: 100;
+  z-index: 2;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.5);
   position: absolute;
@@ -54,7 +54,7 @@
 }
 
 .switch__temp-C {
-  z-index: 100;
+  z-index: 2;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.5);
   position: absolute;
@@ -66,7 +66,6 @@
   z-index: 100;
   color: #fff;
   top: -8px;
-  left: 14px;
   font-size: 14px;
   position: absolute;
 }

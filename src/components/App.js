@@ -14,6 +14,7 @@ import { CurrentTempUnitContext } from "../utils/CurrentTempUnitContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddItemModal from "./AddItemModal";
 import * as api from "../utils/api";
+import ModalWithForm from "./ModalWithForm";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -119,6 +120,11 @@ function App() {
                 />
               }
             />
+            <Route 
+            path='/'
+            element={<ModalWithForm />}>
+              
+            </Route>
           </Routes>
           <Footer />
           {activeModal === "preview" && (
