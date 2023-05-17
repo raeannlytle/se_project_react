@@ -3,14 +3,12 @@ import Header from "./Header";
 import Main from "./Main";
 import Profile from "./Profile";
 import Footer from "./Footer";
-import ModalWithForm from "./ModalWithForm";
 import ItemModal from "./ItemModal";
 import { defaultClothingItems } from "../utils/utils";
 import { useEffect, useState } from "react";
 import {
   getForecastWeather,
   parseWeatherData,
-  temperature,
 } from "../utils/weatherApi";
 import { CurrentTempUnitContext } from "../utils/CurrentTempUnitContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
