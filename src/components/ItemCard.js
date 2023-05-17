@@ -1,6 +1,6 @@
 import "../blocks/ItemCard.css";
 
-const ItemCard = ({ name, weather, id, _id, item, onSelectedCard }) => {
+const ItemCard = ({ item, onSelectedCard }) => {
   return (
     <div className="card">
       {item && item.link && (
