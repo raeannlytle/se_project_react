@@ -163,11 +163,6 @@
 }
 
 .modal__confirm-content {
-  background: #fff;
-  max-width: 670px;
-  height: 280px;
-  border-radius: 20px;
-  padding: 60px;
   position: relative;
   font-family: "Familjen Grotesk", sans-serif;
   font-weight: 700;
@@ -182,4 +177,16 @@
 .modal__confirm {
   display: flex;
   flex-direction: column;
+  position: absolute;
+  background: #fff;
+  max-width: 670px;
+  height: 280px;
+  border-radius: 20px;
+  padding: 60px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+
 }
