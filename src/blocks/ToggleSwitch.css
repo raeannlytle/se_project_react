@@ -45,7 +45,6 @@
 }
 
 .switch__temp-F {
-  z-index: 2;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.5);
   position: absolute;
@@ -54,7 +53,6 @@
 }
 
 .switch__temp-C {
-  z-index: 2;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.5);
   position: absolute;
@@ -63,7 +61,6 @@
 }
 
 .switch_active {
-  z-index: 100;
   color: #fff;
   top: -8px;
   font-size: 14px;
