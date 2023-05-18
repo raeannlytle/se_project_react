@@ -62,10 +62,10 @@ function App() {
       });
   };
 
-  const handleDeleteItem = (item) => {
-    api.deleteItems(item._id).then(() => {
+  const handleDeleteItem = (id) => {
+    api.deleteItems(id).then(() => {
       const filteredCards = clothingItems.filter(
-        (card) => card._id !== item._id
+        (card) => card._id !== id
       );
       setClothingItems(filteredCards);
       handleCloseModal();
