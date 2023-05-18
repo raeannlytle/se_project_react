@@ -32,7 +32,7 @@ export const addItems = ({ name, weather, link }) => {
 };
 
 export const deleteItems = (id) => {
-  return fetch(`${baseUrl}/items/i${id}`, {
+  return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
