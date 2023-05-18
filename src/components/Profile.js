@@ -4,10 +4,7 @@ import "../blocks/Profile.css";
 import ItemCard from "./ItemCard";
 import "../blocks/ItemCard.css";
 
-function Profile({ items, onSelectedCard, handleCreateModal }) {
-  const handleCardClick = () => {
-    onSelectedCard();
-  };
+function Profile({ items, onSelectedCard, onCreateModal }) {
 
   return (
     <div className="profile">
@@ -17,8 +14,7 @@ function Profile({ items, onSelectedCard, handleCreateModal }) {
       <div className="profile__clothes">
         <ClothesSection
           cards={items}
-          onCardClick={handleCardClick}
-          onCreateModal={handleCreateModal}
+          onClick={onCreateModal}
         />
         <section className="cards">
           <ul className="cards__list">

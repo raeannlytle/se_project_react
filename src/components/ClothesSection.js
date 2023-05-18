@@ -2,12 +2,12 @@ import "../blocks/ClothesSection.css";
 import ItemCard from "./ItemCard";
 import React from 'react';
 
-function ClothesSection({ onClick, onAddItem, cards }) {
+function ClothesSection({ onClick, onCreateModal, cards }) {
 
   return (
     <div className="clothes">
       <div className="clothes__title">Your items</div>
-      <button className="clothes__button" type='button' onClick={onAddItem}>+Add new</button>
+      <button className="clothes__button" type='button' onClick={onCreateModal}>+Add new</button>
     </div>
   );
 }
