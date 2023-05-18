@@ -64,13 +64,15 @@ function App() {
 
   const handleDeleteItem = (item) => {
     api.deleteItems(item._id).then(() => {
-      setClothingItems();
       const filteredCards = clothingItems.filter(
         (card) => card._id !== item._id
       );
       setClothingItems(filteredCards);
       handleCloseModal();
-    });
+    })
+    .catch((error) => {
+      console.log(error);
+    })
   };
 
   useEffect(() => {
