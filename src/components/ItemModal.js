@@ -47,15 +47,13 @@ const ItemModal = ({ itemData, onClose, onDelete }) => {
           </button>
           {DeleteConfirm && (
             <div className="modal__confirm">
-              <p>Are you sure you want to delete this item?</p>
-              <p className="modal__text-confirm">
-                This action is irreversible.
-              </p>
+              <div className="modal__confirm-content">Are you sure you want to delete this item? This action is irreversible.
+              </div>
               <button
-                className="modal__confirm-close"
+                className="modal__button-close"
                 onClick={onClose}
               ></button>
-              <div className="modan__confirm-buttons">
+              <div className="modal__buttons-confirm">
                 <button
                   className="modal__button-confirm"
                   type="button"

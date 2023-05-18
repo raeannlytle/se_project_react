@@ -149,15 +149,21 @@
   color: #ff4d00;
   background-color: #fff;
   cursor: pointer;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .modal__button-cancel {
   background-color: #fff;
   border: none;
   cursor: pointer;
+  font-size: 20px;
+  font-family: "Familjen Grotesk", sans-serif;
+  line-height: 24px;
 }
 
-.modal__confirm-buttons {
+.modal__buttons-confirm {
   display: flex;
   flex-direction: column;
 }
@@ -176,6 +182,8 @@
 
 .modal__confirm {
   display: flex;
+  justify-content: center;
+  text-align: center;
   flex-direction: column;
   position: absolute;
   background: #fff;
@@ -187,6 +195,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  
+
 
 }
