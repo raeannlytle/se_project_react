@@ -1,8 +1,7 @@
 import "../blocks/ClothesSection.css";
-import ItemCard from "./ItemCard";
 import React from 'react';
 
-function ClothesSection({ onClick, onCreateModal, cards }) {
+function ClothesSection({ onCreateModal }) {
 
   return (
     <div className="clothes">

@@ -114,6 +114,7 @@ function App() {
                 <Profile
                   items={clothingItems}
                   onSelectedCard={handleSelectedCard}
+                  onCreateModal={handleCreateModal}
                 />
               }
             />
@@ -130,8 +131,9 @@ function App() {
           {activeModal === "create" && (
             <AddItemModal
               onClose={handleCloseModal}
-              isOpen={handleCreateModal}
+              onCreateModal={handleCreateModal}
               onAddItem={handleAddItem}
+              
             />
           )}
         </CurrentTempUnitContext.Provider>
