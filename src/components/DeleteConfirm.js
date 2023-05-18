@@ -1,8 +1,8 @@
 import '../blocks/ModalWithForm.css';
 
-const DeleteConfirm = ({ onClick, OnDelete, itemData, onClose, onCancel }) => {
+const DeleteConfirm = ({ onClick, onDelete, itemData, onClose, onCancel }) => {
   const handleDeleteItem = () => {
-    OnDelete(itemData._id);
+    onDelete(handleDeleteItem);
     
   };
 
