@@ -104,7 +104,7 @@
 }
 
 .modal__text-preview {
-  padding: 20px 0 0 32px;
+  padding-left: 32px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -116,7 +116,6 @@
 
 .modal__text-container {
   display: flex;
-  flex-wrap: nowrap;
   gap: 218px;
 }
 
@@ -132,6 +131,9 @@
   background-color: #fff;
   cursor: pointer;
   margin-top: 15px;
+  padding-right: 32px;
+  display: flex;
+  align-items: center;
 }
 
 .modal__input {
@@ -198,6 +200,4 @@
   left: 0;
   right: 0;
   bottom: 0;
-
-
 }
