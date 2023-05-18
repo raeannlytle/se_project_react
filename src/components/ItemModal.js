@@ -1,9 +1,25 @@
 import "../blocks/ModalWithForm.css";
+import { useState } from 'react';
 import closeButton from "../images/close-button.svg";
 
-const ItemModal = ({ itemData, onClose }) => {
+const ItemModal = ({ itemData, onClose, onDelete }) => {
+  const [DeleteConfirm, setDeleteConfirm] = useState(false);
+
+  const handleOpenConfirmModal = () => {
+    setDeleteConfirm(true);
+  };
+
+  const handleCloseConfirmModal = () => {
+    setDeleteConfirm(false);
+  };
+
+  const handleDeleteItem = () => {
+    onDelete(itemData._id);
+    handleCloseConfirmModal();
+  };
+
   return (
-    <div className='modal'>
+    <div className="modal">
       <div className="modal__content modal__content_preview">
         <button
           type="button"
@@ -23,7 +39,40 @@ const ItemModal = ({ itemData, onClose }) => {
             <div>{itemData?.name}</div>
             <div>Weather type: {itemData?.weather}</div>
           </div>
-          <div className="modal__button-delete">Delete item</div>
+          <button
+            className="modal__button-delete"
+            onClick={handleOpenConfirmModal}
+          >
+            Delete item
+          </button>
+          {DeleteConfirm && (
+            <div className="modal__confirm">
+              <p>Are you sure you want to delete this item?</p>
+              <p className="modal__text-confirm">
+                This action is irreversible.
+              </p>
+              <button
+                className="modal__confirm-close"
+                onClick={onClose}
+              ></button>
+              <div className="modan__confirm-buttons">
+                <button
+                  className="modal__button-confirm"
+                  type="button"
+                  onClick={handleDeleteItem}
+                >
+                  Yes, delete item
+                </button>
+                <button
+                  className="modal__button-cancel"
+                  type="button"
+                  onClick={handleCloseConfirmModal}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

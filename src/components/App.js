@@ -6,10 +6,7 @@ import Footer from "./Footer";
 import ItemModal from "./ItemModal";
 import { defaultClothingItems } from "../utils/utils";
 import { useEffect, useState } from "react";
-import {
-  getForecastWeather,
-  parseWeatherData,
-} from "../utils/weatherApi";
+import { getForecastWeather, parseWeatherData } from "../utils/weatherApi";
 import { CurrentTempUnitContext } from "../utils/CurrentTempUnitContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddItemModal from "./AddItemModal";
@@ -66,14 +63,12 @@ function App() {
   };
 
   const handleDeleteItem = (item) => {
-    api.deleteItems(item).then(() => {
+    api.deleteItems(item._id).then(() => {
       setClothingItems();
-      const deleteClothesItems = (cards) => {
-        cards.filter((card) => {
-          return card.id !== item.id;
-        });
-      };
-      setClothingItems(deleteClothesItems);
+      const filteredCards = clothingItems.filter(
+        (card) => card._id !== item._id
+      );
+      setClothingItems(filteredCards);
       handleCloseModal();
     });
   };
@@ -120,18 +115,14 @@ function App() {
                 />
               }
             />
-            <Route 
-            path='/'
-            element={<ModalWithForm />}>
-              
-            </Route>
+            <Route path="/" element={<ModalWithForm />}></Route>
           </Routes>
           <Footer />
           {activeModal === "preview" && (
             <ItemModal
               itemData={selectedCard}
               onClose={handleCloseModal}
-              delete={handleDeleteItem}
+              onDelete={handleDeleteItem}
             />
           )}
           {activeModal === "create" && (

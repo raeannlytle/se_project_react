@@ -31,7 +31,7 @@ function Main({ weatherTemp, onSelectedCard, clothingItems }) {
       <section className="card__section" id="card-section">
         Today is {currentTempString} / You may want to wear:
         <div className="card__items">
-          {filteredCards.map((card) => (
+          {filteredCards?.map((card) => (
             <ItemCard
               key={card._id}
               item={card}

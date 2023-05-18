@@ -5,6 +5,10 @@
   justify-content: center;
 }
 
+.card:hover {
+  cursor: pointer;
+}
+
 .card__section {
   margin: 40px 0 0 0;
   font-family: "Familjen Grotesk", sans-serif;
@@ -20,6 +24,7 @@
   justify-content: center;
   margin: 34px 0 0 0;
 }
+
 
 .card__name {
   text-align: center;

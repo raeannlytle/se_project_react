@@ -75,7 +75,7 @@
   background: #000;
   border: none;
   font-size: 16px;
-  font-family: 'Familjen Grotesk', sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   color: #fff;
   width: 124px;
   height: 36px;
@@ -90,6 +90,10 @@
   top: 23px;
   right: 31px;
   z-index: 1;
+}
+
+.modal__button-close:hover {
+  cursor: pointer;
 }
 
 .modal__image-preview {
@@ -117,14 +121,17 @@
 }
 
 .modal__button-delete {
-  padding: 20px 0 0 0;
-  cursor: pointer;
-  color: red;
-  font-size: 20px;
+  width: 101px;
+  height: 24px;
+  font-family: "Familjen Grotesk", sans-serif;
   font-weight: 700;
+  font-size: 20px;
   line-height: 24px;
-  margin-right: 32px;
-
+  border: none;
+  color: #ff4d00;
+  background-color: #fff;
+  cursor: pointer;
+  margin-top: 15px;
 }
 
 .modal__input {
@@ -135,4 +142,31 @@
   width: 100%;
   font-family: "Familjen Grotesk", sans-serif;
   font-size: 16px;
+}
+
+.modal__button-confirm {
+  border: none;
+  color: #ff4d00;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.modal__button-cancel {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__confirm-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__text-confirm {
+  align-items: center;
+}
+
+.modal__confirm {
+  display: flex;
+  flex-direction: column;
 }
