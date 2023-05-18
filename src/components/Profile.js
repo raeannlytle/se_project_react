@@ -2,16 +2,24 @@ import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
 import "../blocks/Profile.css";
 import ItemCard from "./ItemCard";
-import '../blocks/ItemCard.css';
+import "../blocks/ItemCard.css";
 
-function Profile({ items, onSelectedCard }) {
+function Profile({ items, onSelectedCard, handleCreateModal }) {
+  const handleCardClick = () => {
+    onSelectedCard();
+  };
+
   return (
     <div className="profile">
       <div className="profile__section">
         <SideBar />
       </div>
       <div className="profile__clothes">
-        <ClothesSection />
+        <ClothesSection
+          cards={items}
+          onCardClick={handleCardClick}
+          onCreateModal={handleCreateModal}
+        />
         <section className="cards">
           <ul className="cards__list">
             {items.map((card) => (

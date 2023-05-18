@@ -1,13 +1,13 @@
 import "../blocks/ClothesSection.css";
+import ItemCard from "./ItemCard";
+import React from 'react';
 
-function ClothesSection({ onClick }) {
-  const handleAddItem = () => {
-    onAdd(handleAddItem);
-  }
+function ClothesSection({ onClick, onAddItem, cards }) {
+
   return (
     <div className="clothes">
       <div className="clothes__title">Your items</div>
-      <button className="clothes__button" type='text' onClick={handleAddItem}>+Add new</button>
+      <button className="clothes__button" type='button' onClick={onAddItem}>+Add new</button>
     </div>
   );
 }

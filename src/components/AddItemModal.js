@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalWithForm from "./ModalWithForm";
 
 export default function AddItemModal({ onClose, isOpen, onAddItem }) {
@@ -18,6 +18,14 @@ export default function AddItemModal({ onClose, isOpen, onAddItem }) {
   function handleLink(e) {
     setLink(e.target.value);
   }
+
+  useEffect(() => {
+    if (isOpen) {
+      setName("");
+      setLink("");
+      setWeatherType("");
+    }
+  }, [isOpen]);
 
   return (
     <ModalWithForm
