@@ -14,7 +14,7 @@ function Profile({ items, onSelectedCard, onCreateModal }) {
       <div className="profile__clothes">
         <ClothesSection
           cards={items}
-          onClick={onCreateModal}
+          onCreateModal={onCreateModal}
         />
         <section className="cards">
           <ul className="cards__list">
