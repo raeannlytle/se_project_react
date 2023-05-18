@@ -31,8 +31,8 @@ export const addItems = ({ name, weather, link }) => {
   }).then(_checkResponse);
 };
 
-export const deleteItems = (id) => {
-  return fetch(`${baseUrl}/items/${id}`, {
+export const deleteItems = (item) => {
+  return fetch(`${baseUrl}/items/${item}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
