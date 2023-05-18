@@ -4,7 +4,7 @@
 
 .weather__temp {
   position: absolute;
-  top: 20px;
+  top: 10px;
   left: 16px;
   color: #fff;
   font-family: "Familjen Grotesk", sans-serif;
@@ -12,6 +12,6 @@
   line-height: 40px;
 }
 
-.weather_image {
+.weather__image {
   width: 100%;
 }
