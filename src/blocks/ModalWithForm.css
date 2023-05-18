@@ -162,6 +162,19 @@
   flex-direction: column;
 }
 
+.modal__confirm-content {
+  background: #fff;
+  max-width: 670px;
+  height: 280px;
+  border-radius: 20px;
+  padding: 60px;
+  position: relative;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
 .modal__text-confirm {
   align-items: center;
 }
