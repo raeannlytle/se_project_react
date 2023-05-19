@@ -6,7 +6,7 @@ import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUni
 import { temperature } from "../utils/weatherApi";
 
 function Main({ weatherTemp, onSelectedCard, clothingItems }) {
-  const { currentTempUnit } = useContext(CurrentTemperatureUnitContext);
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const weatherType = useMemo(() => {
     if (weatherTemp >= 86) {
       return "hot";
@@ -18,7 +18,7 @@ function Main({ weatherTemp, onSelectedCard, clothingItems }) {
   }, [weatherTemp]);
 
   const currentTemp = temperature(weatherTemp);
-  const currentTempString = currentTemp[currentTempUnit];
+  const currentTempString = currentTemp[currentTemperatureUnit];
 
   const filteredCards = clothingItems.filter((card) => {
     return card.weather.toLowerCase() === weatherType;
