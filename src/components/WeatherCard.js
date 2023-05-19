@@ -48,7 +48,7 @@ const WeatherCard = ({ day, type, weatherTemp }) => {
       <section className="weather" id="weather">
         <div className="weather__temp">{currentTempString}</div>
         <div>
-          <img src={imageSourceUrl} className="weather__image" />
+          <img src={imageSourceUrl} alt={type} className="weather__image" />
         </div>
       </section>
       <section id="weather__cards"></section>
