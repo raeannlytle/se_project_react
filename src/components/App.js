@@ -23,7 +23,7 @@ function App() {
   const [deleteConfirm, setDeleteConfirm] = useState(false);
 
   const handleOpenConfirmModal = () => {
-    setDeleteConfirm(true);
+    setActiveModal("delete");
   };
 
   const handleCloseConfirmModal = () => {
@@ -134,7 +134,7 @@ function App() {
           <ItemModal
             itemData={selectedCard}
             onClose={handleCloseModal}
-            onDelete={() => handleDeleteItem(selectedCard._id)}
+            onDelete={handleOpenConfirmModal}
             handleOpenConfirmModal={handleOpenConfirmModal}
           />
         )}
@@ -147,9 +147,9 @@ function App() {
         )}
         {activeModal === "delete" && (
           <DeleteConfirmModal
-            onDelete={() => handleDeleteItem(selectedCard._id)}
-            onClose={handleCloseConfirmModal}
-            onCancel={handleCloseConfirmModal}
+            handleDeleteItem={() => handleDeleteItem(selectedCard._id)}
+            handleCloseConfirmModal={handleCloseConfirmModal}
+            selectedCard={selectedCard}
           />
         )}
       </CurrentTemperatureUnitContext.Provider>
