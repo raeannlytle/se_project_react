@@ -20,7 +20,7 @@ function Profile({ items, onSelectedCard, onCreateModal }) {
           <ul className="cards__list">
             {items.map((card) => (
               <ItemCard
-                key={card.id}
+                key={card._id}
                 item={card}
                 name={card.name}
                 onSelectedCard={onSelectedCard}
