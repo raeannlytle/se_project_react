@@ -13,7 +13,7 @@ const Header = ({ onCreateModal }) => {
   return (
     <header className="header">
       <div className="header__logo">
-        <NavLink exact to="/">
+        <NavLink exact='true' to="/">
           <div>
             <img src={headerLogo} alt="logo"></img>
           </div>

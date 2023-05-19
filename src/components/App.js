@@ -108,7 +108,7 @@ function App() {
         <Header onCreateModal={handleCreateModal} />
         <Routes>
           <Route
-            exact
+            exact='true'
             path="/"
             element={
               <Main
