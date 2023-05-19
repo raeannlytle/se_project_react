@@ -1,8 +1,7 @@
 import "../blocks/ModalWithForm.css";
-import { useState } from 'react';
 import closeButton from "../images/close-button.svg";
 
-const ItemModal = ({ itemData, onClose, onDelete, handleOpenConfirmModal}) => {
+const ItemModal = ({ itemData, onClose, handleOpenConfirmModal }) => {
   return (
     <div className="modal">
       <div className="modal__content modal__content_preview">

@@ -2,8 +2,7 @@ import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
 import "../blocks/Main.css";
 import React, { useContext, useMemo } from "react";
-import { defaultClothingItems } from "../utils/utils";
-import { CurrentTempUnitContext } from "../utils/CurrentTempUnitContext";
+import { CurrentTempUnitContext } from "../contexts/CurrentTempUnitContext";
 import { temperature } from "../utils/weatherApi";
 
 function Main({ weatherTemp, onSelectedCard, clothingItems }) {
