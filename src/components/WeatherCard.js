@@ -33,13 +33,13 @@ const weatherOptions = [
 ];
 
 const WeatherCard = ({ day, type, weatherTemp }) => {
-  const { currentTempUnit } = useContext(CurrentTemperatureUnitContext);
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const imageSource = weatherOptions.filter((i) => {
     return i.day === day && i.type === type;
   });
 
   const currentTemp = temperature(weatherTemp);
-  const currentTempString = currentTemp[currentTempUnit];
+  const currentTempString = currentTemp[currentTemperatureUnit];
 
   const imageSourceUrl = imageSource[0].url || " ";
 
