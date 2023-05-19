@@ -11,8 +11,8 @@ import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUni
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddItemModal from "./AddItemModal";
 import * as api from "../utils/api";
-import ModalWithForm from "./ModalWithForm";
 import closeButton from "../images/close-button.svg";
+import DeleteConfirmModal from "./DeleteConfirmModal";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -20,7 +20,7 @@ function App() {
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
-  const [DeleteConfirm, setDeleteConfirm] = useState(false);
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
 
   const handleOpenConfirmModal = () => {
     setDeleteConfirm(true);
@@ -101,82 +101,82 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <BrowserRouter>
-        <CurrentTemperatureUnitContext.Provider
-          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-        >
-          <Header onCreateModal={handleCreateModal} />
-          <Routes>
-            <Route
-              exact
-              path="/"
-              element={
-                <Main
-                  weatherTemp={temp}
-                  clothingItems={clothingItems}
-                  onSelectedCard={handleSelectedCard}
-                />
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <Profile
-                  items={clothingItems}
-                  onSelectedCard={handleSelectedCard}
-                  onCreateModal={handleCreateModal}
-                />
-              }
-            />
-            <Route path="/" element={<ModalWithForm />}></Route>
-          </Routes>
-          <Footer />
-          {activeModal === "preview" && (
-            <ItemModal
-              itemData={selectedCard}
-              onClose={handleCloseModal}
-              onDelete={() => handleDeleteItem(selectedCard._id)}
-              handleOpenConfirmModal={handleOpenConfirmModal}
-            />
-          )}
-          {activeModal === "create" && (
-            <AddItemModal
-              onClose={handleCloseModal}
-              onCreateModal={handleCreateModal}
-              onAddItem={handleAddItem}
-            />
-          )}
-          {DeleteConfirm && (
-            <div className="modal">
-              <div className="modal__confirm-content">
-                <div>Are you sure you want to delete this item?</div>
-                <div>This action is irreversible.</div>
-                <button className="modal__confirm-close" onClick={handleCloseConfirmModal}>
-                  <img src={closeButton} alt="close-button" />
+    <BrowserRouter>
+      <CurrentTemperatureUnitContext.Provider
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      >
+        <Header onCreateModal={handleCreateModal} />
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <Main
+                weatherTemp={temp}
+                clothingItems={clothingItems}
+                onSelectedCard={handleSelectedCard}
+              />
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                items={clothingItems}
+                onSelectedCard={handleSelectedCard}
+                onCreateModal={handleCreateModal}
+              />
+            }
+          />
+        </Routes>
+        <Footer />
+        {activeModal === "preview" && (
+          <ItemModal
+            itemData={selectedCard}
+            onClose={handleCloseModal}
+            onDelete={() => handleDeleteItem(selectedCard._id)}
+            handleOpenConfirmModal={handleOpenConfirmModal}
+          />
+        )}
+        {activeModal === "create" && (
+          <AddItemModal
+            onClose={handleCloseModal}
+            onCreateModal={handleCreateModal}
+            onAddItem={handleAddItem}
+          />
+        )}
+        {deleteConfirm && (
+          <div className="modal">
+            <div className="modal__confirm-content">
+              <div>Are you sure you want to delete this item?</div>
+              <div>This action is irreversible.</div>
+              <button
+                className="modal__confirm-close"
+                onClick={handleCloseConfirmModal}
+              >
+                <img src={closeButton} alt="close-button" />
+              </button>
+              <div className="modal__buttons-confirm">
+                <button
+                  className="modal__button-confirm"
+                  type="button"
+                  onClick={() => handleDeleteItem(selectedCard._id)}
+                >
+                  Yes, delete item
                 </button>
-                <div className="modal__buttons-confirm">
-                  <button
-                    className="modal__button-confirm"
-                    type="button"
-                    onClick={() => handleDeleteItem(selectedCard._id)}
-                  >
-                    Yes, delete item
-                  </button>
-                  <button
-                    className="modal__button-cancel"
-                    type="button"
-                    onClick={handleCloseConfirmModal}
-                  >
-                    Cancel
-                  </button>
-                </div>
+                <button
+                  className="modal__button-cancel"
+                  type="button"
+                  onClick={handleCloseConfirmModal}
+                >
+                  Cancel
+                </button>
               </div>
             </div>
-          )}
-        </CurrentTemperatureUnitContext.Provider>
-      </BrowserRouter>
-    </div>
+          </div>
+        )}
+      </CurrentTemperatureUnitContext.Provider>
+    </BrowserRouter>
   );
 }
 
