@@ -12,7 +12,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddItemModal from "./AddItemModal";
 import * as api from "../utils/api";
 import closeButton from "../images/close-button.svg";
-import DeleteConfirmModal from "./DeleteConfirm";
+import DeleteConfirmModal from "./DeleteConfirmModal";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
