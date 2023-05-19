@@ -7,7 +7,7 @@ import ItemModal from "./ItemModal";
 import { defaultClothingItems } from "../utils/utils";
 import { useEffect, useState } from "react";
 import { getForecastWeather, parseWeatherData } from "../utils/weatherApi";
-import { CurrentTempUnitContext } from "../contexts/CurrentTempUnitContext";
+import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddItemModal from "./AddItemModal";
 import * as api from "../utils/api";
@@ -102,7 +102,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <CurrentTempUnitContext.Provider
+        <CurrentTemperatureUnitContext.Provider
           value={{ currentTempUnit, handleToggleSwitchChange }}
         >
           <Header onCreateModal={handleCreateModal} />
@@ -174,7 +174,7 @@ function App() {
               </div>
             </div>
           )}
-        </CurrentTempUnitContext.Provider>
+        </CurrentTemperatureUnitContext.Provider>
       </BrowserRouter>
     </div>
   );
