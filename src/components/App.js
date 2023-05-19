@@ -19,6 +19,15 @@ function App() {
   const [temp, setTemp] = useState(0);
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [DeleteConfirm, setDeleteConfirm] = useState(false);
+
+  const handleOpenConfirmModal = () => {
+    setDeleteConfirm(true);
+  };
+
+  const handleCloseConfirmModal = () => {
+    setDeleteConfirm(false);
+  };
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -63,16 +72,16 @@ function App() {
   };
 
   const handleDeleteItem = (id) => {
-    api.deleteItems(id).then(() => {
-      const filteredCards = clothingItems.filter(
-        (card) => card._id !== id
-      );
-      setClothingItems(filteredCards);
-      handleCloseModal();
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+    api
+      .deleteItems(id)
+      .then(() => {
+        const filteredCards = clothingItems.filter((card) => card._id !== id);
+        setClothingItems(filteredCards);
+        handleCloseModal();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
@@ -126,6 +135,7 @@ function App() {
               itemData={selectedCard}
               onClose={handleCloseModal}
               onDelete={handleDeleteItem}
+              handleOpenConfirmModal={handleOpenConfirmModal}
             />
           )}
           {activeModal === "create" && (
@@ -133,8 +143,35 @@ function App() {
               onClose={handleCloseModal}
               onCreateModal={handleCreateModal}
               onAddItem={handleAddItem}
-              
             />
+          )}
+          {DeleteConfirm && (
+            <div className="modal">
+              <div className="modal__confirm-content">
+                <div>Are you sure you want to delete this item?</div>
+                <div>This action is
+                irreversible.</div>
+                <button className="modal__confirm-close">
+                  <img src='../images/close-button.svg' alt='close-button' />
+                </button>
+                <div className="modal__buttons-confirm">
+                  <button
+                    className="modal__button-confirm"
+                    type="button"
+                    onClick={handleDeleteItem}
+                  >
+                    Yes, delete item
+                  </button>
+                  <button
+                    className="modal__button-cancel"
+                    type="button"
+                    onClick={handleCloseConfirmModal}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
           )}
         </CurrentTempUnitContext.Provider>
       </BrowserRouter>

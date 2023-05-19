@@ -2,22 +2,7 @@ import "../blocks/ModalWithForm.css";
 import { useState } from 'react';
 import closeButton from "../images/close-button.svg";
 
-const ItemModal = ({ itemData, onClose, onDelete }) => {
-  const [DeleteConfirm, setDeleteConfirm] = useState(false);
-
-  const handleOpenConfirmModal = () => {
-    setDeleteConfirm(true);
-  };
-
-  const handleCloseConfirmModal = () => {
-    setDeleteConfirm(false);
-  };
-
-  const handleDeleteItem = () => {
-    onDelete(itemData._id);
-    handleCloseConfirmModal();
-  };
-
+const ItemModal = ({ itemData, onClose, onDelete, handleOpenConfirmModal}) => {
   return (
     <div className="modal">
       <div className="modal__content modal__content_preview">
@@ -45,32 +30,6 @@ const ItemModal = ({ itemData, onClose, onDelete }) => {
           >
             Delete item
           </button>
-          {DeleteConfirm && (
-            <div className="modal__confirm">
-              <div className="modal__confirm-content">Are you sure you want to delete this item? This action is irreversible.
-              </div>
-              <button
-                className="modal__button-close"
-                onClick={onClose}
-              ></button>
-              <div className="modal__buttons-confirm">
-                <button
-                  className="modal__button-confirm"
-                  type="button"
-                  onClick={handleDeleteItem}
-                >
-                  Yes, delete item
-                </button>
-                <button
-                  className="modal__button-cancel"
-                  type="button"
-                  onClick={handleCloseConfirmModal}
-                >
-                  Cancel
-                </button>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>

@@ -83,6 +83,14 @@
   line-height: 20px;
 }
 
+.modal__button-submit:hover {
+  cursor: pointer;
+}
+
+.modal__button-submit:disabled {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
 .modal__button-close {
   border: none;
   background: none;
@@ -90,6 +98,16 @@
   top: 23px;
   right: 31px;
   z-index: 1;
+}
+
+.modal__confirm-close {
+  border: none;
+  background: none;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 10px;
+  right: 40px;
 }
 
 .modal__button-close:hover {
@@ -179,6 +197,14 @@
   font-size: 20px;
   line-height: 24px;
   margin-bottom: 24px;
+  background: #fff;
+  width: 670px;
+  height: 280px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .modal__text-confirm {
@@ -191,7 +217,6 @@
   text-align: center;
   flex-direction: column;
   position: absolute;
-  background: #fff;
   max-width: 670px;
   height: 280px;
   border-radius: 20px;
@@ -200,4 +225,6 @@
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 100;
+  background: #fff;
 }
