@@ -2,7 +2,7 @@ import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
 import "../blocks/Profile.css";
 import ItemCard from "./ItemCard";
-import "../blocks/ItemCard.css";
+import "../blocks/ItemCards.css";
 
 function Profile({ items, onSelectedCard, onCreateModal }) {
 
