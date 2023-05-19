@@ -12,6 +12,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddItemModal from "./AddItemModal";
 import * as api from "../utils/api";
 import ModalWithForm from "./ModalWithForm";
+import closeButton from '../images/close-button.svg';
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -152,7 +153,7 @@ function App() {
                 <div>This action is
                 irreversible.</div>
                 <button className="modal__confirm-close">
-                  <img src='../images/close-button.svg' alt='close-button' />
+                  <img src={closeButton} alt='close-button' />
                 </button>
                 <div className="modal__buttons-confirm">
                   <button

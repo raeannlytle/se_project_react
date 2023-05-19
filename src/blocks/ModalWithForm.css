@@ -106,8 +106,8 @@
   position: absolute;
   width: 14px;
   height: 14px;
-  top: 10px;
-  right: 40px;
+  top: 20px;
+  right: 30px;
 }
 
 .modal__button-close:hover {

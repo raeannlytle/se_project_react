@@ -1,4 +1,5 @@
-import '../blocks/ModalWithForm.css';
+import "../blocks/ModalWithForm.css";
+import closeButton from '../images/close-button.svg';
 
 const DeleteConfirm = ({ onClick, onDelete, onClose, onCancel }) => {
   const handleDeleteItem = () => {
@@ -8,9 +9,12 @@ const DeleteConfirm = ({ onClick, onDelete, onClose, onCancel }) => {
   return (
     <div className="modal modal__confirm">
       <div className="modal__confirm-content">
-        Are you sure you want to delete this item? This action is irreversible.
+        <div>Are you sure you want to delete this item?</div>
+        <div> This action is irreversible.</div>
       </div>
-      <button className="modal__button-close" onClick={onClose}></button>
+      <button className="modal__confirm-close" onClick={onClose}>
+        <img src={closeButton} alt='close-button' />
+      </button>
       <div className="modal__buttons-confirm">
         <button
           className="modal__button-confirm"
