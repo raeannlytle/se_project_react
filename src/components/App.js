@@ -11,7 +11,6 @@ import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUni
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddItemModal from "./AddItemModal";
 import * as api from "../utils/api";
-import closeButton from "../images/close-button.svg";
 import DeleteConfirmModal from "./DeleteConfirmModal";
 
 function App() {
@@ -27,7 +26,7 @@ function App() {
   };
 
   const handleCloseConfirmModal = () => {
-    setDeleteConfirm(false);
+    setActiveModal("");
   };
 
   const handleCreateModal = () => {
