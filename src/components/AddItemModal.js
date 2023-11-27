@@ -2,23 +2,23 @@ import React, { useEffect, useState } from "react";
 import ModalWithForm from "./ModalWithForm";
 import "../blocks/AddItemModal.css";
 
-export default AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
+const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   const token = localStorage.getItem("jwt");
 
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weatherType, setWeatherType] = useState("");
 
   useEffect(() => {
     if (!isOpen) {
-      setUsername("");
+      setName("");
       setImageUrl("");
       setWeatherType("");
     }
   }, [isOpen]);
 
-  function handleUsernameChange(e) {
-    setUsername(e.target.value);
+  function handleNameChange(e) {
+    setName(e.target.value);
   }
 
   function handleImageChange(e) {
@@ -31,7 +31,7 @@ export default AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddItem({ username, imageUrl, weatherType, token });
+    onAddItem({ name, imageUrl, weatherType, token });
   }
 
   return (
@@ -48,11 +48,12 @@ export default AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
           <input
             type="text"
             name="name"
+            placeholder="Name"
             minLength="1"
             maxLength="30"
             className="modal__input"
-            value={username}
-            onChange={handleUsernameChange}
+            value={name}
+            onChange={handleNameChange}
           ></input>
         </label>
         <label className="modal__label">
@@ -105,3 +106,5 @@ export default AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
     </ModalWithForm>
   );
 };
+
+export default AddItemModal;
