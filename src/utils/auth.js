@@ -28,6 +28,12 @@ export const loginUser = async ({ email, password }) => {
       body: JSON.stringify({ email, password }),
     });
 
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Error signing in user:", errorData);
+      throw new Error(errorData.message || "Authentication failed");
+    }
+
     const data = await response.json();
     return data;
   } catch (error) {

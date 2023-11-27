@@ -184,7 +184,11 @@ function App() {
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
-          <Header onCreateModal={handleCreateModal} />
+          <Header
+            onCreateModal={handleCreateModal}
+            setCurrentUser={setCurrentUser}
+            setIsLoggedIn={setIsLoggedIn}
+          />
           <Routes>
             <Route
               exact={true}
@@ -213,11 +217,13 @@ function App() {
             <Route
               path="/login"
               element={
-                <LoginModal
-                  onClose={handleCloseModal}
-                  onLogin={handleLogin}
-                  setUserLogin={setUserLogin}
-                />
+                activeModal === "login" ? (
+                  <LoginModal
+                    onClose={handleCloseModal}
+                    onLogin={handleLogin}
+                    setUserLogin={setUserLogin}
+                  />
+                ) : null
               }
             />
           </Routes>
@@ -226,13 +232,6 @@ function App() {
             <RegisterModal
               onClose={handleCloseModal}
               onRegister={handleRegister}
-            />
-          )}
-          {activeModal === "login" && (
-            <LoginModal
-              onClose={handleCloseModal}
-              onLogin={handleLogin}
-              setUserLogin={setUserLogin}
             />
           )}
           {activeModal === "preview" && (

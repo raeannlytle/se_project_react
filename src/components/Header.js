@@ -8,8 +8,9 @@ import { useContext } from "react";
 import { useState } from "react";
 import LoginModal from "./LoginModal";
 import RegisterModal from "./RegisterModal";
+import * as api from "../utils/api";
 
-const Header = ({ onCreateModal }) => {
+const Header = ({ onCreateModal, setCurrentUser, setIsLoggedIn }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -25,11 +26,38 @@ const Header = ({ onCreateModal }) => {
   const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
 
   const toggleLoginModal = () => {
-    setLoginModalOpen(!isLoginModalOpen);
+    setLoginModalOpen(true);
   };
 
   const toggleRegisterModal = () => {
     setRegisterModalOpen(!isRegisterModalOpen);
+  };
+
+  const handleLogin = () => {
+    const userLogin = {
+      email: "",
+      password: "",
+    };
+
+    api
+      .loginUser(userLogin)
+      .then((res) => {
+        console.log("Login response:", res);
+        if (res.access) {
+          localStorage.setItem("jwt", res.token);
+          setCurrentUser({
+            id: res.user.id,
+            username: res.user.username,
+            email: res.user.email,
+          });
+          setIsLoggedIn(true);
+        } else {
+          console.error("Login failed. Server did not provide access");
+        }
+      })
+      .catch((e) => {
+        console.error("Login error:", e);
+      });
   };
 
   return (
@@ -83,10 +111,7 @@ const Header = ({ onCreateModal }) => {
                 Login
               </button>
               {isLoginModalOpen && (
-                <LoginModal
-                  onClose={toggleLoginModal}
-                  onLogin={setLoginModalOpen}
-                />
+                <LoginModal onClose={toggleLoginModal} onLogin={handleLogin} />
               )}
               <button
                 className="header__button"
@@ -97,8 +122,8 @@ const Header = ({ onCreateModal }) => {
               </button>
               {isRegisterModalOpen && (
                 <RegisterModal
-                  onClose={toggleRegisterModal}
-                  onRegister={setRegisterModalOpen}
+                  onClose={() => setRegisterModalOpen(false)}
+                  onRegister={() => setRegisterModalOpen(false)}
                 />
               )}
             </div>

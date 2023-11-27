@@ -1,80 +1,72 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ModalWithForm from "./ModalWithForm";
 import "../blocks/AddItemModal.css";
 
-export default function AddItemModal({ onClose, isOpen, onAddItem }) {
-  console.log("onAddItem:", onAddItem);
-  const [name, setName] = useState("");
-  const [link, setLink] = useState("");
+export default AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
+  const token = localStorage.getItem("jwt");
+
+  const [username, setUsername] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [weatherType, setWeatherType] = useState("");
 
-  function handleLink(e) {
-    setLink(e.target.value);
+  useEffect(() => {
+    if (!isOpen) {
+      setUsername("");
+      setImageUrl("");
+      setWeatherType("");
+    }
+  }, [isOpen]);
+
+  function handleUsernameChange(e) {
+    setUsername(e.target.value);
   }
 
-  function handleWeatherType(e) {
+  function handleImageChange(e) {
+    setImageUrl(e.target.value);
+  }
+
+  function handleWeatherTypeChange(e) {
     setWeatherType(e.target.value);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    if (!name || !link || !weatherType) {
-      console.error("All fields are required");
-      return;
-    }
-
-    if (typeof onAddItem === "function") {
-      onAddItem({ name, link, weatherType });
-    } else {
-      console.error("onAddItem is not a function");
-    }
-
-    onClose();
+    onAddItem({ username, imageUrl, weatherType, token });
   }
-
-  useEffect(() => {
-    if (isOpen) {
-      setName("");
-      setLink("");
-      setWeatherType("");
-    }
-  }, [isOpen]);
 
   return (
     <ModalWithForm
-      title="New garment"
-      onClick={onClose}
+      title="New Garment"
+      onClose={handleCloseModal}
+      isOpen={isOpen}
       onSubmit={handleSubmit}
-      buttonText="Add garment"
+      buttonText="Add Garment"
     >
       <div className="modal__labels">
         <label className="modal__label">
           Name
           <input
-            className="modal__input"
             type="text"
             name="name"
             minLength="1"
-            maxLength="3000"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
+            maxLength="30"
+            className="modal__input"
+            value={username}
+            onChange={handleUsernameChange}
+          ></input>
         </label>
         <label className="modal__label">
-          Image
+          Image URL
           <input
-            className="modal__input"
             type="url"
             name="link"
+            placeholder="Image URL"
             minLength="1"
-            placeholder="Image Url"
-            onChange={handleLink}
-            value={link}
-          />
+            maxLength="30"
+            className="modal__input"
+            value={imageUrl}
+            onChange={handleImageChange}
+          ></input>
         </label>
       </div>
       <p className="modal__paragraph">Select the weather type:</p>
@@ -85,8 +77,8 @@ export default function AddItemModal({ onClose, isOpen, onAddItem }) {
             type="radio"
             id="hot"
             value="hot"
-            onChange={handleWeatherType}
-          />
+            onChange={handleWeatherTypeChange}
+          ></input>
           <label>Hot</label>
         </div>
         <div className="modal__radio">
@@ -95,21 +87,21 @@ export default function AddItemModal({ onClose, isOpen, onAddItem }) {
             type="radio"
             id="warm"
             value="warm"
-            onChange={handleWeatherType}
-          />
+            onChange={handleWeatherTypeChange}
+          ></input>
           <label>Warm</label>
         </div>
-        <div className="modal__radio">
-          <input
-            className="modal__input-radio"
-            type="radio"
-            id="cold"
-            value="cold"
-            onChange={handleWeatherType}
-          />
-          <label>Cold</label>
-        </div>
+      </div>
+      <div className="modal__radio">
+        <input
+          className="modal__input-radio"
+          type="radio"
+          id="cold"
+          value="cold"
+          onChange={handleWeatherTypeChange}
+        ></input>
+        <label>Cold</label>
       </div>
     </ModalWithForm>
   );
-}
+};
