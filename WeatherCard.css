@@ -1,0 +1,17 @@
+.weather {
+  position: relative;
+}
+
+.weather__temp {
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  color: #fff;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-size: 36px;
+  line-height: 40px;
+}
+
+.weather__image {
+  width: 100%;
+}

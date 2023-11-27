@@ -1,0 +1,59 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+  padding: 0 40px;
+  margin-bottom: 33px;
+  font-family: "Familjen Grotesk", sans-serif;
+  margin-top: 32px;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+}
+
+.header__date {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  margin-left: 24px;
+}
+
+.header__name {
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 700;
+  margin-right: 12px;
+}
+
+.header__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__button {
+  border: none;
+  background-color: transparent;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  margin-right: 20px;
+}
+
+.header__button:hover {
+  cursor: pointer;
+}
+
+.header__avatar-image {
+  height: 40px;
+  width: 40px;
+}
+
+.header__link {
+  color: #000;
+  text-decoration: none;
+}
