@@ -1,5 +1,5 @@
 import WeatherCard from "./WeatherCard";
-import ItemCard from "./ItemCard";
+import ItemCard from "./src/components/ItemCard";
 import "../blocks/Main.css";
 import React, { useContext, useMemo } from "react";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
@@ -24,7 +24,7 @@ function Main({ weatherTemp, onSelectedCard, clothingItems, onCardLike }) {
     onCardLike({ id, isLiked, user });
   };
 
-  const filteredCards = (clothingItems ?? []).filter((card) => {
+  const filteredCards = clothingItems.filter((card) => {
     return card.weather.toLowerCase() === weatherType;
   });
 
