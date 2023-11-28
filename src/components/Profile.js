@@ -1,29 +1,73 @@
 import SideBar from "./SideBar";
-import ClothesSection from "./ClothesSection";
+import ClothesSection from "./src/components/ClothesSection";
 import "../blocks/Profile.css";
-import React, { useState, useContext } from "react";
+import ItemCard from "./src/components/ItemCard";
+import "../blocks/ItemCards.css";
+import EditProfileModal from "./src/components/EditProfileModal";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { useState, useContext } from "react";
 
-const Profile = ({
-  onCreateModal,
-  clothingItems,
+function Profile({
+  items,
   onSelectedCard,
-  onEditProfileModal,
-  onLogout,
-  onCardLike,
-}) => {
+  onCreateModal,
+  onSignOut,
+  onCardClick,
+}) {
+  const [isEditProfileModalOpen, setEditProfileModalOpen] = useState(false);
+  const { currentUser } = useContext(CurrentUserContext);
+
+  const handleEditProfile = () => {
+    setEditProfileModalOpen(true);
+  };
+
+  const handleCloseEditProfileModal = () => {
+    setEditProfileModalOpen(false);
+  };
+
+  const handleSignOut = () => {
+    onSignOut();
+  };
+
   return (
-    <section className="profile">
+    <div className="profile">
       <div className="profile__section">
-        <SideBar onEditProfileModal={onEditProfileModal} onLogout={onLogout} />
+        <SideBar />
       </div>
-      <ClothesSection
-        onSelectedCard={onSelectedCard}
-        clothingItems={clothingItems}
-        onCreateModal={onCreateModal}
-        onCardLike={onCardLike}
-      />
-    </section>
+      <div className="profile__clothes">
+        <ClothesSection
+          cards={items}
+          onCreateModal={onCreateModal}
+          onCardClick={onCardClick}
+        />
+        <section className="cards">
+          <ul className="cards__list">
+            {items.map((card) => (
+              <ItemCard
+                key={card._id}
+                item={card}
+                name={card.name}
+                onSelectedCard={onSelectedCard}
+                id={card.id}
+                weather={card.weather}
+                link={card.link}
+                onCardClick={onCardClick}
+              />
+            ))}
+          </ul>
+        </section>
+      </div>
+      <button className="profile__edit-button" onClick={handleEditProfile}>
+        Edit Profile
+      </button>
+      <button className="profile__sign-out-button" onClick={handleSignOut}>
+        Sign out
+      </button>
+      {isEditProfileModalOpen && (
+        <EditProfileModal onClose={handleCloseEditProfileModal} />
+      )}
+    </div>
   );
-};
+}
 
 export default Profile;
