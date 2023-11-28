@@ -1,19 +1,11 @@
-import "../blocks/App.css";
-import Header from "./Header";
-import Footer from "./Footer";
-import Main from "./Main";
-import ItemModal from "./ItemModal";
-import LoginModal from "./LoginModal";
-import RegisterModal from "./RegisterModal";
-import EditProfileModal from "./EditProfileModal";
-import AddItemModal from "./AddItemModal";
-import Profile from "./Profile";
-import ProtectedRoute from "./ProtectedRoute";
-import { getForecastWeather, parseWeatherData } from "../utils/weatherApi";
 import React, { useEffect, useState } from "react";
-import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+  BrowserRouter,
+} from "react-router-dom";
 import { deleteItems, getItems, addItems } from "../utils/api";
 import {
   loginUser,
@@ -23,6 +15,20 @@ import {
   addCardLike,
   removeCardLike,
 } from "../utils/auth";
+import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
+import {
+  CurrentUserContext,
+  CurrentUserProvider,
+} from "../contexts/CurrentUserContext";
+import Header from "./Header";
+import Footer from "./Footer";
+import Main from "./Main";
+import ItemModal from "./ItemModal";
+import LoginModal from "./LoginModal";
+import RegisterModal from "./RegisterModal";
+import EditProfileModal from "./EditProfileModal";
+import AddItemModal from "./AddItemModal";
+import Profile from "./Profile";
 
 const App = () => {
   const [activeModal, setActiveModal] = useState("");
@@ -89,7 +95,7 @@ const App = () => {
       name: values.name,
       imageUrl: values.imageUrl,
       weather: values.weatherType,
-      token: value.token,
+      token: values.token,
     };
     addItems(newItem)
       .then((newItem) => {
@@ -187,86 +193,96 @@ const App = () => {
   }, [isLoggedIn]);
 
   return (
-    <CurrentTemperatureUnitContext.Provider
-      value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-    >
-      <CurrentUserContext.Provider value={currentUser}>
-        <Header
-          onCreateModal={handleCreateModal}
-          weatherLocation={weatherLocation}
-          onLoginModal={handleLoginModal}
-          onRegisterModal={handleRegisterModal}
-          isLoggedIn={isLoggedIn}
-        />
-        <Switch>
-          <Route exact={true} path="/">
-            <Main
-              weatherTemp={weatherTemp}
-              onSelectedCard={handleSelectedCard}
-              clothingItems={clothingItems}
-              onCardLike={handleCardLike}
-            />
-          </Route>
-          <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
-            <Profile
-              onCreateModal={handleCreateModal}
-              clothingItems={clothingItems}
-              onSelectedCard={handleSelectedCard}
-              onEditProfileModal={handleEditProfileModal}
-              onLogout={handleLogout}
-              onCardLike={handleCardLike}
-            />
-          </ProtectedRoute>
-          <Route exact={true} path="">
-            {isLoggedIn ? <Redirect to="/profile" /> : <Redirect to="/" />}
-          </Route>
-        </Switch>
-        <Footer />
-        {activeModal === "create" && (
-          <AddItemModal
-            handleCloseModal={handleCloseModal}
-            onClose={handleCloseModal}
-            onOpen={activeModal === "create"}
-            onAddItem={handleAddItem}
-          />
-        )}
-        {activeModal === "preview" && (
-          <ItemModal
-            selectedCard={selectedCard}
-            onClose={handleCloseModal}
-            onDeleteItem={handleDeleteItem}
+      <CurrentTemperatureUnitContext.Provider
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      >
+        <CurrentUserProvider>
+          <Header
+            onCreateModal={handleCreateModal}
+            weatherLocation={weatherLocation}
+            onLoginModal={handleLoginModal}
+            onRegisterModal={handleRegisterModal}
             isLoggedIn={isLoggedIn}
-            currentUser={currentUser}
           />
-        )}
-        {activeModal === "login" && (
-          <LoginModal
-            handleCloseModal={handleCloseModal}
-            onClose={handleCloseModal}
-            onOpen={activeModal === "login"}
-            onLogin={handleLogin}
-            setActiveModal={setActiveModal}
-          />
-        )}
-        {activeModal === "register" && (
-          <RegisterModal
-            handleCloseModal={handleCloseModal}
-            onClose={handleCloseModal}
-            onOpen={activeModal === "register"}
-            onRegister={handleRegister}
-            setActiveModal={setActiveModal}
-          />
-        )}
-        {activeModal === "edit" && (
-          <EditProfileModal
-            handleCloseModal={handleCloseModal}
-            onClose={handleCloseModal}
-            onOpen={activeModal === "edit"}
-            onSubmit={handleEditProfile}
-          />
-        )}
-      </CurrentUserContext.Provider>
-    </CurrentTemperatureUnitContext.Provider>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  weatherTemp={weatherTemp}
+                  onSelectedCard={handleSelectedCard}
+                  clothingItems={clothingItems}
+                  onCardLike={handleCardLike}
+                />
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  onCreateModal={handleCreateModal}
+                  clothingItems={clothingItems}
+                  onSelectedCard={handleSelectedCard}
+                  onEditProfileModal={handleEditProfileModal}
+                  onLogout={handleLogout}
+                  onCardLike={handleCardLike}
+                />
+              }
+            />
+            <Route
+              path=""
+              element={
+                isLoggedIn ? <Navigate to="/profile" /> : <Navigate to="/" />
+              }
+            />
+          </Routes>
+          <Footer />
+          {activeModal === "create" && (
+            <AddItemModal
+              handleCloseModal={handleCloseModal}
+              onClose={handleCloseModal}
+              onOpen={activeModal === "create"}
+              onAddItem={handleAddItem}
+            />
+          )}
+          {activeModal === "preview" && (
+            <ItemModal
+              selectedCard={selectedCard}
+              onClose={handleCloseModal}
+              onDeleteItem={handleDeleteItem}
+              isLoggedIn={isLoggedIn}
+              currentUser={currentUser}
+            />
+          )}
+          {activeModal === "login" && (
+            <LoginModal
+              handleCloseModal={handleCloseModal}
+              onClose={handleCloseModal}
+              onOpen={activeModal === "login"}
+              onLogin={handleLogin}
+              setActiveModal={setActiveModal}
+            />
+          )}
+          {activeModal === "register" && (
+            <RegisterModal
+              handleCloseModal={handleCloseModal}
+              onClose={handleCloseModal}
+              onOpen={activeModal === "register"}
+              onRegister={handleRegister}
+              setActiveModal={setActiveModal}
+            />
+          )}
+          {activeModal === "edit" && (
+            <EditProfileModal
+              handleCloseModal={handleCloseModal}
+              onClose={handleCloseModal}
+              onOpen={activeModal === "edit"}
+              onSubmit={handleEditProfile}
+            />
+          )}
+        </CurrentUserProvider>
+      </CurrentTemperatureUnitContext.Provider>
   );
 };
+
 export default App;

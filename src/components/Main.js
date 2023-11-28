@@ -24,7 +24,7 @@ function Main({ weatherTemp, onSelectedCard, clothingItems, onCardLike }) {
     onCardLike({ id, isLiked, user });
   };
 
-  const filteredCards = clothingItems.filter((card) => {
+  const filteredCards = (clothingItems ?? []).filter((card) => {
     return card.weather.toLowerCase() === weatherType;
   });
 

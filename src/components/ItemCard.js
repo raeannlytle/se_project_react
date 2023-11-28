@@ -4,9 +4,12 @@ import "../blocks/ItemCard.css";
 import inactiveLike from "../images/like-button-inactive.svg";
 
 const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
-  const { currentUser } = useContext(CurrentUserContext);
+  const contextValue = useContext(CurrentUserContext);
 
-  const isLiked = item.likes.some((_id) => _id === currentUser._id);
+  const { currentUser } = contextValue || {};
+
+  const isLiked =
+    currentUser && item.likes.some((_id) => _id === currentUser._id);
 
   const itemLikeButtonClassName = `card__likeButton ${
     isLiked ? "card__likeButton-active" : "card__likeButton-inactive"
