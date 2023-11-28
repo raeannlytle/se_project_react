@@ -1,39 +1,39 @@
 import React, { useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import "../blocks/ItemCard.css";
+import inactiveLike from "../images/like-button-inactive.svg";
 
-const ItemCard = ({ item, onSelectedCard, onCardClick }) => {
+const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
   const { currentUser } = useContext(CurrentUserContext);
 
-  const isLiked = item.likes && item.likes.some((id) => id === currentUser._id);
+  const isLiked = item.likes.some((_id) => _id === currentUser._id);
 
-  const itemLikeButtonClassName = `like-button ${isLiked ? "liked" : ""}`;
-  const handleLikeClick = () => {
-    if (onCardClick && typeof onCardClick === "function") {
-      onCardClick(item._id);
-    }
-  };
+  const itemLikeButtonClassName = `card__likeButton ${
+    isLiked ? "card__likeButton-active" : "card__likeButton-inactive"
+  }`;
+
+  function handleCardLike(item) {
+    onCardLike(item, isLiked, currentUser);
+  }
 
   return (
     <div className="card">
-      {item && item.link && (
-        <div>
-          <img
-            src={item.link}
-            alt={item.name}
-            className="card__image"
-            onClick={() => onSelectedCard(item)}
-          />
-          {currentUser && (
-            <button
-              className={itemLikeButtonClassName}
-              onClick={handleLikeClick}
-            >
-              Like
-            </button>
-          )}
-        </div>
-      )}
-      <div className="card__name">{item && item.name}</div>
+      <img
+        src={item.imageUrl}
+        className="card__image"
+        onClick={() => onSelectedCard(item)}
+        alt={item.name}
+      />
+      <div className="card__title">
+        <h2 className="card__name">{item.name}</h2>
+        <button
+          type="button"
+          className={itemLikeButtonClassName}
+          onClick={() => {
+            handleCardLike(item);
+          }}
+        ></button>
+      </div>
     </div>
   );
 };
