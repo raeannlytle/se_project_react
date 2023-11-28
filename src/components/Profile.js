@@ -1,9 +1,9 @@
 import SideBar from "./SideBar";
-import ClothesSection from "./src/components/ClothesSection";
+import ClothesSection from "./ClothesSection";
 import "../blocks/Profile.css";
-import ItemCard from "./src/components/ItemCard";
+import ItemCard from "./ItemCard";
 import "../blocks/ItemCards.css";
-import EditProfileModal from "./src/components/EditProfileModal";
+import EditProfileModal from "./EditProfileModal";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useState, useContext } from "react";
 
