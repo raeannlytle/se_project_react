@@ -180,7 +180,6 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
       <CurrentUserContext.Provider value={{ currentUser, isLoggedIn }}>
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -260,7 +259,6 @@ function App() {
           )}
         </CurrentTemperatureUnitContext.Provider>
       </CurrentUserContext.Provider>
-    </BrowserRouter>
   );
 }
 
