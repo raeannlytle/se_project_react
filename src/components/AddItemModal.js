@@ -2,14 +2,18 @@ import { useEffect, useState } from "react";
 import ModalWithForm from "./ModalWithForm";
 import "../blocks/AddItemModal.css";
 
-export default function AddItemModal({ onClose, isOpen, onAddItem }) {
-  console.log("onAddItem:", onAddItem);
+export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
+  const token = localStorage.getItem("jwt");
   const [name, setName] = useState("");
-  const [link, setLink] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [weatherType, setWeatherType] = useState("");
 
-  function handleLink(e) {
-    setLink(e.target.value);
+  function handleNameChange(e) {
+    setName(e.target.value);
+  }
+
+  function handleImageChange(e) {
+    setImageUrl(e.target.value);
   }
 
   function handleWeatherType(e) {
@@ -18,25 +22,13 @@ export default function AddItemModal({ onClose, isOpen, onAddItem }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    if (!name || !link || !weatherType) {
-      console.error("All fields are required");
-      return;
-    }
-
-    if (typeof onAddItem === "function") {
-      onAddItem({ name, link, weatherType });
-    } else {
-      console.error("onAddItem is not a function");
-    }
-
-    onClose();
+    onAddItem({ name, imageUrl, weatherType, token });
   }
 
   useEffect(() => {
     if (isOpen) {
       setName("");
-      setLink("");
+      setImageUrl("");
       setWeatherType("");
     }
   }, [isOpen]);
@@ -44,7 +36,8 @@ export default function AddItemModal({ onClose, isOpen, onAddItem }) {
   return (
     <ModalWithForm
       title="New garment"
-      onClick={onClose}
+      onClose={handleCloseModal}
+      isOpen={isOpen}
       onSubmit={handleSubmit}
       buttonText="Add garment"
     >
@@ -59,9 +52,7 @@ export default function AddItemModal({ onClose, isOpen, onAddItem }) {
             maxLength="3000"
             placeholder="Name"
             value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
+            onChange={handleNameChange}
           />
         </label>
         <label className="modal__label">
@@ -72,8 +63,8 @@ export default function AddItemModal({ onClose, isOpen, onAddItem }) {
             name="link"
             minLength="1"
             placeholder="Image Url"
-            onChange={handleLink}
-            value={link}
+            onChange={handleImageChange}
+            value={imageUrl}
           />
         </label>
       </div>
