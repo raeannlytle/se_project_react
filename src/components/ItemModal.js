@@ -1,20 +1,16 @@
 import "../blocks/ModalWithForm.css";
-import "../blocks/ItemModal.css";
 import closeButton from "../images/close-button.svg";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
 
-const ItemModal = ({ selectedCard, onClose, onDeleteItem }) => {
-  const currentUser = useContext(CurrentUserContext);
-  const token = localStorage.getItem("jwt");
-  const isOwn = selectedCard.owner === currentUser._id;
-  const itemDeleteButtonClassName = `${
-    isOwn ? "modal__delete-button_visible" : "modal__delete-button_hidden"
-  }`;
+const ItemModal = ({ itemData, onClose, handleOpenConfirmModal }) => {
+  const { currentUser } = useContext(CurrentUserContext);
 
-  function handleDeleteItem() {
-    onDeleteItem(selectedCard._id, token);
-  }
+  const isOwn = itemData && itemData.owner && itemData.owner._id === currentUser?._id;
+
+  const itemDeleteButtonClassName = `modal__button-delete ${
+    isOwn ? "modal__button-delete_visible" : "modal__button-delete_hidden"
+  }`;
 
   return (
     <div className="modal">
@@ -28,19 +24,18 @@ const ItemModal = ({ selectedCard, onClose, onDeleteItem }) => {
           <img src={closeButton} alt="close-button" />
         </button>
         <img
-          src={selectedCard.imageUrl}
+          src={itemData?.link || itemData?.imageUrl || ""}
           className="modal__image-preview"
-          alt={selectedCard.name}
+          alt="item-image"
         />
         <div className="modal__text-container">
           <div className="modal__text-preview">
-            <div>{selectedCard.name}</div>
-            <div>Weather type: {selectedCard.weather}</div>
+            <div>{itemData?.name}</div>
+            <div>Weather type: {itemData?.weather}</div>
           </div>
           <button
-            type="button"
             className={itemDeleteButtonClassName}
-            onClick={handleDeleteItem}
+            onClick={handleOpenConfirmModal}
           >
             Delete item
           </button>
