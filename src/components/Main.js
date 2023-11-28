@@ -1,4 +1,4 @@
-import WeatherCard from "../../WeatherCard";
+import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
 import "../blocks/Main.css";
 import React, { useContext, useMemo } from "react";
