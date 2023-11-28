@@ -70,7 +70,7 @@ const LoginModal = ({ handleCloseModal, isOpen, onLogin, setActiveModal }) => {
       <div>
         <button
           type="button"
-          className="modal__button-submit modal__button-submit-register"
+          className="modal__button-submit modal__button-submit-2"
           onClick={handleRegister}
         >
           or Register
