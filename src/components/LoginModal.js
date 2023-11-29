@@ -43,6 +43,7 @@ const LoginModal = ({ handleCloseModal, onClose, onLogin, isOpen }) => {
       isOpen={isOpen}
       onSubmit={handleSubmit}
       buttonText="Login"
+      modalName='login'
     >
       <div className="modal__labels">
         <label className="modal__label">

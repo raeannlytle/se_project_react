@@ -53,6 +53,7 @@ const RegisterModal = ({
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleRegister}
+      modalName='register'
     >
       <div className="modal__labels">
         <label className="modal__label">
@@ -113,7 +114,7 @@ const RegisterModal = ({
       <div>
         <button
           type="button"
-          className="modal__button-submit modal__buttom-submit-register"
+          className="modal__button-submit modal__button-submit-register"
           onClick={handleLogin}
         >
           or Login

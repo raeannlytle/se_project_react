@@ -25,6 +25,14 @@
   line-height: 20px;
 }
 
+.modal-content-login {
+  max-height: 304px;
+}
+
+.modal-content-edit {
+  max-height: 304px;
+}
+
 .modal__content_preview {
   height: 610px;
   max-width: 498px;
@@ -94,7 +102,10 @@
 
 .modal__button-close {
   border: none;
-  background: none;
+  background-image: url("../images/close-button.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
   position: absolute;
   top: 23px;
   right: 31px;
@@ -236,4 +247,22 @@
 
 .modal__button-delete_hidden {
   display: none;
+}
+
+.modal__button-submit-register {
+  position: absolute;
+  right: 260px;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.5);
+  width: 80px;
+  margin-left: 8px;
+}
+
+.modal__button-submit-login {
+  position: absolute;
+  right: 260px;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.5);
+  width: 80px;
+  margin-left: 8px;
 }
