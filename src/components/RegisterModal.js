@@ -7,14 +7,14 @@ const RegisterModal = ({
   isOpen,
   setActiveModal,
 }) => {
-  const [username, setUsername] = useState("");
+  const [name, setname] = useState("");
   const [avatar, setAvatar] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   useEffect(() => {
     if (!isOpen) {
-      setUsername("");
+      setname("");
       setAvatar("");
       setEmail("");
       setPassword("");
@@ -23,14 +23,14 @@ const RegisterModal = ({
 
   function handleRegister(e) {
     e.preventDefault();
-    onRegister(email, password, username, avatar);
+    onRegister(email, password, name, avatar);
   }
 
   function handleLogin(e) {
     setActiveModal("login");
   }
 
-  function handleUsernameChange(e) {
+  function handleNameChange(e) {
     setUsername(e.target.value);
   }
 
@@ -48,23 +48,24 @@ const RegisterModal = ({
 
   return (
     <ModalWithForm
-      className="register-modal"
       title="Register"
       buttonText="Register"
       onClose={handleCloseModal}
       isOpen={isOpen}
+      onSubmit={handleRegister}
     >
       <div className="modal__labels">
         <label className="modal__label">
-          Username:
+          Name:
           <input
             placeholder="Name"
             className="modal__input"
+            minLength="1"
+            maxLength="30"
             type="text"
-            id="username"
-            value={username}
-            onChange={handleUsernameChange}
-            required
+            name="name"
+            value={name}
+            onChange={handleNameChange}
           />
         </label>
         <label className="modal__label">
@@ -73,10 +74,11 @@ const RegisterModal = ({
             placeholder="Avatar URL"
             className="modal__input"
             type="text"
-            id="avatar"
+            name="avatar"
+            minLength="1"
+            maxLength="200"
             value={avatar}
             onChange={handleAvatarChange}
-            required
           />
         </label>
         <label className="modal__label">
@@ -85,7 +87,9 @@ const RegisterModal = ({
             placeholder="Email"
             className="modal__input"
             type="text"
-            id="email"
+            name="email"
+            minLength="1"
+            maxLength="30"
             value={email}
             onChange={handleEmailChange}
             required
@@ -97,7 +101,9 @@ const RegisterModal = ({
             placeholder="Password"
             className="modal__input"
             type="text"
-            id="password"
+            name="password"
+            minLength="1"
+            maxLength="30"
             value={password}
             onChange={handlePasswordChange}
             required
@@ -107,7 +113,7 @@ const RegisterModal = ({
       <div>
         <button
           type="button"
-          className="modal__button-submit modal__buttom-submit-2"
+          className="modal__button-submit modal__buttom-submit-register"
           onClick={handleLogin}
         >
           or Login
