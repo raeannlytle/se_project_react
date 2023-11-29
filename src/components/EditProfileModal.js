@@ -1,65 +1,74 @@
 import "../blocks/ModalWithForm.css";
 import closeButton from "../images/close-button.svg";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import * as api from "../utils/api";
+import ModalWithForm from "./ModalWithForm";
 
-const EditProfileModal = ({ onClose }) => {
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+const EditProfileModal = ({ handleCloseModal, isOpen, onSubmit }) => {
+  const token = localStorage.getItem("jwt");
 
-  const [formData, setFormData] = useState({
-    username: currentUser.username,
-    avatar: currentUser.avatar || "",
-  });
+  const [name, setName] = useState("");
+  const [avatar, setAvatar] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  const currentUser = useContext(CurrentUserContext);
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleAvatarChange = (e) => {
+    setAvatar(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    api
-      .updateUserProfile(formData)
-      .then((updatedUser) => {
-        setCurrentUser(updatedUser);
-        onClose();
-      })
-      .catch((error) => {
-        console.error("Error updating user profile:", error);
-      });
+    onSubmit(name, avatar, token);
   };
 
+  useEffect(() => {
+    if (!isOpen) {
+      setName(currentUser.name);
+      setAvatar(currentUser.avatar);
+    }
+  }, [isOpen]);
+
   return (
-    <div className="modal">
-      <div className="modal__content">
-        <button
-          type="button"
-          id="modal-close-button"
-          onClick={onClose}
-          className="modal__button-close"
-        >
-          <img src={closeButton} alt="close-button" />
-        </button>
-        <h2 className="modal__title">Edit Profile</h2>
-        <form className="modal__form" onSubmit={handleSubmit}>
-          <label className="modal__label">
-            Username
-            <input
-              type="text"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              className="modal__input"
-              required
-            />
-          </label>
-          <button type="submit" className="modal__button-submit">
-            Save Changes
-          </button>
-        </form>
+    <ModalWithForm
+      title="Edit Profile"
+      onClose={handleCloseModal}
+      isOpen={isOpen}
+      onSubmit={handleSubmit}
+      buttonText="Save changes"
+    >
+      <div className="modal__labels">
+        <label className="modal__label">
+          Name
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            minLength="1"
+            maxLength="30"
+            value={name}
+            onChange={handleNameChange}
+            className="modal__input"
+          />
+        </label>
+        <label className="modal__label">
+          Image Url
+          <input
+            type="url"
+            name="avatar"
+            placeholder="Image URL"
+            minLength="1"
+            maxLength="200"
+            className="modal__input"
+            value={avatar}
+            onChange={handleAvatarChange}
+          />
+        </label>
       </div>
-    </div>
+    </ModalWithForm>
   );
 };
 

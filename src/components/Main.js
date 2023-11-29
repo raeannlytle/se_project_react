@@ -5,7 +5,7 @@ import React, { useContext, useMemo } from "react";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import { temperature } from "../utils/weatherApi";
 
-function Main({ weatherTemp, onSelectedCard, clothingItems, onCardLike }) {
+function Main({ weatherTemp, onSelectedCard, clothingItems = [], onCardLike }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const weatherType = useMemo(() => {
     if (weatherTemp >= 86) {
