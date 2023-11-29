@@ -3,32 +3,40 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import ItemCard from "./ItemCard";
 import "../blocks/ClothesSection.css";
 
-function ClothesSection({ onCreateModal, clothingItems, onCardClick }) {
-  const { currentUser } = useContext(CurrentUserContext);
-
-  if (!currentUser) {
-    return null;
-  }
-
-  const userClothingItems = clothingItems.filter(
-    (item) => item.owner._id === currentUser._id
-  );
+function ClothesSection({
+  onSelectedCard,
+  handleCreateModal,
+  isLoggedIn,
+  onCardLike,
+  clothingItems,
+}) {
+  const currentUser = useContext(CurrentUserContext);
+  const currentItems = clothingItems.filter((item) => {
+    return item.owner === currentUser._id;
+  });
 
   return (
     <div className="clothes">
       <div className="clothes__title">Your items</div>
-      <button className="clothes__button" type="button" onClick={onCreateModal}>
+      <button
+        className="clothes__button"
+        type="submit"
+        onClick={handleCreateModal}
+      >
         + Add new
       </button>
       <div className="clothes__items">
-        {userClothingItems.map((item) => (
-          <ItemCard
-            key={item._id}
-            item={item}
-            onSelectedCard={() => {}}
-            onCardClick={onCardClick}
-          />
-        ))}
+        {currentItems.map((item) => {
+          return (
+            <ItemCard
+              key={item?._id ?? item?.id}
+              item={item}
+              onSelectedCard={onSelectedCard}
+              isLoggedIn={isLoggedIn}
+              onCardLike={onCardLike}
+            />
+          );
+        })}
       </div>
     </div>
   );
