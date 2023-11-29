@@ -3,7 +3,7 @@ import ModalWithForm from "./ModalWithForm";
 import "../blocks/ModalWithForm.css";
 import "../blocks/LoginModal.css";
 
-const LoginModal = ({ handleCloseModal, isOpen, setActiveModal, onLogin }) => {
+const LoginModal = ({ handleCloseModal, onClose, onLogin, isOpen }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,7 +13,7 @@ const LoginModal = ({ handleCloseModal, isOpen, setActiveModal, onLogin }) => {
   };
 
   const handleRegister = (e) => {
-    setActiveModal("register");
+    onClose("register");
   };
 
   const handleEmailChange = (e) => {

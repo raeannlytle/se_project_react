@@ -1,11 +1,4 @@
-const baseUrl = 'http://localhost:3001';
-
-const checkResponse = (response) => {
-  if (!response.ok) {
-    throw new Error(`HTTP error! Status: ${response.status}`);
-  }
-  return response.json();
-};
+import { baseUrl, checkResponse } from "../utils/utils";
 
 export const registerUser = ({ email, password, username, avatar }) => {
   return fetch(`${baseUrl}/signup`, {

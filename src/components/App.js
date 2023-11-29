@@ -239,7 +239,7 @@ function App() {
           <RegisterModal
             handleCloseModal={handleCloseModal}
             onClose={handleCloseModal}
-            onOpen={activeModal === "register"}
+            isOpen={activeModal === "register"}
             onRegister={handleRegister}
             setActiveModal={setActiveModal}
           />
@@ -247,7 +247,7 @@ function App() {
         {activeModal === "login" && (
           <LoginModal
             handleCloseModal={handleCloseModal}
-            onClose={handleCloseModal}
+            onClose={setActiveModal}
             onOpen={activeModal === "login"}
             onLogin={handleLogin}
             setActiveModal={setActiveModal}

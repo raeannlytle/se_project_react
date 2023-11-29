@@ -3,19 +3,12 @@ import "../blocks/ModalWithForm.css";
 
 const ModalWithForm = ({
   children,
-  buttonText = "Add garment",
+  buttonText,
   title,
   onClose,
+  isOpen,
   onSubmit,
-  onRegister,
-  onLogin,
 }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (onSubmit) {
-      onSubmit(e);
-    }
-  };
 
   return (
     <div className="modal">
@@ -26,8 +19,8 @@ const ModalWithForm = ({
           className="modal__button-close"
         ></button>
         <h3 className="modal__title">{title}</h3>
-        {children}
-        <form onSubmit={handleSubmit}>
+        <form className="modal__form" onSubmit={onSubmit}>
+          {children}
           <button className="modal__button-submit" type="submit">
             {buttonText}
           </button>

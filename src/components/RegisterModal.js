@@ -7,14 +7,14 @@ const RegisterModal = ({
   isOpen,
   setActiveModal,
 }) => {
-  const [name, setname] = useState("");
+  const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   useEffect(() => {
     if (!isOpen) {
-      setname("");
+      setName("");
       setAvatar("");
       setEmail("");
       setPassword("");
@@ -31,7 +31,7 @@ const RegisterModal = ({
   }
 
   function handleNameChange(e) {
-    setUsername(e.target.value);
+    setName(e.target.value);
   }
 
   function handleAvatarChange(e) {
