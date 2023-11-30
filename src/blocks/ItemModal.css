@@ -1,0 +1,83 @@
+.item__modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 0, 0, 0.5);
+  font-family: "Familjen Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.item_modal__content {
+  background-color: #fff;
+  max-width: 498px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  position: relative;
+  height: min-content;
+}
+
+.item_modal__close_button {
+  position: absolute;
+  bottom: calc(100% - 35px);
+  left: calc(100% - 35px);
+  width: 20px;
+  height: 20px;
+  background-image: url("../images/close-button.svg");
+  border: none;
+  fill: #fff;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.item_modal__close_button:hover {
+  transform: scale(2);
+  cursor: pointer;
+}
+
+.item_modal__caption {
+  background-color: #fff;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.item_modal__caption_name {
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.item_modal__caption_weather {
+  color: #000;
+}
+
+.item_modal__delete_button {
+  font-family: "Familjen Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ff4d00;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  text-align: left;
+  left: 350px;
+  top: -50px;
+  height: 0;
+}
+
+.item_modal__delete_button:hover {
+  cursor: pointer;
+}

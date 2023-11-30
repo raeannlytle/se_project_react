@@ -3,7 +3,6 @@ import ModalWithForm from "./ModalWithForm";
 import "../blocks/AddItemModal.css";
 
 export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
-  const token = localStorage.getItem("jwt");
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weatherType, setWeatherType] = useState("");
@@ -22,7 +21,7 @@ export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddItem({ name, imageUrl, weatherType, token });
+    onAddItem({ name, imageUrl, weatherType });
   }
 
   useEffect(() => {
@@ -49,10 +48,11 @@ export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
             type="text"
             name="name"
             minLength="1"
-            maxLength="3000"
+            maxLength="30"
             placeholder="Name"
             value={name}
             onChange={handleNameChange}
+            required
           />
         </label>
         <label className="modal__label">
@@ -65,6 +65,7 @@ export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
             placeholder="Image Url"
             onChange={handleImageChange}
             value={imageUrl}
+            required
           />
         </label>
       </div>

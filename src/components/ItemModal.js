@@ -1,41 +1,40 @@
-import "../blocks/ModalWithForm.css";
-import closeButton from "../images/close-button.svg";
+import "../blocks/ItemModal.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { useContext } from "react";
+import React, { useContext } from "react";
 
-const ItemModal = ({ itemData, onClose, handleOpenConfirmModal }) => {
-  const { currentUser } = useContext(CurrentUserContext);
+const ItemModal = ({ selectedCard, onClose, handleDeleteItem }) => {
+  const currentUser = useContext(CurrentUserContext);
 
-  const isOwn = itemData && itemData.owner && itemData.owner._id === currentUser?._id;
+  const isOwner = selectedCard.owner === currentUser._id;
 
-  const itemDeleteButtonClassName = `modal__button-delete ${
-    isOwn ? "modal__button-delete_visible" : "modal__button-delete_hidden"
+  const itemModalDeleteButton = `${
+    isOwner ? "modal__delete-button-visible" : "modal__delete-button_hidden"
   }`;
 
   return (
-    <div className="modal">
-      <div className="modal__content modal__content_preview">
+    <div className={`item__modal`}>
+      <div className="item_modal__content">
         <button
           type="button"
-          id="modal-close-button"
           onClick={onClose}
-          className="modal__button-close"
-        >
-          <img src={closeButton} alt="close-button" />
-        </button>
+          className="item_modal__close_button"
+        ></button>
         <img
-          src={itemData?.link || itemData?.imageUrl || ""}
-          className="modal__image-preview"
-          alt="item-image"
+          src={selectedCard.imageUrl}
+          alt={selectedCard.name}
+          className="item_modal__item_image"
         />
-        <div className="modal__text-container">
-          <div className="modal__text-preview">
-            <div>{itemData?.name}</div>
-            <div>Weather type: {itemData?.weather}</div>
+        <div className="item_modal__caption">
+          <div>
+            <div className="item_modal__caption_name">{selectedCard.name}</div>
+            <div className="item_modal__caption_weather">
+              Weather type:{selectedCard.weather}
+            </div>
           </div>
           <button
-            className={itemDeleteButtonClassName}
-            onClick={handleOpenConfirmModal}
+            className="item_modal__delete_button"
+            type="button"
+            onClick={() => handleDeleteItem(selectedCard)}
           >
             Delete item
           </button>
