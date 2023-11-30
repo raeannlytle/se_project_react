@@ -1,4 +1,5 @@
 .profile {
   display: flex;
-  gap: 116px;
+  flex-direction: row;
+  padding-top: 32px;
 }

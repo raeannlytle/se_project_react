@@ -28,7 +28,7 @@ export const getUserInfo = (token) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      authorizationHeader: `Bearer ${token}`,
     },
   }).then(checkResponse);
 };
@@ -38,7 +38,7 @@ export const editProfile = (name, avatar, token) => {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      authorizationHeader: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, avatar }),
   }).then(checkResponse);

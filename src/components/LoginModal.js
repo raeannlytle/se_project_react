@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
 import ModalWithForm from "./ModalWithForm";
-import "../blocks/ModalWithForm.css";
-import "../blocks/LoginModal.css";
 
-const LoginModal = ({ handleCloseModal, onClose, onLogin, isOpen }) => {
+const LoginModal = ({ handleCloseModal, setActiveModal, onLogin, isOpen }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
+  const handleLoginSubmit = (e) => {
     e.preventDefault();
     onLogin(email, password);
   };
 
-  const handleRegister = (e) => {
-    onClose("register");
+  const handleRegisterClick = (e) => {
+    setActiveModal("register");
   };
 
   const handleEmailChange = (e) => {
@@ -22,11 +20,6 @@ const LoginModal = ({ handleCloseModal, onClose, onLogin, isOpen }) => {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onLogin();
   };
 
   useEffect(() => {
@@ -41,9 +34,9 @@ const LoginModal = ({ handleCloseModal, onClose, onLogin, isOpen }) => {
       title="Login"
       onClose={handleCloseModal}
       isOpen={isOpen}
-      onSubmit={handleSubmit}
+      onSubmit={handleLoginSubmit}
       buttonText="Login"
-      modalName='login'
+      modalName="login"
     >
       <div className="modal__labels">
         <label className="modal__label">
@@ -77,7 +70,7 @@ const LoginModal = ({ handleCloseModal, onClose, onLogin, isOpen }) => {
         <button
           type="button"
           className="modal__button-submit modal__button-submit-login"
-          onClick={handleRegister}
+          onClick={handleRegisterClick}
         >
           or Register
         </button>

@@ -4,34 +4,42 @@ import "../blocks/SideBar.css";
 
 function SideBar({ onEditProfileModal, onLogout }) {
   const currentUser = useContext(CurrentUserContext);
-  const handleLogout = () => {
+  const currentAvatar = currentUser.avatar !== "" ? true : false;
+
+  const handleLogoutClick = () => {
     onLogout();
   };
 
   return (
-    <div className="profile__sidebar">
-      <div className="profile__sidebar-avatar-name">
-        <img
-          className="profile__avatar"
-          src={currentUser.avatar}
-          alt={currentUser.username}
-        ></img>
-        <div className="profile__name">{currentUser.username}</div>
+    <div className="sidebar">
+      <div className="sidebar__profile-info">
+        {currentAvatar ? (
+          <img
+            className="sidebar__avatar"
+            src={currentUser.avatar}
+            alt="Avatar icon"
+          ></img>
+        ) : (
+          <p className="sidebar__avatar-default">
+            {currentUser.name[0].toUpperCase()}
+          </p>
+        )}
+        <p className="sidebar__name">{currentUser.name}</p>
       </div>
-      <div className="profile__sidebar-button-container">
+      <div className="sidebar__profile-manager">
         <button
+          className="sidebar__edit-button"
           type="button"
-          className="profile__sidebar-button"
           onClick={onEditProfileModal}
         >
           Edit Profile
         </button>
         <button
-          className="profile__sidebar-button"
+          className="sidebar__logout-button"
           type="button"
-          onClick={handleLogout}
+          onClick={onLogout}
         >
-          Logout
+          Log out
         </button>
       </div>
     </div>

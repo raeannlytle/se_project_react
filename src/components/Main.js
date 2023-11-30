@@ -1,9 +1,8 @@
 import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
 import "../blocks/Main.css";
-import React, { useContext, useMemo } from "react";
+import React, { useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
-import { temperature } from "../utils/weatherApi";
 
 function Main({
   isLoggedIn,
@@ -47,7 +46,8 @@ function Main({
     <main className="main">
       <WeatherCard day={true} type="sunny" weatherTemp={temp} />
       <section className="card__section" id="card-section">
-        Today is {temp}° {currentTemperatureUnit.currentTemperatureUnit} / You may want to wear:
+        Today is {temp}° {currentTemperatureUnit.currentTemperatureUnit} / You
+        may want to wear:
         <div className="card__items">
           {filteredCards?.map((item) => (
             <ItemCard

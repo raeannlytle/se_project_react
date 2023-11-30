@@ -14,6 +14,17 @@
   outline: none;
 }
 
+.switch__slider {
+  border-radius: 20px;
+  width: 30px;
+  height: 30px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+}
+
 .switch__slider-F {
   border-radius: 20px;
   width: 28px;

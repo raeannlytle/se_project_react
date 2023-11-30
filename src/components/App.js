@@ -21,8 +21,8 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import AddItemModal from "./AddItemModal";
 import {
   getItems,
-  addItems,
-  deleteItems,
+  addItem,
+  deleteItem,
   addCardLike,
   removeCardLike,
 } from "../utils/api";
@@ -74,18 +74,18 @@ function App() {
   };
 
   const onAddItem = (values) => {
-    addItems(values)
+    addItem(values)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
         handleCloseModal();
       })
       .catch((err) => {
-        console.error(err.status);
+        console.error("Error from onAddItem:", err);
       });
   };
 
   const handleDeleteItem = (selectedCard) => {
-    deleteItems(selectedCard)
+    deleteItem(selectedCard)
       .then(() => {
         const newClothingItems = clothingItems.filter((cards) => {
           return cards._id !== selectedCard._id;
@@ -225,6 +225,7 @@ function App() {
               onEditProfileModal={handleEditProfileModal}
               onLogout={handleLogout}
               isLoggedIn={isLoggedIn}
+              handleCreateModal={handleCreateModal}
             />
             <Routes>
               <Route path="/" element={<Main {...mainProps} />} />

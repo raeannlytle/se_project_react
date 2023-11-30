@@ -21,12 +21,12 @@ const RegisterModal = ({
     }
   }, [isOpen]);
 
-  function handleRegister(e) {
+  function handleRegisterSubmit(e) {
     e.preventDefault();
     onRegister(email, password, name, avatar);
   }
 
-  function handleLogin(e) {
+  function handleLoginClick(e) {
     setActiveModal("login");
   }
 
@@ -52,8 +52,8 @@ const RegisterModal = ({
       buttonText="Register"
       onClose={handleCloseModal}
       isOpen={isOpen}
-      onSubmit={handleRegister}
-      modalName='register'
+      onSubmit={handleRegisterSubmit}
+      modalName="register"
     >
       <div className="modal__labels">
         <label className="modal__label">
@@ -115,7 +115,7 @@ const RegisterModal = ({
         <button
           type="button"
           className="modal__button-submit modal__button-submit-register"
-          onClick={handleLogin}
+          onClick={handleLoginClick}
         >
           or Login
         </button>
