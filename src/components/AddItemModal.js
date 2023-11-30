@@ -5,7 +5,7 @@ import "../blocks/AddItemModal.css";
 export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [weatherType, setWeatherType] = useState("");
+  const [weather, setWeather] = useState("");
 
   function handleNameChange(e) {
     setName(e.target.value);
@@ -15,20 +15,20 @@ export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
     setImageUrl(e.target.value);
   }
 
-  function handleWeatherType(e) {
-    setWeatherType(e.target.value);
+  function handleWeather(e) {
+    setWeather(e.target.value);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddItem({ name, imageUrl, weatherType });
+    onAddItem({ name, imageUrl, weather });
   }
 
   useEffect(() => {
     if (isOpen) {
       setName("");
       setImageUrl("");
-      setWeatherType("");
+      setWeather("");
     }
   }, [isOpen]);
 
@@ -62,6 +62,7 @@ export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
             type="url"
             name="link"
             minLength="1"
+            maxLength="200"
             placeholder="Image Url"
             onChange={handleImageChange}
             value={imageUrl}
@@ -77,7 +78,7 @@ export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
             type="radio"
             id="hot"
             value="hot"
-            onChange={handleWeatherType}
+            onChange={handleWeather}
           />
           <label>Hot</label>
         </div>
@@ -87,7 +88,7 @@ export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
             type="radio"
             id="warm"
             value="warm"
-            onChange={handleWeatherType}
+            onChange={handleWeather}
           />
           <label>Warm</label>
         </div>
@@ -97,7 +98,7 @@ export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
             type="radio"
             id="cold"
             value="cold"
-            onChange={handleWeatherType}
+            onChange={handleWeather}
           />
           <label>Cold</label>
         </div>

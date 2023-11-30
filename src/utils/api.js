@@ -9,6 +9,7 @@ export const checkResponse = (res) => {
 };
 
 export const addItem = ({ name, imageUrl, weather }) => {
+  console.log("Request Payload:", { name, imageUrl, weather });
   const addItem = fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
