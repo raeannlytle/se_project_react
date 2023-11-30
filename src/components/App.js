@@ -291,7 +291,7 @@ function App() {
           <EditProfileModal
             handleCloseModal={handleCloseModal}
             onClose={handleCloseModal}
-            onOpen={activeModal === "editProfile"}
+            isOpen={activeModal === "editProfile"}
             onSubmit={handleEditProfile}
           />
         )}

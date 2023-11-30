@@ -11,12 +11,16 @@ const Header = ({
   onLoginModal,
   onRegisterModal,
   isLoggedIn,
+  onEditProfileModal,
 }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
 
+  const handleProfileClick = () => {
+    onEditProfileModal();
+  };
   const currentUser = useContext(CurrentUserContext);
   const avatarImage = currentUser.avatar !== "" ? true : false;
 
@@ -44,7 +48,9 @@ const Header = ({
               </button>
             </div>
             <Link to="/profile">
-              <div className="header__name">{currentUser.name}</div>
+              <div className="header__name" onClick={handleProfileClick}>
+                {currentUser.name}
+              </div>
             </Link>
             {avatarImage ? (
               <div>
