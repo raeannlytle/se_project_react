@@ -199,7 +199,7 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        setClothingItems(data.items);
+        setClothingItems(data);
       })
       .catch(console.error);
   }, []);
