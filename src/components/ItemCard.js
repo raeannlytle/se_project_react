@@ -7,8 +7,10 @@ const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
 
   const isLiked = item.likes.some((id) => id === currentUser._id);
 
-  const itemLikeButtonClassName = `card__likeButton ${isLiked ? 'card__likeButton-active' : 'card__likeButton-inactive'}`;
-  
+  const itemLikeButtonClassName = `card__likeButton ${
+    isLiked ? "card__likeButton-active" : "card__likeButton-inactive"
+  }`;
+
   const handleCardLike = (item) => {
     onCardLike(item, isLiked, currentUser);
   };
