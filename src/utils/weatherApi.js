@@ -21,6 +21,6 @@ export const parseWeatherData = (data) => {
 };
 
 export const parseLocation = (data) => {
-  const city = data.name;
-  return city;
+  const weatherLocation = data.name;
+  return weatherLocation;
 };

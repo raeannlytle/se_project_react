@@ -47,6 +47,7 @@ function App() {
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [weatherLocation, setWeatherLocation] = useState("");
 
   const handleLoginModal = () => {
     setActiveModal("login");
@@ -185,7 +186,9 @@ function App() {
     getForecastWeather()
       .then((data) => {
         const temperature = parseWeatherData(data);
+        const weatherLocation = parseLocation(data);
         setTemp(temperature);
+        setWeatherLocation(weatherLocation);
       })
       .catch((error) => {
         console.log(error);
@@ -226,6 +229,8 @@ function App() {
               onLogout={handleLogout}
               isLoggedIn={isLoggedIn}
               handleCreateModal={handleCreateModal}
+              weatherLocation={weatherLocation}
+              handleToggleSwitchChange={handleToggleSwitchChange}
             />
             <Routes>
               <Route path="/" element={<Main {...mainProps} />} />

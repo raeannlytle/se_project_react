@@ -101,7 +101,7 @@ const RegisterModal = ({
           <input
             placeholder="Password"
             className="modal__input"
-            type="text"
+            type="password"
             name="password"
             minLength="1"
             maxLength="30"
@@ -111,6 +111,14 @@ const RegisterModal = ({
           />
         </label>
       </div>
+      {avatar && (
+        <img
+          src={avatar}
+          alt={name ? `Avatar for ${name}` : "Avatar"}
+          className="modal__avatar-image"
+        />
+      )}
+
       <div>
         <button
           type="button"
@@ -123,4 +131,5 @@ const RegisterModal = ({
     </ModalWithForm>
   );
 };
+
 export default RegisterModal;
