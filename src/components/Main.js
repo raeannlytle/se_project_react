@@ -5,45 +5,57 @@ import React, { useContext, useMemo } from "react";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import { temperature } from "../utils/weatherApi";
 
-function Main({ weatherTemp, onSelectedCard, clothingItems = [], onCardLike }) {
-  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  const weatherType = useMemo(() => {
-    if (weatherTemp >= 86) {
-      return "hot";
-    } else if (weatherTemp >= 66 && weatherTemp <= 85) {
-      return "warm";
-    } else if (weatherTemp <= 65) {
-      return "cold";
+function Main({
+  isLoggedIn,
+  weatherTemp,
+  onSelectedCard,
+  clothingItems,
+  onCardLike,
+}) {
+  const currentTemperatureUnit = useContext(CurrentTemperatureUnitContext);
+  const temp =
+    weatherTemp?.temperature?.[currentTemperatureUnit.currentTemperatureUnit];
+  const getWeatherType = () => {
+    if (currentTemperatureUnit.currentTemperatureUnit === "F") {
+      if (temp >= 86) {
+        return "hot";
+      } else if (temp >= 66 && temp <= 85) {
+        return "warm";
+      } else if (temp <= 65) {
+        return "cold";
+      }
     }
-  }, [weatherTemp]);
 
-  const currentTemp = temperature(weatherTemp);
-  const currentTempString = currentTemp[currentTemperatureUnit];
-
-  const handleLikeClick = ({ id, isLiked, user }) => {
-    onCardLike({ id, isLiked, user });
+    if (currentTemperatureUnit.currentTemperatureUnit === "C") {
+      if (temp >= 30) {
+        return "hot";
+      } else if (temp >= 19 && temp <= 29) {
+        return "warm";
+      } else if (temp <= 18) {
+        return "cold";
+      }
+    }
   };
 
-  const filteredCards = clothingItems.filter((card) => {
-    return card.weather.toLowerCase() === weatherType;
+  const weatherType = getWeatherType();
+
+  const filteredCards = clothingItems?.filter((item) => {
+    return item.weather?.toLowerCase() === weatherType;
   });
 
   return (
     <main className="main">
-      <WeatherCard day={true} type="sunny" weatherTemp={weatherTemp} />
+      <WeatherCard day={true} type="sunny" weatherTemp={temp} />
       <section className="card__section" id="card-section">
-        Today is {currentTempString} / You may want to wear:
+        Today is {temp}° {currentTemperatureUnit.currentTemperatureUnit} / You may want to wear:
         <div className="card__items">
-          {filteredCards?.map((card) => (
+          {filteredCards?.map((item) => (
             <ItemCard
-              key={card._id}
-              item={card}
+              key={item?._id ?? item?.id}
+              item={item}
               onSelectedCard={onSelectedCard}
-              onCardLike={handleLikeClick}
-              name={card.name}
-              weather={card.weather}
-              id={card.id}
-              link={card.link}
+              onCardLike={onCardLike}
+              isLoggedIn={isLoggedIn}
             />
           ))}
         </div>

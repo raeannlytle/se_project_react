@@ -1,8 +1,6 @@
 import "../blocks/WeatherCard.css";
-import "../blocks/ItemCard.css";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import React, { useContext } from "react";
-import { temperature } from "../utils/weatherApi";
 
 import sunnyDay from "../images/day/day-sunny.svg";
 import cloudyDay from "../images/day/day-cloudy.svg";
@@ -32,23 +30,23 @@ const weatherOptions = [
   { url: foggyNight, day: false, type: "fog" },
 ];
 
-const WeatherCard = ({ day, type, weatherTemp }) => {
-  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  const imageSource = weatherOptions.filter((i) => {
+const WeatherCard = ({ day, type, weatherTemp = "" }) => {
+  const imageSrc = weatherOptions.filter((i) => {
     return i.day === day && i.type === type;
   });
 
-  const currentTemp = temperature(weatherTemp);
-  const currentTempString = currentTemp[currentTemperatureUnit];
+  const imageSrcUrl = imageSrc[0].url || "";
 
-  const imageSourceUrl = imageSource[0].url || " ";
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   return (
     <>
       <section className="weather" id="weather">
-        <div className="weather__temp">{currentTempString}</div>
+        <div className="weather__temp">
+          {weatherTemp}° {currentTemperatureUnit}
+        </div>
         <div>
-          <img src={imageSourceUrl} alt={type} className="weather__image" />
+          <img src={imageSrcUrl} alt={type} className="weather__image" />
         </div>
       </section>
       <section id="weather__cards"></section>
