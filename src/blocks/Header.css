@@ -3,45 +3,93 @@
   justify-content: space-between;
   align-items: center;
   min-height: 60px;
-  padding: 0 40px;
-  margin-bottom: 33px;
+  padding: 32px 40px 28px 40px;
   font-family: "Familjen Grotesk", sans-serif;
-  margin-top: 32px;
 }
 
 .header__logo {
   display: flex;
   align-items: center;
-}
-
-.header__date {
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 700;
-  margin-left: 24px;
-}
-
-.header__name {
-  font-size: 20px;
-  line-height: 25px;
-  font-weight: 700;
-  margin-right: 12px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
 }
 
 .header__avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.header__button {
-  border: none;
-  background-color: transparent;
+.header__avatar-image {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.header__date {
+  color: #000;
   font-family: "Familjen Grotesk", sans-serif;
   font-size: 20px;
   line-height: 24px;
   font-weight: 700;
-  margin-right: 20px;
+  margin-left: 24px;
+  margin: 0;
+}
+
+.header__profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.header__name {
+  color: #000;
+  font-family: "Familjen Grotesk", sans-serif;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 700;
+}
+
+.header__add-button {
+  color: #000;
+  border: none;
+  background-color: #fff;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.header__register-button {
+  color: #000;
+  border: none;
+  background-color: #fff;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.header__login-button {
+  color: #000;
+  border: none;
+  background-color: #fff;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .header__button:hover {

@@ -37,6 +37,7 @@ const EditProfileModal = ({ handleCloseModal, isOpen, onSubmit }) => {
       title="Edit Profile"
       onClose={handleCloseModal}
       isOpen={isOpen}
+      modalName={"editProfile"}
       onSubmit={handleSubmit}
       buttonText="Save changes"
     >
