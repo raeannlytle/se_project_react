@@ -43,7 +43,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
@@ -81,6 +81,7 @@ function App() {
         handleCloseModal();
       })
       .catch((err) => {
+        console.log(clothingItems);
         console.error("Error from onAddItem:", err);
       });
   };
