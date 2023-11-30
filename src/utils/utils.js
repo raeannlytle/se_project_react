@@ -37,16 +37,13 @@ export const defaultClothingItems = [
   },
 ];
 
-export const checkResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Error: ${res.status}`);
-};
+export const baseUrl = "http://localhost:3001";
 
 export const headers = {
   authorization: "",
   "Content-Type": "application/json",
 };
 
-export const baseUrl = "http://localhost:3001";
+export const latitude = 35.2271;
+export const longitude = -80.8431;
+export const apiKey = "7f2ccea786bcf422af97ac05555347aa";
