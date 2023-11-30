@@ -13,7 +13,7 @@ export const addItem = ({ name, imageUrl, weather }) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      authorizationHeader: `Bearer ${localStorage.getItem("jwt")}`,
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
     body: JSON.stringify({ name, imageUrl, weather }),
   })
@@ -34,7 +34,7 @@ export const getItems = () => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      authorizationHeader: `Bearer ${localStorage.getItem("jwt")}`,
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
   }).then(checkResponse);
   return getItems;
@@ -45,7 +45,7 @@ export const deleteItem = (selectedCard) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      authorizationHeader: `Bearer ${localStorage.getItem("jwt")}`,
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
   }).then(checkResponse);
   return deleteItem;
@@ -56,7 +56,7 @@ export const addCardLike = (itemId) => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      authorizationHeader: `Bearer ${localStorage.getItem("jwt")}`,
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
   }).then((res) => checkResponse(res));
 };
@@ -66,7 +66,7 @@ export const removeCardLike = (itemId) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      authorizationHeader: `Bearer ${localStorage.getItem("jwt")}`,
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
   }).then((res) => checkResponse(res));
 };

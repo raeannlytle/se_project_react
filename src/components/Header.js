@@ -1,3 +1,5 @@
+// Header.js
+import React from "react";
 import "../blocks/Header.css";
 import headerLogo from "../images/header-logo.svg";
 import ToggleSwitch from "./ToggleSwitch";
@@ -21,6 +23,7 @@ const Header = ({
   const handleProfileClick = () => {
     onEditProfileModal();
   };
+
   const currentUser = useContext(CurrentUserContext);
   const avatarImage = currentUser.avatar !== "" ? true : false;
 
