@@ -8,9 +8,14 @@
 }
 
 .clothes__header {
+  display: flex;
+  align-items: center;
+  width: 100%; 
+}
+
+.clothes__title {
   font-size: 20px;
-  margin: 0;
-  align-self: center;
+  margin-right: 8px;
 }
 
 .clothes__button {
