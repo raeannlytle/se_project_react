@@ -165,16 +165,11 @@ function App() {
         })
         .catch((err) => console.log(err));
     } else {
-      // If the item is liked, remove the like
       removeCardLike(item._id, token)
         .then((res) => {
-          // Assuming the response contains the updated item data
           const updatedItem = res.data;
-
-          // Log the updated item and check if it's getting the right data
           console.log("Updated Item (Unlike):", updatedItem);
 
-          // Update your frontend state accordingly
           setClothingItems((clothingItems) =>
             clothingItems.map((card) =>
               card._id === updatedItem._id ? updatedItem : card
