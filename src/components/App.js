@@ -77,7 +77,7 @@ function App() {
   const onAddItem = (values) => {
     addItem(values)
       .then((data) => {
-        setClothingItems([data, ...clothingItems]);
+        setClothingItems([data.data, ...clothingItems]);
         handleCloseModal();
       })
       .catch((err) => {
@@ -87,17 +87,19 @@ function App() {
   };
 
   const handleDeleteItem = (selectedCard) => {
-    deleteItem(selectedCard)
-      .then(() => {
-        const newClothingItems = clothingItems.filter((cards) => {
-          return cards._id !== selectedCard._id;
+    if (selectedCard && selectedCard._id) {
+      deleteItem(selectedCard)
+        .then(() => {
+          const newClothingItems = clothingItems.filter((cards) => {
+            return cards._id !== selectedCard._id;
+          });
+          setClothingItems(newClothingItems);
+          handleCloseModal();
+        })
+        .catch((error) => {
+          console.log(error);
         });
-        setClothingItems(newClothingItems);
-        handleCloseModal();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    }
   };
 
   const handleLogin = (email, password) => {
@@ -258,7 +260,7 @@ function App() {
             card={selectedCard}
             isOpen={activeModal === "preview"}
             onClose={handleCloseModal}
-            onDelete={handleDeleteItem}
+            handleDeleteItem={handleDeleteItem}
             onDeleteConfirm={() => setDeleteConfirm(true)}
           />
         )}
