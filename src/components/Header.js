@@ -22,7 +22,7 @@ const Header = ({
     onEditProfileModal(currentUser);
   };
   const currentUser = useContext(CurrentUserContext);
-  const avatarImage = currentUser.data.avatar !== "" ? true : false;
+  const avatarImage = currentUser.data?.avatar !== "" ? true : false;
 
   return (
     <header className="header">
@@ -49,20 +49,20 @@ const Header = ({
             </div>
             <Link to="/profile">
               <div className="header__name" onClick={handleProfileClick}>
-                {currentUser.data.name}
+                {currentUser.data?.name}
               </div>
             </Link>
             {avatarImage ? (
               <div>
                 <img
                   className="header__avatar"
-                  src={currentUser.data.avatar}
+                  src={currentUser.data?.avatar}
                   alt="avatar"
                 ></img>
               </div>
             ) : (
               <p className="header__avatar-default">
-                {currentUser.name[0].toUpperCase()}
+                {currentUser.data?.name[0].toUpperCase()}
               </p>
             )}
           </>
