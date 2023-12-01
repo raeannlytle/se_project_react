@@ -5,7 +5,10 @@ import React, { useContext } from "react";
 const ItemModal = ({ selectedCard, onClose, handleDeleteItem }) => {
   const currentUser = useContext(CurrentUserContext);
 
-  const isOwner = selectedCard.owner === currentUser._id;
+  // Check if selectedCard is defined before accessing properties
+  const isOwner = selectedCard && selectedCard.owner === currentUser._id;
+
+  const imageUrl = selectedCard ? selectedCard.imageUrl : '';
 
   const itemModalDeleteButton = `${
     isOwner ? "modal__delete-button-visible" : "modal__delete-button_hidden"
@@ -19,17 +22,25 @@ const ItemModal = ({ selectedCard, onClose, handleDeleteItem }) => {
           onClick={onClose}
           className="item_modal__close_button"
         ></button>
-        <img
-          src={selectedCard.imageUrl}
-          alt={selectedCard.name}
-          className="item_modal__item_image"
-        />
+        {imageUrl && (
+          <img
+            src={imageUrl}
+            alt={selectedCard.name}
+            className="item_modal__item_image"
+          />
+        )}
         <div className="item_modal__caption">
           <div>
-            <div className="item_modal__caption_name">{selectedCard.name}</div>
-            <div className="item_modal__caption_weather">
-              Weather type:{selectedCard.weather}
-            </div>
+            {selectedCard && (
+              <>
+                <div className="item_modal__caption_name">
+                  {selectedCard.name}
+                </div>
+                <div className="item_modal__caption_weather">
+                  Weather type: {selectedCard.weather}
+                </div>
+              </>
+            )}
           </div>
           <button
             className="item_modal__delete_button"
