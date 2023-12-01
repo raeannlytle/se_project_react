@@ -63,3 +63,11 @@
   font-weight: 700;
   line-height: 1.2;
 }
+
+.card__likeButton-active {
+  background-image: url("../images//like-button-active.svg");
+}
+
+.card__likeButton-inactive {
+  background-image: url("../images//like-button-inactive.svg");
+}
