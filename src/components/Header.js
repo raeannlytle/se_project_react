@@ -24,7 +24,7 @@ const Header = ({
     navigate('/profile');
   };
   const currentUser = useContext(CurrentUserContext);
-  const avatarImage = currentUser.data?.avatar !== "" ? true : false;
+  const avatarImage = currentUser.avatar !== "" ? true : false;
 
   return (
     <header className="header">
@@ -64,7 +64,7 @@ const Header = ({
               </div>
             ) : (
               <p className="header__avatar-default">
-                {currentUser.data.name[0].toUpperCase()}
+                {currentUser.data?.name[0].toUpperCase()}
               </p>
             )}
           </>
