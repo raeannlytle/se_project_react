@@ -12,6 +12,7 @@
   font-weight: 700;
   margin: 0;
   white-space: nowrap;
+  margin-bottom: 8px; 
 }
 
 .sidebar__avatar {
@@ -41,23 +42,11 @@
 .sidebar__profile-manager {
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
   margin-left: 20px;
   align-items: flex-start;
 }
 
-.sidebar__edit-button {
-  color: #000;
-  font-family: "Familjen Grotesk", sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  padding: 0;
-  line-height: 24px;
-  background-color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
+.sidebar__edit-button,
 .sidebar__logout-button {
   color: #000;
   font-family: "Familjen Grotesk", sans-serif;
@@ -66,7 +55,7 @@
   line-height: 24px;
   background-color: #fff;
   padding: 0;
-  margin-top: 8px;
+  margin: 0;
   border: none;
   cursor: pointer;
 }
