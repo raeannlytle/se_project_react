@@ -1,5 +1,3 @@
-// Header.js
-import React from "react";
 import "../blocks/Header.css";
 import headerLogo from "../images/header-logo.svg";
 import ToggleSwitch from "./ToggleSwitch";
@@ -20,10 +18,11 @@ const Header = ({
     day: "numeric",
   });
 
+  const handleProfileClick = () => {
+    onEditProfileModal();
+  }
   const currentUser = useContext(CurrentUserContext);
-  console.log(currentUser);
   const avatarImage = currentUser.avatar !== "" ? true : false;
-  console.log(avatarImage);
 
   return (
     <header className="header">
@@ -35,55 +34,55 @@ const Header = ({
           {currentDate}, {weatherLocation}
         </p>
       </div>
-      <Link to="/profile" className="header__profile-link">
-        <div className="header__profile">
-          <ToggleSwitch />
-          {isLoggedIn ? (
-            <>
+      <div className="header__profile">
+        <ToggleSwitch />
+        {isLoggedIn ? (
+          <>
+            <div>
+              <button
+                className="header__add-button"
+                type="text"
+                onClick={handleCreateModal}
+              >
+                + Add clothes
+              </button>
+            </div>
+            <Link to="/profile">
+              <div className="header__name" onClick={handleProfileClick}>{currentUser.name}</div>
+            </Link>
+            {avatarImage ? (
               <div>
-                <button
-                  className="header__add-button"
-                  type="text"
-                  onClick={handleCreateModal}
-                >
-                  + Add clothes
-                </button>
+                <img
+                  className="header__avatar"
+                  src={currentUser.avatar}
+                  alt="avatar"
+                ></img>
               </div>
-              <div className="header__name">{currentUser.name}</div>
-              {avatarImage ? (
-                <div>
-                  <img
-                    className="header__avatar"
-                    src={currentUser.avatar}
-                    alt="avatar"
-                  ></img>
-                </div>
-              ) : (
-                <p className="header__avatar-default">
-                  {currentUser.name[0].toUpperCase()}
-                </p>
-              )}
-            </>
-          ) : (
-            <>
-              <button
-                className="header__register-button"
-                type="button"
-                onClick={onRegisterModal}
-              >
-                Sign up
-              </button>
-              <button
-                className="header__login-button"
-                type="button"
-                onClick={onLoginModal}
-              >
-                Login
-              </button>
-            </>
-          )}
-        </div>
-      </Link>
+            ) : (
+              <p className="header__avatar-default">
+                {currentUser.name[0].toUpperCase()}
+              </p>
+            )}
+          </>
+        ) : (
+          <>
+            <button
+              className="header__register-button"
+              type="button"
+              onClick={onRegisterModal}
+            >
+              Sign up
+            </button>
+            <button
+              className="header__login-button"
+              type="button"
+              onClick={onLoginModal}
+            >
+              Login
+            </button>
+          </>
+        )}
+      </div>
     </header>
   );
 };
