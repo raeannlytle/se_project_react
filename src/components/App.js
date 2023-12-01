@@ -147,16 +147,12 @@ function App() {
     const token = localStorage.getItem("jwt");
 
     if (!isLiked) {
-      // If the item is not liked, add a like
       addCardLike(item._id, token)
         .then((res) => {
-          // Assuming the response contains the updated item data
           const updatedItem = res.data;
 
-          // Log the updated item and check if it's getting the right data
           console.log("Updated Item (Like):", updatedItem);
 
-          // Update your frontend state accordingly
           setClothingItems((clothingItems) =>
             clothingItems.map((card) =>
               card._id === updatedItem._id ? updatedItem : card
