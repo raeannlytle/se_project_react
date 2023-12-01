@@ -32,7 +32,7 @@ function SideBar({ onEditProfileModal, onLogout }) {
           type="button"
           onClick={onEditProfileModal}
         >
-          Edit Profile
+          Change profile data
         </button>
         <button
           className="sidebar__logout-button"

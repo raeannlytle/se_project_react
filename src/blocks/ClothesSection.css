@@ -1,5 +1,6 @@
 .clothes {
   display: flex;
+  flex-wrap: wrap;
   font-size: 16px;
   font-family: "Familjen Grotesk", sans-serif;
   gap: 16px;
