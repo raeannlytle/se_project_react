@@ -145,23 +145,44 @@ function App() {
 
   const handleCardLike = (item, isLiked, currentUser) => {
     const token = localStorage.getItem("jwt");
-    !isLiked
-      ? addCardLike(item._id, currentUser._id, token)
-          .then((res) => {
-            setClothingItems((clothingItems) =>
-              clothingItems.map((card) => (card._id === item._id ? res : card))
-            );
-          })
-          .catch((err) => console.log(err))
-      : removeCardLike(item._id, currentUser._id, token)
-          .then((updatedCard) => {
-            setClothingItems((clothingItems) =>
-              clothingItems.map((card) =>
-                card._id === item._id ? updatedCard : card
-              )
-            );
-          })
-          .catch((err) => console.log(err));
+
+    if (!isLiked) {
+      // If the item is not liked, add a like
+      addCardLike(item._id, token)
+        .then((res) => {
+          // Assuming the response contains the updated item data
+          const updatedItem = res.data;
+
+          // Log the updated item and check if it's getting the right data
+          console.log("Updated Item (Like):", updatedItem);
+
+          // Update your frontend state accordingly
+          setClothingItems((clothingItems) =>
+            clothingItems.map((card) =>
+              card._id === updatedItem._id ? updatedItem : card
+            )
+          );
+        })
+        .catch((err) => console.log(err));
+    } else {
+      // If the item is liked, remove the like
+      removeCardLike(item._id, token)
+        .then((res) => {
+          // Assuming the response contains the updated item data
+          const updatedItem = res.data;
+
+          // Log the updated item and check if it's getting the right data
+          console.log("Updated Item (Unlike):", updatedItem);
+
+          // Update your frontend state accordingly
+          setClothingItems((clothingItems) =>
+            clothingItems.map((card) =>
+              card._id === updatedItem._id ? updatedItem : card
+            )
+          );
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   const handleToggleSwitchChange = () => {

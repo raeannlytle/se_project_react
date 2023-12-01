@@ -71,3 +71,4 @@ export const removeCardLike = (itemId) => {
     },
   }).then((res) => checkResponse(res));
 };
+
