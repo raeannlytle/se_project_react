@@ -3,16 +3,24 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import React, { useContext } from "react";
 
 const ItemModal = ({ selectedCard, onClose, handleDeleteItem }) => {
+  console.log("selectedCard in ItemModal:", selectedCard);
   const currentUser = useContext(CurrentUserContext);
 
-  // Check if selectedCard is defined before accessing properties
   const isOwner = selectedCard && selectedCard.owner === currentUser._id;
 
-  const imageUrl = selectedCard ? selectedCard.imageUrl : '';
+  const imageUrl = selectedCard ? selectedCard.imageUrl : "";
 
   const itemModalDeleteButton = `${
     isOwner ? "modal__delete-button-visible" : "modal__delete-button_hidden"
   }`;
+
+  const onDeleteClick = () => {
+    if (selectedCard) {
+      handleDeleteItem(selectedCard);
+    } else {
+      console.error("Selected card is undefined.");
+    }
+  };
 
   return (
     <div className={`item__modal`}>
@@ -45,7 +53,7 @@ const ItemModal = ({ selectedCard, onClose, handleDeleteItem }) => {
           <button
             className="item_modal__delete_button"
             type="button"
-            onClick={() => handleDeleteItem(selectedCard)}
+            onClick={onDeleteClick}
           >
             Delete item
           </button>

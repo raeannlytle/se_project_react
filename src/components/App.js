@@ -87,6 +87,7 @@ function App() {
   };
 
   const handleDeleteItem = (selectedCard) => {
+    console.log("Deleting item:", selectedCard);
     if (selectedCard && selectedCard._id) {
       deleteItem(selectedCard)
         .then(() => {
@@ -257,7 +258,7 @@ function App() {
         <Footer />
         {activeModal === "preview" && (
           <ItemModal
-            card={selectedCard}
+            selectedCard={selectedCard}
             isOpen={activeModal === "preview"}
             onClose={handleCloseModal}
             handleDeleteItem={handleDeleteItem}
