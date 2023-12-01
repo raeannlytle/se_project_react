@@ -58,7 +58,7 @@ function App() {
   };
 
   const handleEditProfileModal = () => {
-    setActiveModal("edit");
+    setActiveModal("editProfile");
   };
 
   const handleCreateModal = () => {
@@ -133,8 +133,8 @@ function App() {
       })
       .catch(console.error);
   };
-
   const handleEditProfile = (name, avatar, token) => {
+    console.log("Handling edit profile...", name, avatar, token);
     editProfile(name, avatar, token)
       .then((res) => {
         setCurrentUser(res.data);

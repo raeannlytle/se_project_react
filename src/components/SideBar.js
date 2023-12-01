@@ -10,6 +10,10 @@ function SideBar({ onEditProfileModal, onLogout }) {
     onLogout();
   };
 
+  const handleEditProfileClick = () => {
+    onEditProfileModal(currentUser);
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebar__profile-info">
@@ -30,14 +34,14 @@ function SideBar({ onEditProfileModal, onLogout }) {
         <button
           className="sidebar__edit-button"
           type="button"
-          onClick={onEditProfileModal}
+          onClick={handleEditProfileClick}
         >
           Change profile data
         </button>
         <button
           className="sidebar__logout-button"
           type="button"
-          onClick={onLogout}
+          onClick={handleLogoutClick}
         >
           Log out
         </button>

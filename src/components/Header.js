@@ -1,7 +1,7 @@
 import "../blocks/Header.css";
 import headerLogo from "../images/header-logo.svg";
 import ToggleSwitch from "./ToggleSwitch";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
 
@@ -18,8 +18,10 @@ const Header = ({
     day: "numeric",
   });
 
+  const navigate = useNavigate();
+
   const handleProfileClick = () => {
-    onEditProfileModal(currentUser);
+    navigate('/profile');
   };
   const currentUser = useContext(CurrentUserContext);
   const avatarImage = currentUser.data?.avatar !== "" ? true : false;
@@ -62,7 +64,7 @@ const Header = ({
               </div>
             ) : (
               <p className="header__avatar-default">
-                {currentUser.data?.name[0].toUpperCase()}
+                {currentUser.data.name[0].toUpperCase()}
               </p>
             )}
           </>

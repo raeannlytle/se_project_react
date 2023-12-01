@@ -1,11 +1,17 @@
 import { checkResponse } from "./api";
 import { latitude, longitude, apiKey } from "./utils";
 
-export const getForecastWeather = () => {
-  const weatherApi = fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
-  ).then(checkResponse);
-  return weatherApi;
+export const getForecastWeather = async () => {
+  try {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
+    );
+    const data = await checkResponse(response);
+    return data;
+  } catch (error) {
+    console.error("Error fetching weather data:", error);
+    throw error;
+  }
 };
 
 export const parseWeatherData = (data) => {
@@ -24,3 +30,4 @@ export const parseLocation = (data) => {
   const weatherLocation = data.name;
   return weatherLocation;
 };
+
