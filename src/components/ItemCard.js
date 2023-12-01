@@ -17,7 +17,6 @@ const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
 
   return (
     <div className="card">
-      <div className="card_name">{item.name}</div>
       <img
         src={item?.imageUrl || item?.link}
         alt={item.name}

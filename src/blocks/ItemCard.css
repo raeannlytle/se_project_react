@@ -5,21 +5,6 @@
   justify-content: center;
 }
 
-.card_name {
-  text-align: center;
-  position: absolute;
-  top: 20px;
-  font-family: "Familjen Grotesk", sans-serif;
-  font-size: 16px;
-  line-height: 20px;
-  color: rgba(0, 0, 0, 0.6);
-  background-color: #fff;
-  height: 24px;
-  width: 72px;
-  border-radius: 4px;
-  padding: 5px;
-}
-
 .card_image {
   width: 328px;
   height: 328px;
@@ -59,11 +44,10 @@
 
 .card__title {
   display: flex;
-  position: absolute;
-  top: 20px;
+  position: relative;
   gap: 10px;
   align-items: center;
-  background-color: #fff;
+  background-color: transparent;
   border-radius: 6px;
   padding: 5px;
 }
