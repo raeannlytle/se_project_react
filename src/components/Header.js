@@ -19,10 +19,10 @@ const Header = ({
   });
 
   const handleProfileClick = () => {
-    onEditProfileModal();
-  }
+    onEditProfileModal(currentUser);
+  };
   const currentUser = useContext(CurrentUserContext);
-  const avatarImage = currentUser.avatar !== "" ? true : false;
+  const avatarImage = currentUser.data.avatar !== "" ? true : false;
 
   return (
     <header className="header">
@@ -48,13 +48,15 @@ const Header = ({
               </button>
             </div>
             <Link to="/profile">
-              <div className="header__name" onClick={handleProfileClick}>{currentUser.name}</div>
+              <div className="header__name" onClick={handleProfileClick}>
+                {currentUser.data.name}
+              </div>
             </Link>
             {avatarImage ? (
               <div>
                 <img
                   className="header__avatar"
-                  src={currentUser.avatar}
+                  src={currentUser.data.avatar}
                   alt="avatar"
                 ></img>
               </div>
