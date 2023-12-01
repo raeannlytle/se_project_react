@@ -10,7 +10,7 @@
 .clothes__header {
   display: flex;
   align-items: center;
-  width: 100%; 
+  width: 100%;
 }
 
 .clothes__title {
@@ -33,4 +33,10 @@
 .clothes__button:hover {
   color: rgba(0, 0, 0, 0.3);
   transform: scale(105%);
+}
+
+.clothes__items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }

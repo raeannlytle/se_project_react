@@ -35,12 +35,15 @@
 .sidebar__profile-info {
   display: flex;
   align-items: center;
+  margin-left: 20px;
 }
 
 .sidebar__profile-manager {
   display: flex;
   flex-direction: column;
   margin-top: 30px;
+  margin-left: 20px;
+  align-items: flex-start;
 }
 
 .sidebar__edit-button {
