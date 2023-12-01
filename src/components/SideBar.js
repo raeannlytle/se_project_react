@@ -16,15 +16,15 @@ function SideBar({ onEditProfileModal, onLogout }) {
         {currentAvatar ? (
           <img
             className="sidebar__avatar"
-            src={currentUser.avatar}
+            src={currentUser.data?.avatar}
             alt="Avatar icon"
           ></img>
         ) : (
           <p className="sidebar__avatar-default">
-            {currentUser.name[0].toUpperCase()}
+            {currentUser.data?.name[0].toUpperCase()}
           </p>
         )}
-        <p className="sidebar__name">{currentUser.name}</p>
+        <p className="sidebar__name">{currentUser.data?.name}</p>
       </div>
       <div className="sidebar__profile-manager">
         <button
