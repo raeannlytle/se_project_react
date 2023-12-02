@@ -24,7 +24,7 @@ const DeleteConfirmModal = ({
           <button
             className="modal__button-confirm"
             type="button"
-            onClick={() => handleDeleteItem(selectedCard._id)}
+            onClick={() => handleDeleteItem(selectedCard)}
           >
             Yes, delete item
           </button>
