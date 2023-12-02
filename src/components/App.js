@@ -240,7 +240,7 @@ function App() {
         })
         .catch(console.error);
     }
-  }, []);
+  }, [isLoggedIn]);
 
   return (
     <Router>
