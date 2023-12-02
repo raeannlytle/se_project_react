@@ -1,5 +1,4 @@
 import "../blocks/ModalWithForm.css";
-import closeButton from "../images/close-button.svg";
 import { useState, useContext, useEffect } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import ModalWithForm from "./ModalWithForm";

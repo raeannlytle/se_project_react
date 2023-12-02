@@ -101,15 +101,17 @@
 }
 
 .modal__button-close {
-  border: none;
-  background-image: url("../images/close-button.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: transparent;
   position: absolute;
-  top: 23px;
-  right: 31px;
-  z-index: 1;
+  bottom: calc(100% - 50px);
+  left: calc(100% - 50px);
+  width: 20px;
+  height: 20px;
+  background-image: url("../images//close-button.svg");
+  border: 1px black;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  padding: 10px;
+  cursor: pointer;
 }
 
 .modal__confirm-close {

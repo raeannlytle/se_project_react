@@ -39,6 +39,7 @@ const LoginModal = ({ handleCloseModal, setActiveModal, onLogin, isOpen }) => {
       buttonText="Login"
       modalName="login"
     >
+      
       <div className="modal__labels">
         <label className="modal__label">
           Email:
