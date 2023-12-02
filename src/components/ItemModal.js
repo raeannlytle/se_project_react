@@ -2,7 +2,7 @@ import "../blocks/ItemModal.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import React, { useContext } from "react";
 
-const ItemModal = ({ selectedCard, onClose, handleDeleteItem }) => {
+const ItemModal = ({ selectedCard, onClose, onDeleteConfirm }) => {
   console.log("selectedCard in ItemModal:", selectedCard);
   const currentUser = useContext(CurrentUserContext);
 
@@ -15,12 +15,14 @@ const ItemModal = ({ selectedCard, onClose, handleDeleteItem }) => {
   }`;
 
   const onDeleteClick = () => {
+    console.log("Delete button clicked");
     if (selectedCard) {
-      handleDeleteItem(selectedCard);
+      onDeleteConfirm(selectedCard);
     } else {
       console.error("Selected card is undefined.");
     }
   };
+  
 
   return (
     <div className={`item__modal`}>

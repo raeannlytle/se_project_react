@@ -102,6 +102,11 @@ function App() {
     }
   };
 
+  const handleDeleteConfirm = (selectedCard) => {
+    setDeleteConfirm(true);
+    setSelectedCard(selectedCard);
+  };
+
   const handleLogin = (email, password) => {
     loginUser({ email, password })
       .then((res) => {
@@ -273,7 +278,14 @@ function App() {
             isOpen={activeModal === "preview"}
             onClose={handleCloseModal}
             handleDeleteItem={handleDeleteItem}
-            onDeleteConfirm={() => setDeleteConfirm(true)}
+            onDeleteConfirm={handleDeleteConfirm}
+          />
+        )}
+        {activeModal === "delete" && (
+          <DeleteConfirmModal
+            handleCloseConfirmModal={() => setDeleteConfirm(false)}
+            handleDeleteItem={handleDeleteItem}
+            selectedCard={selectedCard}
           />
         )}
         {activeModal === "create" && (
