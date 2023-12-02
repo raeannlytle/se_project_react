@@ -7,8 +7,10 @@ const DeleteConfirmModal = ({
   selectedCard,
 }) => {
   const handleCancel = () => {
+    console.log("Cancel button clicked");
     handleCloseConfirmModal();
   };
+
   return (
     <div className="modal">
       <div className="modal__confirm-content">
@@ -24,7 +26,11 @@ const DeleteConfirmModal = ({
           <button
             className="modal__button-confirm"
             type="button"
-            onClick={() => handleDeleteItem(selectedCard)}
+            onClick={() => {
+              console.log("Yes, delete item clicked");
+              handleDeleteItem(selectedCard);
+              handleCloseConfirmModal();
+            }}
           >
             Yes, delete item
           </button>

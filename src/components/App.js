@@ -74,6 +74,12 @@ function App() {
     setSelectedCard(card);
   };
 
+  const handleCloseConfirmModal = () => {
+    console.log("Closing confirmation modal");
+    setDeleteConfirm(false);
+  };
+  
+
   const onAddItem = (values) => {
     addItem(values)
       .then((data) => {
