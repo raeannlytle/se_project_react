@@ -37,7 +37,7 @@ import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
 import ProtectedRoute from "./ProtectedRoute";
 import EditProfileModal from "./EditProfileModal";
-import '../blocks/App.css';
+import "../blocks/App.css";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -79,7 +79,6 @@ function App() {
     console.log("Closing confirmation modal");
     setDeleteConfirm(false);
   };
-  
 
   const onAddItem = (values) => {
     addItem(values)
@@ -112,7 +111,7 @@ function App() {
   const handleDeleteConfirm = (selectedCard) => {
     setDeleteConfirm(true);
     setSelectedCard(selectedCard);
-    setActiveModal('delete');
+    setActiveModal("delete");
   };
 
   const handleLogin = (email, password) => {
@@ -248,7 +247,7 @@ function App() {
       <div className="App">
         <CurrentUserContext.Provider value={currentUser}>
           <CurrentTemperatureUnitContext.Provider
-            value={{ currentTemperatureUnit, setCurrentTemperatureUnit }}
+            value={{ currentTemperatureUnit, handleToggleSwitchChange }}
           >
             <Header
               onLoginModal={handleLoginModal}
@@ -289,7 +288,7 @@ function App() {
             onDeleteConfirm={handleDeleteConfirm}
           />
         )}
-        {activeModal === 'delete' && (
+        {activeModal === "delete" && (
           <DeleteConfirmModal
             handleCloseConfirmModal={handleCloseModal}
             handleDeleteItem={handleDeleteItem}
