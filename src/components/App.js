@@ -247,7 +247,7 @@ function App() {
       <div className="App">
         <CurrentUserContext.Provider value={currentUser}>
           <CurrentTemperatureUnitContext.Provider
-            value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+            value={{ currentTemperatureUnit, setCurrentTemperatureUnit, handleToggleSwitchChange }}
           >
             <Header
               onLoginModal={handleLoginModal}
