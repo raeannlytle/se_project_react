@@ -87,7 +87,6 @@ function App() {
   };
 
   const handleDeleteItem = (selectedCard) => {
-    console.log("Deleting item:", selectedCard);
     if (selectedCard && selectedCard._id) {
       deleteItem(selectedCard)
         .then(() => {
