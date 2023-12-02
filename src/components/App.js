@@ -105,7 +105,7 @@ function App() {
   const handleDeleteConfirm = (selectedCard) => {
     setDeleteConfirm(true);
     setSelectedCard(selectedCard);
-    setActiveModal("delete");
+    setActiveModal('delete');
   };
 
   const handleLogin = (email, password) => {
@@ -280,6 +280,13 @@ function App() {
             onClose={handleCloseModal}
             handleDeleteItem={handleDeleteItem}
             onDeleteConfirm={handleDeleteConfirm}
+          />
+        )}
+        {activeModal === 'delete' && (
+          <DeleteConfirmModal
+            handleCloseConfirmModal={() => setDeleteConfirm(false)}
+            handleDeleteItem={handleDeleteItem}
+            selectedCard={selectedCard}
           />
         )}
         {activeModal === "create" && (
