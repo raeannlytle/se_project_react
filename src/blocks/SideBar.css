@@ -43,6 +43,7 @@
 
 .sidebar__profile-manager {
   display: flex;
+  align-items: flex-start;
   flex-direction: column;
   margin-top: 24px;
   gap: 8px;
