@@ -290,7 +290,7 @@ function App() {
         )}
         {activeModal === 'delete' && (
           <DeleteConfirmModal
-            handleCloseConfirmModal={() => setDeleteConfirm(false)}
+            handleCloseConfirmModal={handleCloseModal}
             handleDeleteItem={handleDeleteItem}
             selectedCard={selectedCard}
           />
