@@ -228,26 +228,24 @@ function App() {
       })
       .catch(console.error);
   }, []);
-  
 
   useEffect(() => {
     if (isLoggedIn) {
       const token = localStorage.getItem("jwt");
       getUserInfo(token)
         .then((userData) => {
-          setCurrentUser(userData.data);
+          setCurrentUser(userData);
         })
         .catch(console.error);
     }
   }, [isLoggedIn]);
 
   useEffect(() => {
-  const token = localStorage.getItem("jwt");
-  if (token) {
-    setIsLoggedIn(true);
-  }
-}, []);
-
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   return (
     <Router>
@@ -287,59 +285,59 @@ function App() {
                 }
               />
             </Routes>
+            <Footer />
+            {activeModal === "preview" && (
+              <ItemModal
+                selectedCard={selectedCard}
+                isOpen={activeModal === "preview"}
+                onClose={handleCloseModal}
+                handleDeleteItem={handleDeleteItem}
+                onDeleteConfirm={handleDeleteConfirm}
+              />
+            )}
+            {activeModal === "delete" && (
+              <DeleteConfirmModal
+                handleCloseConfirmModal={handleCloseModal}
+                handleDeleteItem={handleDeleteItem}
+                selectedCard={selectedCard}
+              />
+            )}
+            {activeModal === "create" && (
+              <AddItemModal
+                isOpen={activeModal === "create"}
+                handleCloseModal={handleCloseModal}
+                onAddItem={onAddItem}
+              />
+            )}
+            {activeModal === "register" && (
+              <RegisterModal
+                onOpen={activeModal === "register"}
+                handleCloseModal={handleCloseModal}
+                onClose={handleCloseModal}
+                onRegister={handleRegister}
+                setActiveModal={setActiveModal}
+              />
+            )}
+            {activeModal === "login" && (
+              <LoginModal
+                onOpen={activeModal === "login"}
+                onClose={handleCloseModal}
+                handleCloseModal={handleCloseModal}
+                setActiveModal={setActiveModal}
+                onRegister={handleRegisterModal}
+                onLogin={handleLogin}
+              />
+            )}
+            {activeModal === "editProfile" && (
+              <EditProfileModal
+                handleCloseModal={handleCloseModal}
+                onClose={handleCloseModal}
+                isOpen={activeModal === "editProfile"}
+                onSubmit={handleEditProfile}
+              />
+            )}
           </CurrentTemperatureUnitContext.Provider>
         </CurrentUserContext.Provider>
-        <Footer />
-        {activeModal === "preview" && (
-          <ItemModal
-            selectedCard={selectedCard}
-            isOpen={activeModal === "preview"}
-            onClose={handleCloseModal}
-            handleDeleteItem={handleDeleteItem}
-            onDeleteConfirm={handleDeleteConfirm}
-          />
-        )}
-        {activeModal === "delete" && (
-          <DeleteConfirmModal
-            handleCloseConfirmModal={handleCloseModal}
-            handleDeleteItem={handleDeleteItem}
-            selectedCard={selectedCard}
-          />
-        )}
-        {activeModal === "create" && (
-          <AddItemModal
-            isOpen={activeModal === "create"}
-            handleCloseModal={handleCloseModal}
-            onAddItem={onAddItem}
-          />
-        )}
-        {activeModal === "register" && (
-          <RegisterModal
-            onOpen={activeModal === "register"}
-            handleCloseModal={handleCloseModal}
-            onClose={handleCloseModal}
-            onRegister={handleRegister}
-            setActiveModal={setActiveModal}
-          />
-        )}
-        {activeModal === "login" && (
-          <LoginModal
-            onOpen={activeModal === "login"}
-            onClose={handleCloseModal}
-            handleCloseModal={handleCloseModal}
-            setActiveModal={setActiveModal}
-            onRegister={handleRegisterModal}
-            onLogin={handleLogin}
-          />
-        )}
-        {activeModal === "editProfile" && (
-          <EditProfileModal
-            handleCloseModal={handleCloseModal}
-            onClose={handleCloseModal}
-            isOpen={activeModal === "editProfile"}
-            onSubmit={handleEditProfile}
-          />
-        )}
       </div>
     </Router>
   );
