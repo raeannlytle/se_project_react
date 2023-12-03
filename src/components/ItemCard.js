@@ -6,8 +6,10 @@ import "../blocks/ItemCards.css";
 const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
   const currentUser = useContext(CurrentUserContext);
 
+  const currentUserId = currentUser ? currentUser._id : null;
+
   const [isLiked, setIsLiked] = useState(
-    item.likes ? item.likes.some((id) => id === currentUser._id) : false
+    item.likes ? item.likes.some((id) => id === currentUserId) : false
   );
 
   const itemLikeButtonClassName = `card__likeButton ${
@@ -40,4 +42,3 @@ const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
 };
 
 export default ItemCard;
-

@@ -21,10 +21,10 @@ const Header = ({
   const navigate = useNavigate();
 
   const handleProfileClick = () => {
-    navigate('/profile');
+    navigate("/profile");
   };
   const currentUser = useContext(CurrentUserContext);
-  const avatarImage = currentUser.avatar !== "" ? true : false;
+  const avatarImage = currentUser && currentUser.avatar !== "" ? true : false;
 
   return (
     <header className="header">
