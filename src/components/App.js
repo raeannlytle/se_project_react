@@ -91,7 +91,8 @@ function App() {
       });
   };
 
-  const handleDeleteItem = (selectedCard) => {
+  const handleDelete = (selectedCard) => {
+    console.log("Deleting item:", selectedCard);
     if (selectedCard && selectedCard._id) {
       deleteItem(selectedCard)
         .then(() => {
@@ -292,14 +293,14 @@ function App() {
                 selectedCard={selectedCard}
                 isOpen={activeModal === "preview"}
                 onClose={handleCloseModal}
-                handleDeleteItem={handleDeleteItem}
+                handleDelete={handleDelete}
                 onDeleteConfirm={handleDeleteConfirm}
               />
             )}
             {activeModal === "delete" && (
               <DeleteConfirmModal
                 handleCloseConfirmModal={handleCloseModal}
-                handleDeleteItem={handleDeleteItem}
+                handleDelete={handleDelete}
                 selectedCard={selectedCard}
               />
             )}
