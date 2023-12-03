@@ -132,7 +132,9 @@ function App() {
   const handleLogout = () => {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
+    setCurrentUser(null);
     setClothingItems(clothingItems);
+
   };
 
   const handleRegister = (email, password, name, avatar) => {
