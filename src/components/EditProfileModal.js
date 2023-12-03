@@ -26,8 +26,8 @@ const EditProfileModal = ({ handleCloseModal, isOpen, onSubmit }) => {
 
   useEffect(() => {
     if (!isOpen) {
-      setName(currentUser.data?.name);
-      setAvatar(currentUser.data?.avatar);
+      setName(currentUser?.name);
+      setAvatar(currentUser?.avatar);
     }
   }, [isOpen, currentUser.data]);
 

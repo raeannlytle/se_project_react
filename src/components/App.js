@@ -146,8 +146,8 @@ function App() {
 
   const handleEditProfile = (name, avatar, token) => {
     editProfile(name, avatar, token)
-      .then((res) => {
-        setCurrentUser(res);
+      .then((userData) => {
+        setCurrentUser(userData.data);
         handleCloseModal();
       })
       .catch(console.error);
