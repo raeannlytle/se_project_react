@@ -11,8 +11,8 @@ const ItemModal = ({ selectedCard, onClose, handleDelete }) => {
 
   const itemModalDeleteButton = `item_modal__delete-button ${
     isOwner
-      ? "item_modal__delete-button-visible"
-      : "item_modal__delete-button-hidden"
+      ? "item_modal__delete-button_visible"
+      : "item_modal__delete-button_hidden"
   }`;
 
   return (

@@ -75,10 +75,10 @@
   text-align: left;
 }
 
-.item_modal_delete-button-visible {
+.item_modal__delete-button_visible {
   visibility: visible;
 }
-.item_modal__delete-button-hidden {
+.item_modal__delete-button_hidden {
   visibility: hidden;
 }
 
