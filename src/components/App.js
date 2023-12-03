@@ -234,6 +234,7 @@ function App() {
       const token = localStorage.getItem("jwt");
       getUserInfo(token)
         .then((userData) => {
+          console.log('User Id:', currentUser._id);
           setCurrentUser(userData.data);
         })
         .catch(console.error);

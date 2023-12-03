@@ -31,21 +31,12 @@ export const addItem = ({ name, imageUrl, weather }) => {
 };
 
 export const getItems = () => {
-  const token = localStorage.getItem("jwt");
-
-  const headers = {
-    "Content-Type": "application/json",
-  };
-
-  if (token) {
-    headers.Authorization = `Bearer ${token}`;
-  }
-
   const getItems = fetch(`${baseUrl}/items`, {
     method: "GET",
-    headers: headers,
+    headers: {
+      "Content-Type": "application/json",
+    },
   }).then(checkResponse);
-
   return getItems;
 };
 
@@ -79,3 +70,4 @@ export const removeCardLike = (itemId) => {
     },
   }).then((res) => checkResponse(res));
 };
+
