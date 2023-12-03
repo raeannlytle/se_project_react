@@ -243,13 +243,6 @@
   background: #fff;
 }
 
-.modal__button-delete_visible {
-  display: flex;
-}
-
-.modal__button-delete_hidden {
-  display: none;
-}
 
 .modal__button-submit-register {
   position: absolute;

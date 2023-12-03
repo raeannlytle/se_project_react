@@ -227,8 +227,9 @@ function App() {
         setClothingItems(data);
       })
       .catch(console.error);
-  }, [clothingItems]);
+  }, []);
   
+
   useEffect(() => {
     if (isLoggedIn) {
       const token = localStorage.getItem("jwt");
@@ -239,14 +240,17 @@ function App() {
         .catch(console.error);
     }
   }, [isLoggedIn]);
-  
 
   return (
     <Router>
       <div className="App">
         <CurrentUserContext.Provider value={currentUser}>
           <CurrentTemperatureUnitContext.Provider
-            value={{ currentTemperatureUnit, setCurrentTemperatureUnit, handleToggleSwitchChange }}
+            value={{
+              currentTemperatureUnit,
+              setCurrentTemperatureUnit,
+              handleToggleSwitchChange,
+            }}
           >
             <Header
               onLoginModal={handleLoginModal}

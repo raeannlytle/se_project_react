@@ -9,10 +9,10 @@ const ItemModal = ({ selectedCard, onClose, handleDelete }) => {
 
   const imageUrl = selectedCard ? selectedCard.imageUrl : "";
 
-  const itemModalDeleteButton = `item_modal__delete_button ${
+  const itemModalDeleteButton = `item_modal__delete-button ${
     isOwner
-      ? "item_modal__delete_button_visible"
-      : "item_modal__delete_button_hidden"
+      ? "item_modal__delete-button-visible"
+      : "item_modal__delete-button-hidden"
   }`;
 
   return (
