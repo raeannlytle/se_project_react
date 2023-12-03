@@ -4,7 +4,6 @@ import React, { useContext } from "react";
 
 const ItemModal = ({ selectedCard, onClose, handleDelete }) => {
   const currentUser = useContext(CurrentUserContext);
-
   const isOwner = selectedCard.owner === currentUser._id;
 
   const imageUrl = selectedCard ? selectedCard.imageUrl : "";
@@ -14,6 +13,9 @@ const ItemModal = ({ selectedCard, onClose, handleDelete }) => {
       ? "item_modal__delete-button_visible"
       : "item_modal__delete-button_hidden"
   }`;
+
+  console.log("selectedCard.owner:", selectedCard.owner);
+  console.log("currentUser._id:", currentUser._id);
 
   return (
     <div className={`item__modal`}>
