@@ -25,11 +25,13 @@ const EditProfileModal = ({ handleCloseModal, isOpen, onSubmit }) => {
   };
 
   useEffect(() => {
-    if (!isOpen) {
-      setName(currentUser?.name);
-      setAvatar(currentUser?.avatar);
+    if (isOpen && currentUser) {
+      setName(currentUser?.name || "");
+      setAvatar(currentUser?.avatar || "");
     }
-  }, [isOpen, currentUser.data]);
+  }, [isOpen, currentUser]);
+  
+  
 
   return (
     <ModalWithForm
