@@ -51,20 +51,20 @@ const Header = ({
             </div>
             <Link to="/profile">
               <div className="header__name" onClick={handleProfileClick}>
-                {currentUser.data?.name}
+                {currentUser?.name}
               </div>
             </Link>
             {avatarImage ? (
               <div>
                 <img
                   className="header__avatar"
-                  src={currentUser.data?.avatar}
+                  src={currentUser?.avatar}
                   alt="avatar"
                 ></img>
               </div>
             ) : (
               <p className="header__avatar-default">
-                {currentUser.data?.name[0].toUpperCase()}
+                {currentUser?.name[0].toUpperCase()}
               </p>
             )}
           </>
