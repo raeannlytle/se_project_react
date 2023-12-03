@@ -3,7 +3,7 @@ import closeButton from "../images/close-button.svg";
 
 const DeleteConfirmModal = ({
   handleCloseConfirmModal,
-  handleDeleteItem,
+  handleDelete,
   selectedCard,
 }) => {
   const handleCancel = () => {
@@ -28,7 +28,7 @@ const DeleteConfirmModal = ({
             type="button"
             onClick={() => {
               console.log("Yes, delete item clicked");
-              handleDeleteItem(selectedCard);
+              handleDelete(selectedCard);
               handleCloseConfirmModal();
             }}
           >

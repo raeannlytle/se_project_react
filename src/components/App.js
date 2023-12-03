@@ -294,7 +294,7 @@ function App() {
                 isOpen={activeModal === "preview"}
                 onClose={handleCloseModal}
                 handleDelete={handleDelete}
-                onDeleteConfirm={handleDeleteConfirm}
+                handleDeleteConfirm={handleDeleteConfirm}
               />
             )}
             {activeModal === "delete" && (
