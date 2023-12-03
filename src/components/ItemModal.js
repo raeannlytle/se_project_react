@@ -2,27 +2,18 @@ import "../blocks/ItemModal.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import React, { useContext } from "react";
 
-const ItemModal = ({ selectedCard, onClose, onDeleteConfirm }) => {
-  console.log("selectedCard in ItemModal:", selectedCard);
+const ItemModal = ({ selectedCard, onClose, handleDelete }) => {
   const currentUser = useContext(CurrentUserContext);
 
-  const isOwner = selectedCard && selectedCard.owner === currentUser._id;
+  const isOwner = selectedCard.owner === currentUser._id;
 
   const imageUrl = selectedCard ? selectedCard.imageUrl : "";
 
-  const itemModalDeleteButton = `${
-    isOwner ? "modal__delete-button-visible" : "modal__delete-button_hidden"
+  const itemModalDeleteButton = `item_modal__delete_button ${
+    isOwner
+      ? "item_modal__delete_button_visible"
+      : "item_modal__delete_button_hidden"
   }`;
-
-  const onDeleteClick = () => {
-    console.log("Delete button clicked");
-    if (selectedCard) {
-      onDeleteConfirm(selectedCard);
-    } else {
-      console.error("Selected card is undefined.");
-    }
-  };
-  
 
   return (
     <div className={`item__modal`}>
@@ -53,9 +44,9 @@ const ItemModal = ({ selectedCard, onClose, onDeleteConfirm }) => {
             )}
           </div>
           <button
-            className="item_modal__delete_button"
+            className={itemModalDeleteButton}
             type="button"
-            onClick={onDeleteClick}
+            onClick={handleDelete}
           >
             Delete item
           </button>

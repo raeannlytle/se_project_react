@@ -76,7 +76,6 @@ function App() {
   };
 
   const handleCloseConfirmModal = () => {
-    console.log("Closing confirmation modal");
     setDeleteConfirm(false);
   };
 
@@ -228,19 +227,19 @@ function App() {
         setClothingItems(data);
       })
       .catch(console.error);
-  }, []);
-
+  }, [clothingItems]);
+  
   useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    if (token) {
+    if (isLoggedIn) {
+      const token = localStorage.getItem("jwt");
       getUserInfo(token)
         .then((userData) => {
           setCurrentUser(userData);
-          setIsLoggedIn(true);
         })
         .catch(console.error);
     }
   }, [isLoggedIn]);
+  
 
   return (
     <Router>

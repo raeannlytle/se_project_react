@@ -73,9 +73,13 @@
   background-color: transparent;
   cursor: pointer;
   text-align: left;
-  left: 350px;
-  top: -50px;
-  height: 0;
+}
+
+.item_modal_delete_button_visible {
+  visibility: visible;
+}
+.item_modal__delete_button_hidden {
+  visibility: hidden;
 }
 
 .item_modal__delete_button:hover {
