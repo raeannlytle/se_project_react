@@ -242,12 +242,12 @@ function App() {
   }, [isLoggedIn]);
 
   useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    if (token) {
-      setIsLoggedIn(true);
-    }
-  }, []);
-  
+  const token = localStorage.getItem("jwt");
+  if (token) {
+    setIsLoggedIn(true);
+  }
+}, []);
+
 
   return (
     <Router>
