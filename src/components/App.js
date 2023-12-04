@@ -239,7 +239,6 @@ function App() {
           localStorage.removeItem("jwt");
         });
     } else {
-      console.log("No token found. User not logged in.");
       setIsLoggedIn(false);
       setCurrentUser({});
     }
