@@ -27,9 +27,7 @@ const DeleteConfirmModal = ({
             className="modal__button-confirm"
             type="button"
             onClick={() => {
-              console.log("Yes, delete item clicked");
               handleDelete(selectedCard);
-              handleCloseConfirmModal();
             }}
           >
             Yes, delete item
