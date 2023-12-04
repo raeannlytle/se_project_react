@@ -5,31 +5,19 @@ import "../blocks/ItemCards.css";
 
 const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
   const currentUser = useContext(CurrentUserContext);
-
-  const [likedItems, setLikedItems] = useState(
-    JSON.parse(localStorage.getItem("likedItems")) || []
-  );
+  const [isLiked, setIsLiked] = useState(item.likes.includes(currentUser._id));
 
   useEffect(() => {
-    localStorage.setItem("likedItems", JSON.stringify(likedItems));
-  }, [likedItems]);
-
-  const isLiked = likedItems.includes(item._id);
+    setIsLiked(item.likes.includes(currentUser._id));
+  }, [item.likes, currentUser._id]);
 
   const itemLikeButtonClassName = `card__likeButton ${
     isLiked ? "card__likeButton-active" : "card__likeButton-inactive"
   }`;
 
   const handleCardLike = () => {
-    if (isLiked) {
-      setLikedItems((prevLikedItems) =>
-        prevLikedItems.filter((itemId) => itemId !== item._id)
-      );
-    } else {
-      setLikedItems((prevLikedItems) => [...prevLikedItems, item._id]);
-    }
-
-    onCardLike(item, !isLiked, currentUser);
+    setIsLiked(!isLiked);
+    onCardLike(item);
   };
 
   return (

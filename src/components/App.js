@@ -156,38 +156,31 @@ function App() {
       .catch(console.error);
   };
 
-  const handleCardLike = (item, isLiked, currentUser) => {
+  const handleCardLike = (item) => {
     const token = localStorage.getItem("jwt");
-
-    if (!isLiked) {
+    const isItemLiked = item.likes.includes(currentUser._id);
+  
+    if (!isItemLiked) {
       addCardLike(item._id, token)
-        .then((res) => {
-          const updatedItem = res.data;
-
-          console.log("Updated Item (Like):", updatedItem);
-
-          setClothingItems((clothingItems) =>
-            clothingItems.map((card) =>
-              card._id === updatedItem._id ? updatedItem : card
+        .then((updatedItem) => {
+          setClothingItems((prevClothingItems) =>
+            prevClothingItems.map((card) =>
+              card._id === item._id ? updatedItem : card
             )
           );
         })
         .catch((err) => console.log(err));
     } else {
       removeCardLike(item._id, token)
-        .then((res) => {
-          const updatedItem = res.data;
-          console.log("Updated Item (Unlike):", updatedItem);
-
-          setClothingItems((clothingItems) =>
-            clothingItems.map((card) =>
-              card._id === updatedItem._id ? updatedItem : card
-            )
+        .then(() => {
+          setClothingItems((prevClothingItems) =>
+            prevClothingItems.filter((card) => card._id !== item._id)
           );
         })
         .catch((err) => console.log(err));
     }
   };
+  
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
