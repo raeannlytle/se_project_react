@@ -159,28 +159,25 @@ function App() {
   const handleCardLike = (item) => {
     const token = localStorage.getItem("jwt");
     const isItemLiked = item.likes.includes(currentUser._id);
-  
+
+    const handleUpdateItems = (updatedItems) => {
+      if (Array.isArray(updatedItems)) {
+        setClothingItems(updatedItems);
+      } else {
+        console.error("Received invalid data for updated items:", updatedItems);
+      }
+    };
+
     if (!isItemLiked) {
       addCardLike(item._id, token)
-        .then((updatedItem) => {
-          setClothingItems((prevClothingItems) =>
-            prevClothingItems.map((card) =>
-              card._id === item._id ? updatedItem : card
-            )
-          );
-        })
+        .then(handleUpdateItems)
         .catch((err) => console.log(err));
     } else {
       removeCardLike(item._id, token)
-        .then(() => {
-          setClothingItems((prevClothingItems) =>
-            prevClothingItems.filter((card) => card._id !== item._id)
-          );
-        })
+        .then(handleUpdateItems)
         .catch((err) => console.log(err));
     }
   };
-  
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");

@@ -58,7 +58,14 @@ export const addCardLike = (itemId) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
-  }).then((res) => checkResponse(res));
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Failed to add like");
+      }
+      return res.json();
+    })
+    .then((data) => data);
 };
 
 export const removeCardLike = (itemId) => {
@@ -68,6 +75,12 @@ export const removeCardLike = (itemId) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
-  }).then((res) => checkResponse(res));
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Failed to remove like");
+      }
+      return res.json();
+    })
+    .then((data) => data);
 };
-

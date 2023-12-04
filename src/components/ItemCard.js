@@ -5,19 +5,23 @@ import "../blocks/ItemCards.css";
 
 const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
   const currentUser = useContext(CurrentUserContext);
-  const [isLiked, setIsLiked] = useState(item.likes.includes(currentUser._id));
+  const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
-    setIsLiked(item.likes.includes(currentUser._id));
-  }, [item.likes, currentUser._id]);
+    if (currentUser && currentUser._id) {
+      setIsLiked(item.likes.includes(currentUser._id));
+    }
+  }, [item.likes, currentUser]);
 
   const itemLikeButtonClassName = `card__likeButton ${
     isLiked ? "card__likeButton-active" : "card__likeButton-inactive"
   }`;
 
   const handleCardLike = () => {
-    setIsLiked(!isLiked);
-    onCardLike(item);
+    if (currentUser && currentUser._id) {
+      setIsLiked(!isLiked);
+      onCardLike(item);
+    }
   };
 
   return (
@@ -39,5 +43,4 @@ const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
     </div>
   );
 };
-
 export default ItemCard;
