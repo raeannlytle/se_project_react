@@ -161,22 +161,21 @@ function App() {
     const isItemLiked = item.likes.includes(currentUser._id);
 
     const handleUpdateItems = (updatedItem) => {
-      const itemIndex = clothingItems.findIndex(
-        (i) => i._id === updatedItem._id
+      setClothingItems((items) =>
+        items.map((i) => (i._id === updatedItem._id ? updatedItem : i))
       );
-      const updatedItems = [...clothingItems];
-      updatedItems[itemIndex] = updatedItem;
-      setClothingItems(updatedItems);
+    };
+
+    const handleError = (err) => {
+      console.log(err);
     };
 
     if (!isItemLiked) {
-      addCardLike(item._id, token)
-        .then(handleUpdateItems)
-        .catch((err) => console.log(err));
+      addCardLike(item._id, token).then(handleUpdateItems).catch(handleError);
     } else {
       removeCardLike(item._id, token)
         .then(handleUpdateItems)
-        .catch((err) => console.log(err));
+        .catch(handleError);
     }
   };
 
