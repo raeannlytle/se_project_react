@@ -72,8 +72,7 @@ export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
       </div>
       <p className="modal__paragraph">Select the weather type:</p>
       <div className="modal__radios">
-        <label htmlFor="hot" className="modal__label">
-          Hot
+        <div className="modal__radio">
           <input
             className="modal__input-radio"
             type="radio"
@@ -82,9 +81,11 @@ export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
             value="hot"
             onChange={handleWeather}
           />
-        </label>
-        <label htmlFor="warm" className="modal__label">
-          Warm
+          <label htmlFor="hot" className="modal__label">
+            Hot
+          </label>
+        </div>
+        <div className="modal__radio">
           <input
             className="modal__input-radio"
             type="radio"
@@ -93,9 +94,11 @@ export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
             value="warm"
             onChange={handleWeather}
           />
-        </label>
-        <label htmlFor="cold" className="modal__label">
-          Cold
+          <label htmlFor="warm" className="modal__label">
+            Warm
+          </label>
+        </div>
+        <div className="modal__radio">
           <input
             className="modal__input-radio"
             type="radio"
@@ -104,7 +107,10 @@ export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
             value="cold"
             onChange={handleWeather}
           />
-        </label>
+          <label htmlFor="cold" className="modal__label">
+            Cold
+          </label>
+        </div>
       </div>
     </ModalWithForm>
   );
