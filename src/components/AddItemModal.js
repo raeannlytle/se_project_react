@@ -72,36 +72,39 @@ export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
       </div>
       <p className="modal__paragraph">Select the weather type:</p>
       <div className="modal__radios">
-        <div className="modal__radio">
+        <label htmlFor="hot" className="modal__label">
+          Hot
           <input
             className="modal__input-radio"
             type="radio"
             id="hot"
+            name="weatherType"
             value="hot"
             onChange={handleWeather}
           />
-          <label htmlFor="hot">Hot</label>
-        </div>
-        <div className="modal__radio">
+        </label>
+        <label htmlFor="warm" className="modal__label">
+          Warm
           <input
             className="modal__input-radio"
             type="radio"
             id="warm"
+            name="weatherType"
             value="warm"
             onChange={handleWeather}
           />
-          <label htmlFor="warm">Warm</label>
-        </div>
-        <div className="modal__radio">
+        </label>
+        <label htmlFor="cold" className="modal__label">
+          Cold
           <input
             className="modal__input-radio"
             type="radio"
             id="cold"
+            name="weatherType"
             value="cold"
             onChange={handleWeather}
           />
-          <label htmlFor="cold">Cold</label>
-        </div>
+        </label>
       </div>
     </ModalWithForm>
   );
