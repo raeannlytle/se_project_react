@@ -22,7 +22,6 @@ const WeatherCard = ({ day, type, weatherTemp = "" }) => {
           <img src={imageSrcUrl} alt={type} className="weather__image" />
         </div>
       </section>
-      <section id="weather__cards"></section>
     </>
   );
 };
