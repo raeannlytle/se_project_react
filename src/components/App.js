@@ -160,12 +160,13 @@ function App() {
     const token = localStorage.getItem("jwt");
     const isItemLiked = item.likes.includes(currentUser._id);
 
-    const handleUpdateItems = (updatedItems) => {
-      if (Array.isArray(updatedItems)) {
-        setClothingItems(updatedItems);
-      } else {
-        console.error("Received invalid data for updated items:", updatedItems);
-      }
+    const handleUpdateItems = (updatedItem) => {
+      const itemIndex = clothingItems.findIndex(
+        (i) => i._id === updatedItem._id
+      );
+      const updatedItems = [...clothingItems];
+      updatedItems[itemIndex] = updatedItem;
+      setClothingItems(updatedItems);
     };
 
     if (!isItemLiked) {
@@ -223,13 +224,24 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (isLoggedIn) {
-      const token = localStorage.getItem("jwt");
+    const token = localStorage.getItem("jwt");
+
+    if (token) {
       getUserInfo(token)
         .then((userData) => {
+          setIsLoggedIn(true);
           setCurrentUser(userData.data);
         })
-        .catch(console.error);
+        .catch((error) => {
+          console.log("Token is invalid. User not logged in.", error);
+          setIsLoggedIn(false);
+          setCurrentUser({});
+          localStorage.removeItem("jwt");
+        });
+    } else {
+      console.log("No token found. User not logged in.");
+      setIsLoggedIn(false);
+      setCurrentUser({});
     }
   }, [isLoggedIn]);
 
