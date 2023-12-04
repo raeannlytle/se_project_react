@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import "../blocks/ItemCard.css";
 import "../blocks/ItemCards.css";
@@ -9,7 +9,7 @@ const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
 
   useEffect(() => {
     if (currentUser && currentUser._id) {
-      setIsLiked(item.likes.includes(currentUser._id));
+      setIsLiked(item.likes.some((id) => id === currentUser._id));
     }
   }, [item.likes, currentUser]);
 
@@ -43,4 +43,6 @@ const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
     </div>
   );
 };
+
 export default ItemCard;
+
