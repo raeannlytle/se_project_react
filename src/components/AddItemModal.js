@@ -80,7 +80,7 @@ export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
             value="hot"
             onChange={handleWeather}
           />
-          <label>Hot</label>
+          <label htmlFor="hot">Hot</label>
         </div>
         <div className="modal__radio">
           <input
@@ -90,7 +90,7 @@ export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
             value="warm"
             onChange={handleWeather}
           />
-          <label>Warm</label>
+          <label htmlFor="warm">Warm</label>
         </div>
         <div className="modal__radio">
           <input
@@ -100,7 +100,7 @@ export default function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
             value="cold"
             onChange={handleWeather}
           />
-          <label>Cold</label>
+          <label htmlFor="cold">Cold</label>
         </div>
       </div>
     </ModalWithForm>
