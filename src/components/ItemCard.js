@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import "../blocks/ItemCard.css";
 import "../blocks/ItemCards.css";
@@ -6,18 +6,29 @@ import "../blocks/ItemCards.css";
 const ItemCard = ({ item, onSelectedCard, onCardLike }) => {
   const currentUser = useContext(CurrentUserContext);
 
-  const currentUserId = currentUser ? currentUser._id : null;
-
-  const [isLiked, setIsLiked] = useState(
-    item.likes ? item.likes.some((id) => id === currentUserId) : false
+  const [likedItems, setLikedItems] = useState(
+    JSON.parse(localStorage.getItem("likedItems")) || []
   );
+
+  useEffect(() => {
+    localStorage.setItem("likedItems", JSON.stringify(likedItems));
+  }, [likedItems]);
+
+  const isLiked = likedItems.includes(item._id);
 
   const itemLikeButtonClassName = `card__likeButton ${
     isLiked ? "card__likeButton-active" : "card__likeButton-inactive"
   }`;
 
   const handleCardLike = () => {
-    setIsLiked(!isLiked);
+    if (isLiked) {
+      setLikedItems((prevLikedItems) =>
+        prevLikedItems.filter((itemId) => itemId !== item._id)
+      );
+    } else {
+      setLikedItems((prevLikedItems) => [...prevLikedItems, item._id]);
+    }
+
     onCardLike(item, !isLiked, currentUser);
   };
 

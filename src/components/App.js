@@ -120,6 +120,7 @@ function App() {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
           setIsLoggedIn(true);
+          setCurrentUser(res.userData);
           handleCloseModal();
           return res;
         } else {
@@ -134,7 +135,6 @@ function App() {
     setIsLoggedIn(false);
     setCurrentUser(null);
     setClothingItems(clothingItems);
-
   };
 
   const handleRegister = (email, password, name, avatar) => {
@@ -237,7 +237,6 @@ function App() {
       const token = localStorage.getItem("jwt");
       getUserInfo(token)
         .then((userData) => {
-          console.log('User Id:', currentUser._id);
           setCurrentUser(userData.data);
         })
         .catch(console.error);
