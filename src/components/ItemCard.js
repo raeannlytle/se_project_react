@@ -3,7 +3,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import "../blocks/ItemCard.css";
 import "../blocks/ItemCards.css";
 
-const ItemCard = ({ item, onSelectedCard, handleLikeClick, isLoggedIn}) => {
+const ItemCard = ({ item, onSelectedCard, handleLikeClick, isLoggedIn }) => {
   const currentUser = useContext(CurrentUserContext);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -21,7 +21,6 @@ const ItemCard = ({ item, onSelectedCard, handleLikeClick, isLoggedIn}) => {
     onSelectedCard(item);
   };
   const onLikeClick = () => {
-    setIsLiked(!isLiked);
     handleLikeClick({ id: item._id, isLiked: isLiked });
   };
 
@@ -31,7 +30,7 @@ const ItemCard = ({ item, onSelectedCard, handleLikeClick, isLoggedIn}) => {
         src={item?.imageUrl || item?.link}
         alt={item.name}
         className="card_image"
-        onClick={handleCardClick}
+        onClick={() => onSelectedCard(item)}
       />
       <div className="card__title">
         <h2 className="card__element">{item.name}</h2>

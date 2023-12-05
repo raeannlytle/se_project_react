@@ -7,7 +7,7 @@ function ClothesSection({
   onSelectedCard,
   handleCreateModal,
   isLoggedIn,
-  onCardLike,
+  handleLikeClick,
   clothingItems,
 }) {
   const currentUser = useContext(CurrentUserContext);
@@ -34,7 +34,7 @@ function ClothesSection({
             item={item}
             onSelectedCard={onSelectedCard}
             isLoggedIn={isLoggedIn}
-            onCardLike={onCardLike}
+            handleLikeClick={handleLikeClick}
           />
         ))}
       </div>
@@ -43,4 +43,3 @@ function ClothesSection({
 }
 
 export default ClothesSection;
-

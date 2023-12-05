@@ -11,7 +11,7 @@ function Profile({
   onEditProfileModal,
   isLoggedIn,
   onLogout,
-  onCardLike,
+  handleLikeClick
 }) {
   return (
     <div className="profile">
@@ -25,7 +25,7 @@ function Profile({
         handleCreateModal={handleCreateModal}
         clothingItems={clothingItems}
         isLoggedIn={isLoggedIn}
-        onCardLike={onCardLike}
+        handleLikeClick={handleLikeClick}
       />
     </div>
   );

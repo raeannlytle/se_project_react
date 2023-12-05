@@ -19,7 +19,7 @@ import {
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import AddItemModal from "./AddItemModal";
-import * as api from '../utils/api';
+import * as api from "../utils/api";
 import {
   loginUser,
   registerUser,
@@ -75,7 +75,7 @@ function App() {
 
   const onAddItem = (values) => {
     api
-    .addItem(values)
+      .addItem(values)
       .then((data) => {
         setClothingItems([data.data, ...clothingItems]);
         handleCloseModal();
@@ -90,7 +90,7 @@ function App() {
     console.log("Deleting item:", selectedCard);
     if (selectedCard && selectedCard._id) {
       api
-      .deleteItem(selectedCard)
+        .deleteItem(selectedCard)
         .then(() => {
           const newClothingItems = clothingItems.filter((cards) => {
             return cards._id !== selectedCard._id;
@@ -151,6 +151,7 @@ function App() {
       })
       .catch(console.error);
   };
+  
   const handleLikeClick = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
     !isLiked
@@ -158,7 +159,7 @@ function App() {
           .addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
+              cards.map((c) => (c._id === id ? updatedCard.data : c))
             );
           })
           .catch(console.error)
@@ -166,7 +167,7 @@ function App() {
           .removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
+              cards.map((c) => (c._id === id ? updatedCard.data : c))
             );
           })
           .catch(console.error);
@@ -176,6 +177,7 @@ function App() {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
+
   const profileProps = {
     clothingItems: clothingItems,
     handleCreateModal: handleCreateModal,
@@ -209,7 +211,7 @@ function App() {
 
   useEffect(() => {
     api
-    .getItems()
+      .getItems()
       .then((data) => {
         setClothingItems(data);
       })
