@@ -1,8 +1,12 @@
-import { baseUrl } from "./utils";
+const authBaseUrl =
+  process.env.NODE_ENV === "production"
+    ? "deployed-backend-url"
+    : "http://localhost:3001";
+
 import { checkResponse } from "./api";
 
 export const registerUser = ({ email, password, name, avatar }) => {
-  return fetch(`${baseUrl}/signup`, {
+  return fetch(`${authBaseUrl}/signup`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -13,7 +17,7 @@ export const registerUser = ({ email, password, name, avatar }) => {
 };
 
 export const loginUser = ({ email, password }) => {
-  return fetch(`${baseUrl}/signin`, {
+  return fetch(`${authBaseUrl}/signin`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -24,7 +28,7 @@ export const loginUser = ({ email, password }) => {
 };
 
 export const getUserInfo = (token) => {
-  return fetch(`${baseUrl}/users/me`, {
+  return fetch(`${authBaseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -34,7 +38,7 @@ export const getUserInfo = (token) => {
 };
 
 export const editProfile = (name, avatar, token) => {
-  return fetch(`${baseUrl}/users/me`, {
+  return fetch(`${authBaseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

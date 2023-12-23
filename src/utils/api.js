@@ -1,16 +1,22 @@
-const baseUrl = "http://localhost:3001";
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "deployed-backend-url"
+    : "http://localhost:3001";
 
 export const checkResponse = (res) => {
   if (res.ok) {
-    return res.json();
+    return res.json().catch(() => ({}));
   } else {
-    return Promise.reject(`Error: ${res.status}`);
+    return res
+      .json()
+      .then((error) => Promise.reject(`Error: ${res.status}, ${error.message}`))
+      .catch(() => Promise.reject(`Error: ${res.status}`));
   }
 };
 
 export const addItem = ({ name, imageUrl, weather }) => {
   console.log("Request Payload:", { name, imageUrl, weather });
-  const addItem = fetch(`${baseUrl}/items`, {
+  return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -26,29 +32,25 @@ export const addItem = ({ name, imageUrl, weather }) => {
       console.log("Data from addItem:", data);
       return data;
     });
-
-  return addItem;
 };
 
 export const getItems = () => {
-  const getItems = fetch(`${baseUrl}/items`, {
+  return fetch(`${baseUrl}/items`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   }).then(checkResponse);
-  return getItems;
 };
 
 export const deleteItem = (selectedCard) => {
-  const deleteItem = fetch(`${baseUrl}/items/${selectedCard._id}`, {
+  return fetch(`${baseUrl}/items/${selectedCard._id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
   }).then(checkResponse);
-  return deleteItem;
 };
 
 export const addCardLike = (itemId) => {
