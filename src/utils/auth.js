@@ -1,9 +1,9 @@
+import { checkResponse } from "./api";
+
 const authBaseUrl =
   process.env.NODE_ENV === "production"
     ? "deployed-backend-url"
     : "http://localhost:3001";
-
-import { checkResponse } from "./api";
 
 export const registerUser = ({ email, password, name, avatar }) => {
   return fetch(`${authBaseUrl}/signup`, {
