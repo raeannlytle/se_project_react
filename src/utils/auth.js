@@ -2,7 +2,7 @@ import { checkResponse } from "./api";
 
 const authBaseUrl =
   process.env.NODE_ENV === "production"
-    ? "deployed-backend-url"
+    ? "https://api.wtwr.customintegrator.org"
     : "http://localhost:3001";
 
 export const registerUser = ({ email, password, name, avatar }) => {

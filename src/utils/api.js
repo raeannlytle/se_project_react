@@ -1,6 +1,6 @@
 const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "deployed-backend-url"
+    ? "https://api.wtwr.customintegrator.org"
     : "http://localhost:3001";
 
 export const checkResponse = (res) => {
