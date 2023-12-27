@@ -2,6 +2,7 @@
   "name": "se_project_react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://www.wtwr.customintegrator.org",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -16,8 +17,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && ssh raelytle@www.wtwr.customintegrator.org 'mkdir -p /home/raelytle/frontend/build' && scp -r ./build/* raelytle@www.wtwr.customintegrator.org:/home/raelytle/frontend/build/"
+
   },
+
   "eslintConfig": {
     "extends": [
       "react-app",
