@@ -2,7 +2,7 @@ import { checkResponse } from "./api";
 
 const authBaseUrl =
   process.env.NODE_ENV === "production"
-    ? "http://api.wtwr.100mountain.com"
+    ? "https://api.wtwr.100mountain.com"
     : "http://localhost:3001";
 
 export const registerUser = ({ email, password, name, avatar }) => {
