@@ -16,9 +16,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && scp -r ./build/* raelytle@wtwr.100mountain.com:/home/raelytle/frontend"
   },
-
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -37,6 +37,7 @@
       "last 1 safari version"
     ]
   },
+  "homepage": "https://www.wtwr.100mountain.com",
   "devDependencies": {
     "jest": "^27.5.1",
     "react-scripts": "^5.0.1"
